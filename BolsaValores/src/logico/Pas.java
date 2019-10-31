@@ -1,7 +1,8 @@
 package logico;
 
 public class Pas {
-	int var; 
+	int var;
+	String nombre;
 	
 
 }
