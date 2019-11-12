@@ -6,10 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class Principal extends JFrame {
-
-	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -31,11 +36,17 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setTitle("Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 596, 383);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getContentPane().setLayout(null);
+		
+		JButton btnRegistroPersonal = new JButton("Registro Personal");
+		btnRegistroPersonal.setBounds(195, 203, 166, 25);
+		getContentPane().add(btnRegistroPersonal);
+		
+		JButton btnRegistroEmpresa = new JButton("Registro Empresa");
+		btnRegistroEmpresa.setBounds(195, 129, 160, 25);
+		getContentPane().add(btnRegistroEmpresa);
 	}
 }
