@@ -6,10 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class RegistroEmpresa extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -35,8 +39,25 @@ public class RegistroEmpresa extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(12, 13, 76, 16);
+		contentPane.add(lblNombre);
+		
+		textField = new JTextField();
+		textField.setBounds(85, 10, 116, 22);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setBounds(12, 54, 56, 16);
+		contentPane.add(lblApellido);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(85, 51, 116, 22);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
-
 }
