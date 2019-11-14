@@ -44,4 +44,6 @@ public class BolsaLaboral {
 		this.listEmpresa = listEmpresa;
 	}
 	
+///**********************FUNCIONES PARA EMPRESA*********************************************
+	
 }
