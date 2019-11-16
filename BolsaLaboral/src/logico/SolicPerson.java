@@ -10,7 +10,7 @@ public class SolicPerson {
 	private boolean vehiculo;
 	private boolean licencia;
 	private boolean disp_viajar;
-	// does it works?
+	
 	
 	public SolicPerson(String idSoliP, Float sueldoMin, Float sueldoMax, ArrayList<Personal> listPersonal,
 			boolean vehiculo, boolean licencia, boolean disp_viajar) {

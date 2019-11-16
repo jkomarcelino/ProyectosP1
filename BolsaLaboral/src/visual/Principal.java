@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JMenu;
 
 public class Principal extends JFrame {
 
@@ -36,17 +37,57 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setResizable(false);
 		setTitle("Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 596, 383);
-		getContentPane().setLayout(null);
+		setBounds(100, 100, 1048, 707);
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		JButton btnRegistroPersonal = new JButton("Registro Personal");
-		btnRegistroPersonal.setBounds(195, 203, 166, 25);
-		getContentPane().add(btnRegistroPersonal);
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
 		
-		JButton btnRegistroEmpresa = new JButton("Registro Empresa");
-		btnRegistroEmpresa.setBounds(195, 129, 160, 25);
-		getContentPane().add(btnRegistroEmpresa);
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnPersonal = new JMenu("Personal");
+		menuBar.add(mnPersonal);
+		
+		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
+		mnPersonal.add(mntmRegistrar);
+		
+		JMenuItem mntmSolicPerson = new JMenuItem("Generar Solicitud");
+		mnPersonal.add(mntmSolicPerson);
+		
+		JMenuItem mntmLista = new JMenuItem("Lista");
+		mnPersonal.add(mntmLista);
+		
+		JMenu mnCentro = new JMenu("Centro");
+		menuBar.add(mnCentro);
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Registrar Centro");
+		mnCentro.add(mntmNewMenuItem_6);
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Generar Solicitud");
+		mnCentro.add(mntmNewMenuItem_7);
+		
+		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Lista");
+		mnCentro.add(mntmNewMenuItem_8);
+		
+		JMenu mnReporte = new JMenu("Reportes");
+		menuBar.add(mnReporte);
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("New menu item");
+		mnReporte.add(mntmNewMenuItem_5);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("New menu item");
+		mnReporte.add(mntmNewMenuItem_4);
+		
+		JMenu mnNewMenu_3 = new JMenu("New menu");
+		menuBar.add(mnNewMenu_3);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
+		mnNewMenu_3.add(mntmNewMenuItem_3);
 	}
 }
