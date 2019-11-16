@@ -6,8 +6,8 @@ public class Tecnico extends Personal {
 	private String area;
 
 	public Tecnico(String nombre, String id, int edad, String telefono, String correo, boolean vehiciculo,
-			boolean disp_viajar, boolean experiencia, String area) {
-		super(nombre, id, edad, telefono, correo, vehiciculo, disp_viajar, experiencia);
+			boolean disp_viajar, boolean experiencia,boolean contratado, String area) {
+		super(nombre, id, edad, telefono, correo, vehiciculo, disp_viajar, experiencia,contratado);
 		this.area = area;
 	}
 
