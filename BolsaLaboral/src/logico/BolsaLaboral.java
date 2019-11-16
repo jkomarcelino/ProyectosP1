@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BolsaLaboral {
 	private ArrayList<SolicCentro> listSolisC;
-	//private ArrayList<SolicPerson> listSolisP;
+	private ArrayList<SolicPerson> listSolisP;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
 	

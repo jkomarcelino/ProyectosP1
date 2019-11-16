@@ -19,7 +19,7 @@ public class SolicPerson {
 		this.sueldoMin = sueldoMin;
 		this.sueldoMax = sueldoMax;
 		this.listPersonal = listPersonal;
-		this.vehiculo = vehiculo;
+		this.vehiculo = vehiculo; 
 		this.licencia = licencia;
 		this.disp_viajar = disp_viajar;
 	}
