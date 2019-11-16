@@ -9,12 +9,32 @@ protected String correo;
 protected boolean vehiciculo;
 protected boolean disp_viajar;//add uml
 protected boolean experiencia;//add uml
+protected boolean contratado;
+
+
+
+//***************************CONSTRUCTOR*************************************************
+
+public Personal(String nombre, String id, int edad, String telefono, String correo, boolean vehiciculo,
+		boolean disp_viajar, boolean experiencia,boolean contratado) {
+	super();
+	this.nombre = nombre;
+	this.id = id;
+	this.edad = edad;
+	this.telefono = telefono;
+	this.correo = correo;
+	this.vehiciculo = vehiciculo;
+	this.disp_viajar = disp_viajar;
+	this.experiencia = experiencia;
+	this.contratado=contratado;
+}
 
 
 ///***************************SETTERS Y GETTERS**************************************************************
 public String getNombre() {
 	return nombre;
 }
+
 public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
