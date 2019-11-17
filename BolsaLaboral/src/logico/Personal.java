@@ -15,6 +15,8 @@ protected boolean vehiciculo;
 protected boolean disp_viajar;//add uml
 protected int aniosExperiencia;//add uml
 protected boolean contratado;
+protected int codigo_persona;
+protected int CODIGO_SIGUIENTE=0;
 
 
 
@@ -39,11 +41,14 @@ public Personal(String nombre, String apellido, String sexo, String id, int edad
 	this.edad = edad;
 	this.idiomas = idiomas;
 	this.telefono = telefono;
-	this.correo = correo;
+	this.correo = comprobarCorreo(correo);
 	this.vehiciculo = vehiciculo;
 	this.disp_viajar = disp_viajar;
 	this.aniosExperiencia = aniosExperiencia;
 	this.contratado = contratado;
+	this.codigo_persona=CODIGO_SIGUIENTE;//para que el codigo sea automatico
+	
+	CODIGO_SIGUIENTE++;
 }
 
 public void setNombre(String nombre) {
@@ -123,7 +128,7 @@ public boolean isContratado() {
 
 //************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
 
-private void comprobarCorreo(String correo) {//comprobar que sea un correo valido
+private String comprobarCorreo(String correo) {//comprobar que sea un correo valido
 	boolean arroba=false;
 	for (int i = 0; i < correo.length(); i++) {
 		
@@ -135,12 +140,12 @@ private void comprobarCorreo(String correo) {//comprobar que sea un correo valid
 	}
 	
 	if (arroba) {
-		this.correo=correo;
+		return correo;
 		
 	}
 	
 	else {
-		this.correo="No valido";
+		return "No valido";
 	}
 }
 
