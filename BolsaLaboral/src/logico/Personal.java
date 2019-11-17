@@ -6,6 +6,7 @@ public abstract class Personal {
 protected String nombre;
 protected String apellido;
 protected String sexo;
+protected String nacionalidad;
 protected String id;
 protected int edad;
 protected ArrayList<String>idiomas;
@@ -16,12 +17,12 @@ protected boolean disp_viajar;//add uml
 protected int aniosExperiencia;//add uml
 protected boolean contratado;
 protected int codigo_persona;
-protected int CODIGO_SIGUIENTE=0;
+
+private static int CODIGO_SIGUIENTE=0;
 
 
 
 //***************************CONSTRUCTOR********************************************************
-
 
 
 
@@ -30,13 +31,16 @@ public String getNombre() {
 	return nombre;
 }
 
-public Personal(String nombre, String apellido, String sexo, String id, int edad, ArrayList<String> idiomas,
-		String telefono, String correo, boolean vehiciculo, boolean disp_viajar, int aniosExperiencia,
-		boolean contratado) {
+
+
+public Personal(String nombre, String apellido, String sexo, String nacionalidad, String id, int edad,
+		ArrayList<String> idiomas, String telefono, String correo, boolean vehiciculo, boolean disp_viajar,
+		int aniosExperiencia, boolean contratado, int codigo_persona) {
 	super();
 	this.nombre = nombre;
 	this.apellido = apellido;
 	this.sexo = sexo;
+	this.nacionalidad = nacionalidad;
 	this.id = id;
 	this.edad = edad;
 	this.idiomas = idiomas;
@@ -46,10 +50,12 @@ public Personal(String nombre, String apellido, String sexo, String id, int edad
 	this.disp_viajar = disp_viajar;
 	this.aniosExperiencia = aniosExperiencia;
 	this.contratado = contratado;
-	this.codigo_persona=CODIGO_SIGUIENTE;//para que el codigo sea automatico
+	this.codigo_persona = CODIGO_SIGUIENTE;
 	
-	CODIGO_SIGUIENTE++;
+	CODIGO_SIGUIENTE++;///para que cada vez que se cree una persona sea diferente
 }
+
+
 
 public void setNombre(String nombre) {
 	this.nombre = nombre;
