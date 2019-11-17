@@ -1,38 +1,49 @@
 package logico;
 
+import java.util.ArrayList;
+
 public abstract class Personal {
 protected String nombre;
+protected String apellido;
+protected String sexo;
 protected String id;
 protected int edad;
+protected ArrayList<String>idiomas;
 protected String telefono;
 protected String correo;
 protected boolean vehiciculo;
 protected boolean disp_viajar;//add uml
-protected boolean experiencia;//add uml
+protected int aniosExperiencia;//add uml
 protected boolean contratado;
 
 
 
-//***************************CONSTRUCTOR*************************************************
+//***************************CONSTRUCTOR********************************************************
 
-public Personal(String nombre, String id, int edad, String telefono, String correo, boolean vehiciculo,
-		boolean disp_viajar, boolean experiencia,boolean contratado) {
-	super();
-	this.nombre = nombre;
-	this.id = id;
-	this.edad = edad;
-	this.telefono = telefono;
-	this.correo = correo;
-	this.vehiciculo = vehiciculo;
-	this.disp_viajar = disp_viajar;
-	this.experiencia = experiencia;
-	this.contratado=contratado;
-}
+
 
 
 ///***************************SETTERS Y GETTERS**************************************************************
 public String getNombre() {
 	return nombre;
+}
+
+public Personal(String nombre, String apellido, String sexo, String id, int edad, ArrayList<String> idiomas,
+		String telefono, String correo, boolean vehiciculo, boolean disp_viajar, int aniosExperiencia,
+		boolean contratado) {
+	super();
+	this.nombre = nombre;
+	this.apellido = apellido;
+	this.sexo = sexo;
+	this.id = id;
+	this.edad = edad;
+	this.idiomas = idiomas;
+	this.telefono = telefono;
+	this.correo = correo;
+	this.vehiciculo = vehiciculo;
+	this.disp_viajar = disp_viajar;
+	this.aniosExperiencia = aniosExperiencia;
+	this.contratado = contratado;
 }
 
 public void setNombre(String nombre) {
@@ -70,12 +81,45 @@ public void setTelefono(String telefono) {
 	this.telefono = telefono;
 }
 
-public boolean isExperiencia() {
-	return experiencia;
+
+
+public ArrayList<String> getIdiomas() {
+	return idiomas;
 }
-public void setExperiencia(boolean experiencia) {
-	this.experiencia = experiencia;
+
+
+public void setIdiomas(ArrayList<String> idiomas) {
+	this.idiomas = idiomas;
 }
+
+
+public String getCorreo() {
+	return correo;
+}
+
+
+public void setCorreo(String correo) {
+	this.correo = correo;
+}
+
+
+public int getAniosExperiencia() {
+	return aniosExperiencia;
+}
+
+
+public void setAniosExperiencia(int aniosExperiencia) {
+	this.aniosExperiencia = aniosExperiencia;
+}
+
+
+public void setContratado(boolean contratado) {
+	this.contratado = contratado;
+}
+public boolean isContratado() {
+	return contratado;
+}
+
 
 //************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
 

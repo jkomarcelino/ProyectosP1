@@ -1,13 +1,19 @@
 package logico;
 
+import java.util.ArrayList;
+
 public class Tecnico extends Personal {
 
 	
 	private String area;
 
-	public Tecnico(String nombre, String id, int edad, String telefono, String correo, boolean vehiciculo,
-			boolean disp_viajar, boolean experiencia,boolean contratado, String area) {
-		super(nombre, id, edad, telefono, correo, vehiciculo, disp_viajar, experiencia,contratado);
+	
+
+	public Tecnico(String nombre, String apellido, String sexo, String id, int edad, ArrayList<String> idiomas,
+			String telefono, String correo, boolean vehiciculo, boolean disp_viajar, int aniosExperiencia,
+			boolean contratado, String area) {
+		super(nombre, apellido, sexo, id, edad, idiomas, telefono, correo, vehiciculo, disp_viajar, aniosExperiencia,
+				contratado);
 		this.area = area;
 	}
 

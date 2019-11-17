@@ -45,7 +45,7 @@ public class Principal extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.CENTER);
+		getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();

@@ -1,5 +1,7 @@
 package logico;
 
+import java.util.ArrayList;
+
 public class Empresa {
 	
 	private String nombre;
@@ -7,6 +9,7 @@ public class Empresa {
 	private String telefono;
 	private String correo;
 	private String ubicacion;
+	private ArrayList<Personal>misContratados;//almacenar aquellos contratos de cada empresa
 	
 	
 	
@@ -40,6 +43,22 @@ public class Empresa {
 	}
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
+	}
+	
+	public ArrayList<Personal> getMisContratados() {
+		return misContratados;
+	}
+	
+	/*
+	 * public void setMisContratados(ArrayList<Personal> misContratados) {
+	 * this.misContratados = misContratados; }
+	 */
+	
+	public void agregarContratado(Personal empleado) {//PARA AGREGAR UN EMPLEADO AL ARREGLO
+		//FECHA
+		empleado.setContratado(true);
+		misContratados.add(empleado);
+		
 	}
 	
 

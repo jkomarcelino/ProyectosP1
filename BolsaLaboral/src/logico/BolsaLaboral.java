@@ -7,17 +7,27 @@ public class BolsaLaboral {
 	private ArrayList<SolicPerson> listSolisP;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
+	private static BolsaLaboral bolsa=null;
 	
 	 
-	public BolsaLaboral(ArrayList<SolicCentro> listSolisC, ArrayList<SolicPerson> listSolisP,
-			ArrayList<Personal> listPersonal, ArrayList<Empresa> listEmpresa) {
+	
+	
+	public BolsaLaboral() {
 		super();
 		this.listSolisC = listSolisC;
 		this.listSolisP = listSolisP;
 		this.listPersonal = listPersonal;
 		this.listEmpresa = listEmpresa;
 	}
-	
+
+	public BolsaLaboral getInstance(){//asegurar una instancia de la clase controladora
+		if (bolsa==null) {
+			bolsa=new BolsaLaboral();
+			
+		}
+		
+		return bolsa;
+	}
 	
 	public ArrayList<SolicCentro> getListSolisC() {
 		return listSolisC;
@@ -44,6 +54,25 @@ public class BolsaLaboral {
 		this.listEmpresa = listEmpresa;
 	}
 	
-///**********************FUNCIONES PARA EMPRESA*********************************************
+///**********************METODOS PARA EMPRESA**************************************************
+	
+	public void agregarEmpresa(Empresa empresa) {
+		listEmpresa.add(empresa);
+		
+	}
+	
+///*****************************METODOS PARA PERSONAL*********************************************
+	
+	
+	public void agrgregarPersonal(Personal solicitante) {
+		
+		solicitante.setContratado(false);
+		listPersonal.add(solicitante);
+		
+	}
+	
+///***********************METODOS PARA MATCHEO**************************************************
+	
+	
 	
 }
