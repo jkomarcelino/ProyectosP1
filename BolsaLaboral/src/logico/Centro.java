@@ -1,5 +1,0 @@
-package logico;
-
-class Centro {
-
-}

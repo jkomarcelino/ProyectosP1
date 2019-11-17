@@ -72,7 +72,16 @@ public class BolsaLaboral {
 	}
 	
 ///***********************METODOS PARA MATCHEO**************************************************
-	
-	
+	//para obrero
+	public ArrayList<Personal>matching(Solicitud sol){
+		ArrayList<Personal>posible_candidatos=new ArrayList<Personal>();
+		if (Solicitud instanceof SolicitudTecnico) {
+			
+			for (Personal p : solicitudes) {
+				
+			}
+			
+		}
+	}
 	
 }
