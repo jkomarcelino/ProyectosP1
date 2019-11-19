@@ -14,6 +14,7 @@ protected ArrayList<String>idiomas=new ArrayList<String>();
 protected boolean vehiciculo;
 protected boolean disp_viajar;
 
+
 private static int CODIGO_SIGUIENTE=0;
 
 
