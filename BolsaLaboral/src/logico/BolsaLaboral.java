@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BolsaLaboral {
 	private ArrayList<SolicCentro> listSolisC;
-	private ArrayList<SolicPerson> listSolisP;
+	private ArrayList<Solicitud> listSolicitudes;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
 	private static BolsaLaboral bolsa=null;
@@ -15,7 +15,7 @@ public class BolsaLaboral {
 	public BolsaLaboral() {
 		super();
 		this.listSolisC = listSolisC;
-		this.listSolisP = listSolisP;
+		this.listSolicitudes = listSolicitudes;
 		this.listPersonal = listPersonal;
 		this.listEmpresa = listEmpresa;
 	}
@@ -35,11 +35,11 @@ public class BolsaLaboral {
 	public void setListSolisC(ArrayList<SolicCentro> listSolisC) {
 		this.listSolisC = listSolisC;
 	}
-	public ArrayList<SolicPerson> getListSolisP() {
-		return listSolisP;
+	public ArrayList<Solicitud> getListSollicitudes() {
+		return listSolicitudes;
 	}
-	public void setListSolisP(ArrayList<SolicPerson> listSolisP) {
-		this.listSolisP = listSolisP;
+	public void setListSolisP(ArrayList<Solicitud> listSolisP) {
+		this.listSolicitudes = listSolicitudes;
 	}
 	public ArrayList<Personal> getListPersonal() {
 		return listPersonal;
@@ -70,18 +70,14 @@ public class BolsaLaboral {
 		listPersonal.add(solicitante);
 		
 	}
+///*********************METODOS PARA SOLICITUD**********************************
 	
+	
+	public void agregarSolicitud(Solicitud solicitud) {
+		listSolicitudes.add(solicitud);
+	}
 ///***********************METODOS PARA MATCHEO**************************************************
 	//para obrero
-	public ArrayList<Personal>matching(Solicitud sol){
-		ArrayList<Personal>posible_candidatos=new ArrayList<Personal>();
-		if (Solicitud instanceof SolicitudTecnico) {
-			
-			for (Personal p : solicitudes) {
-				
-			}
-			
-		}
-	}
+	
 	
 }
