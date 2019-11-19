@@ -63,17 +63,17 @@ public class Principal extends JFrame {
 		JMenuItem mntmLista = new JMenuItem("Lista");
 		mnPersonal.add(mntmLista);
 		
-		JMenu mnCentro = new JMenu("Centro");
-		menuBar.add(mnCentro);
+		JMenu mnEmpresa = new JMenu("Empresa");
+		menuBar.add(mnEmpresa);
 		
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Registrar Centro");
-		mnCentro.add(mntmNewMenuItem_6);
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Registrar Empresa");
+		mnEmpresa.add(mntmNewMenuItem_6);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Generar Solicitud");
-		mnCentro.add(mntmNewMenuItem_7);
+		mnEmpresa.add(mntmNewMenuItem_7);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Lista");
-		mnCentro.add(mntmNewMenuItem_8);
+		mnEmpresa.add(mntmNewMenuItem_8);
 		
 		JMenu mnReporte = new JMenu("Reportes");
 		menuBar.add(mnReporte);
