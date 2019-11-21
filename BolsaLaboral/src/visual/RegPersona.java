@@ -75,7 +75,7 @@ public class RegPersona extends JDialog {
 			panel.add(txtEdad);
 			
 			JLabel lblEdad = new JLabel("Edad:");
-			lblEdad.setBounds(244, 85, 46, 14);
+			lblEdad.setBounds(229, 85, 46, 14);
 			panel.add(lblEdad);
 			
 			txtId = new JTextField();
@@ -93,7 +93,7 @@ public class RegPersona extends JDialog {
 			panel.add(textField_4);
 			
 			JLabel lblIdiomas = new JLabel("Idiomas:");
-			lblIdiomas.setBounds(180, 26, 61, 14);
+			lblIdiomas.setBounds(229, 26, 61, 14);
 			panel.add(lblIdiomas);
 			
 			txtApellido = new JTextField();
@@ -102,11 +102,11 @@ public class RegPersona extends JDialog {
 			panel.add(txtApellido);
 			
 			JLabel lblApellido = new JLabel("Apellido:");
-			lblApellido.setBounds(231, 54, 51, 14);
+			lblApellido.setBounds(229, 54, 51, 14);
 			panel.add(lblApellido);
 			
 			JComboBox cmbIdiomas = new JComboBox();
-			cmbIdiomas.setBounds(241, 23, 111, 20);
+			cmbIdiomas.setBounds(294, 23, 111, 20);
 			panel.add(cmbIdiomas);
 			
 			JLabel lblEmail = new JLabel("E-mail:");

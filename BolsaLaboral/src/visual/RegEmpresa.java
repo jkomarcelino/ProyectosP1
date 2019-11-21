@@ -14,6 +14,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegEmpresa extends JDialog {
 
@@ -41,7 +43,7 @@ public class RegEmpresa extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegEmpresa() {
-		setBounds(100, 100, 425, 332);
+		setBounds(100, 100, 501, 346);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -53,72 +55,72 @@ public class RegEmpresa extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNombre = new JLabel("Nombre Empresa:");
-			lblNombre.setBounds(10, 54, 93, 14);
+			lblNombre.setBounds(10, 54, 128, 14);
 			panel.add(lblNombre);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(113, 51, 116, 20);
+			txtNombre.setBounds(142, 51, 137, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
 			JLabel lblGnero = new JLabel("Tipo de Empresa:");
-			lblGnero.setBounds(10, 116, 94, 14);
+			lblGnero.setBounds(10, 116, 128, 14);
 			panel.add(lblGnero);
 			
 			txtId = new JTextField();
 			txtId.setColumns(10);
-			txtId.setBounds(113, 20, 116, 20);
+			txtId.setBounds(142, 20, 137, 20);
 			panel.add(txtId);
 			
 			JLabel lblCdigo = new JLabel("C\u00F3digo Empresa:");
-			lblCdigo.setBounds(10, 26, 93, 14);
+			lblCdigo.setBounds(10, 26, 111, 14);
 			panel.add(lblCdigo);
 			
 			txtApellido = new JTextField();
 			txtApellido.setColumns(10);
-			txtApellido.setBounds(113, 82, 116, 20);
+			txtApellido.setBounds(142, 82, 137, 20);
 			panel.add(txtApellido);
 			
-			JLabel lblApellido = new JLabel("Ubicaci\u00F3n Empresa:");
-			lblApellido.setBounds(10, 86, 111, 14);
+			JLabel lblApellido = new JLabel("Ubicaci\u00F3n:");
+			lblApellido.setBounds(10, 86, 128, 14);
 			panel.add(lblApellido);
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Contacto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel_1.setBounds(10, 147, 379, 92);
+			panel_1.setBounds(10, 147, 455, 92);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
 			
 			textField = new JTextField();
-			textField.setBounds(118, 59, 146, 20);
+			textField.setBounds(137, 59, 180, 20);
 			panel_1.add(textField);
 			textField.setColumns(10);
 			
 			JLabel lblEmail = new JLabel("Correo Electr\u00F3nico:");
-			lblEmail.setBounds(10, 31, 102, 14);
+			lblEmail.setBounds(10, 31, 128, 14);
 			panel_1.add(lblEmail);
 			
 			txtEmail = new JTextField();
-			txtEmail.setBounds(118, 28, 146, 20);
+			txtEmail.setBounds(137, 28, 180, 20);
 			panel_1.add(txtEmail);
 			txtEmail.setColumns(10);
 			
 			JLabel lblTelefono = new JLabel("Telefono:");
-			lblTelefono.setBounds(10, 62, 64, 14);
+			lblTelefono.setBounds(10, 62, 86, 14);
 			panel_1.add(lblTelefono);
 			
 			JLabel lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/customer-service.png")));
-			lblNewLabel_1.setBounds(285, 11, 71, 68);
+			lblNewLabel_1.setBounds(359, 11, 71, 68);
 			panel_1.add(lblNewLabel_1);
 			
 			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(113, 113, 116, 20);
+			comboBox.setBounds(142, 113, 137, 20);
 			panel.add(comboBox);
 			
 			JLabel lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/online-store (2).png")));
-			lblNewLabel.setBounds(252, 9, 137, 121);
+			lblNewLabel.setBounds(328, 9, 137, 121);
 			panel.add(lblNewLabel);
 		}
 		{
@@ -133,6 +135,11 @@ public class RegEmpresa extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

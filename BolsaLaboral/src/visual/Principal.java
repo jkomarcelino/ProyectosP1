@@ -55,9 +55,23 @@ public class Principal extends JFrame {
 		menuBar.add(mnPersonal);
 		
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
+		mntmRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegPersona regper = new RegPersona();
+				regper.setLocationRelativeTo(null);
+				regper.setVisible(true);
+			}
+		});
 		mnPersonal.add(mntmRegistrar);
 		
 		JMenuItem mntmSolicPerson = new JMenuItem("Generar Solicitud");
+		mntmSolicPerson.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SolicitudPersonal solper = new SolicitudPersonal();
+				solper.setLocationRelativeTo(null);
+				solper.setVisible(true);
+			}
+		});
 		mnPersonal.add(mntmSolicPerson);
 		
 		JMenuItem mntmLista = new JMenuItem("Lista");
@@ -66,11 +80,26 @@ public class Principal extends JFrame {
 		JMenu mnEmpresa = new JMenu("Empresa");
 		menuBar.add(mnEmpresa);
 		
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Registrar Empresa");
-		mnEmpresa.add(mntmNewMenuItem_6);
+		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
+		mntmRegEmp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegEmpresa regemp = new RegEmpresa();
+				regemp.setLocationRelativeTo(null);
+				regemp.setVisible(true);
+				
+			}
+		});
+		mnEmpresa.add(mntmRegEmp);
 		
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Generar Solicitud");
-		mnEmpresa.add(mntmNewMenuItem_7);
+		JMenuItem mntmSoliEmp = new JMenuItem("Generar Solicitud");
+		mntmSoliEmp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				SolicitudEmpresa solemp = new SolicitudEmpresa();
+				solemp.setLocationRelativeTo(null);
+				solemp.setVisible(true);	
+}
+		});
+		mnEmpresa.add(mntmSoliEmp);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Lista");
 		mnEmpresa.add(mntmNewMenuItem_8);
