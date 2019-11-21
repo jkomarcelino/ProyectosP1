@@ -64,7 +64,7 @@ public class BolsaLaboral {
 ///*****************************METODOS PARA PERSONAL*********************************************
 	
 	
-	public void agrgregarPersonal(Personal solicitante) {
+	public void agregarPersonal(Personal solicitante) {
 		
 		solicitante.setContratado(false);
 		listPersonal.add(solicitante);
