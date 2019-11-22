@@ -19,6 +19,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
 
 public class Principal extends JFrame {
 
@@ -50,39 +55,63 @@ public class Principal extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.inactiveCaption);
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_1.setBounds(10, 641, 1046, 27);
-		panel.add(panel_1);
-		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(10, 78, 1048, 563);
+		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
+		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2.setBounds(0, 94, 1079, 549);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(SystemColor.controlHighlight);
 		panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(531, 11, 507, 265);
+		panel_3.setBounds(547, 11, 507, 249);
 		panel_2.add(panel_3);
 		
+		JLabel lblPorcientoMujer = new JLabel("porciento por genero");
+		panel_3.add(lblPorcientoMujer);
+		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(SystemColor.controlHighlight);
 		panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.setBounds(10, 287, 511, 265);
+		panel_4.setBounds(10, 271, 527, 265);
 		panel_2.add(panel_4);
 		
+		JLabel label = new JLabel("");
+		panel_4.add(label);
+		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(SystemColor.controlHighlight);
 		panel_5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_5.setBounds(531, 287, 507, 265);
+		panel_5.setBounds(547, 271, 507, 265);
 		panel_2.add(panel_5);
 		
+		JLabel lblEmpleadosEnEspera = new JLabel("empleados en espera");
+		panel_5.add(lblEmpleadosEnEspera);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/icon/JOBIFY.png")));
+		lblNewLabel.setBounds(413, 11, 237, 76);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/icon/bolsalaboral.png")));
+		lblNewLabel_1.setBounds(434, 51, 296, 26);
+		panel.add(lblNewLabel_1);
+		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(SystemColor.activeCaption);
 		setJMenuBar(menuBar);
 		
 		JMenu mnPersonal = new JMenu("Personal");
+		mnPersonal.setBackground(SystemColor.activeCaption);
+		mnPersonal.setIcon(new ImageIcon(Principal.class.getResource("/icon/empresario.png")));
 		menuBar.add(mnPersonal);
 		
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
@@ -109,6 +138,8 @@ public class Principal extends JFrame {
 		mnPersonal.add(mntmLista);
 		
 		JMenu mnEmpresa = new JMenu("Empresa");
+		mnEmpresa.setBackground(SystemColor.activeCaption);
+		mnEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/icon/edificio-de-oficinas.png")));
 		menuBar.add(mnEmpresa);
 		
 		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
@@ -136,6 +167,8 @@ public class Principal extends JFrame {
 		mnEmpresa.add(mntmNewMenuItem_8);
 		
 		JMenu mnReporte = new JMenu("Reportes");
+		mnReporte.setBackground(SystemColor.activeCaption);
+		mnReporte.setIcon(new ImageIcon(Principal.class.getResource("/icon/impresora.png")));
 		menuBar.add(mnReporte);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("New menu item");
