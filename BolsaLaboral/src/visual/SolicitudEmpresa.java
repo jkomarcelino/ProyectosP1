@@ -36,11 +36,17 @@ public class SolicitudEmpresa extends JDialog {
 	 * Create the dialog.
 	 */
 	public SolicitudEmpresa() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 385);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		contentPanel.setLayout(new BorderLayout(0, 0));
+		{
+			JPanel panel = new JPanel();
+			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Solicitud Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			contentPanel.add(panel, BorderLayout.CENTER);
+			panel.setLayout(null);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

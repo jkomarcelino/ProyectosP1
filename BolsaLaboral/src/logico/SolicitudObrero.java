@@ -8,7 +8,7 @@ public class SolicitudObrero extends Solicitud {
 
 	public SolicitudObrero(Empresa empresa, String codigo, String tipo_de_contrato, int min_anios_exp, boolean vehiculo,
 			String sexo, ArrayList<String> idiomas, boolean vehiciculo, boolean disp_viajar, ArrayList<String> skills) {
-		super(empresa, codigo, tipo_de_contrato, min_anios_exp, vehiculo, sexo, idiomas, vehiciculo, disp_viajar);
+		super(empresa, codigo, tipo_de_contrato, min_anios_exp, vehiculo, sexo, idiomas, disp_viajar);
 		this.skills = skills;
 	}
 	
