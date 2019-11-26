@@ -41,17 +41,20 @@ public class SolicitudEmpresa extends JDialog {
 	 */
 	public SolicitudEmpresa() {
 		setTitle("Solicitud Empresa");
-		setBounds(100, 100, 600, 385);
+		setBounds(100, 100, 600, 480);
 		getContentPane().setLayout(null);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBounds(0, 303, 582, 35);
+			buttonPane.setBounds(10, 395, 582, 35);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
 			{
 				JButton okButton = new JButton("Enviar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
+						///CARGAR
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -60,6 +63,11 @@ public class SolicitudEmpresa extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -67,7 +75,7 @@ public class SolicitudEmpresa extends JDialog {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(12, 13, 558, 119);
+		panel.setBounds(12, 13, 284, 119);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -85,7 +93,7 @@ public class SolicitudEmpresa extends JDialog {
 		panel.add(lblNombre);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(126, 72, 116, 22);
+		textField_1.setBounds(116, 72, 116, 22);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -100,15 +108,25 @@ public class SolicitudEmpresa extends JDialog {
 		panel_1.setLayout(null);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Universitario");
-		rdbtnNewRadioButton.setBounds(38, 24, 107, 25);
+		rdbtnNewRadioButton.setBounds(76, 24, 107, 25);
 		panel_1.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnTcnico = new JRadioButton("T\u00E9cnico");
-		rdbtnTcnico.setBounds(200, 24, 73, 25);
+		rdbtnTcnico.setBounds(259, 24, 73, 25);
 		panel_1.add(rdbtnTcnico);
 		
 		JRadioButton rdbtnObrero = new JRadioButton("Obrero");
-		rdbtnObrero.setBounds(360, 24, 73, 25);
+		rdbtnObrero.setBounds(408, 24, 73, 25);
 		panel_1.add(rdbtnObrero);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "poner imagen", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_2.setBounds(306, 13, 264, 119);
+		getContentPane().add(panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new TitledBorder(null, "poner info que aparece en clase solicitud", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_3.setBounds(12, 216, 558, 168);
+		getContentPane().add(panel_3);
 	}
 }
