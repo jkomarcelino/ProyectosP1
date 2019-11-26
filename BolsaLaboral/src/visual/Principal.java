@@ -55,21 +55,22 @@ public class Principal extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(SystemColor.inactiveCaption);
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_2.setBounds(0, 94, 1079, 549);
+		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_2.setBounds(10, 94, 1046, 549);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(SystemColor.controlHighlight);
 		panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(547, 11, 507, 249);
+		panel_3.setBounds(529, 11, 507, 249);
 		panel_2.add(panel_3);
 		
 		JLabel lblPorcientoMujer = new JLabel("porciento por genero");
@@ -78,7 +79,7 @@ public class Principal extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(SystemColor.controlHighlight);
 		panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.setBounds(10, 271, 527, 265);
+		panel_4.setBounds(10, 271, 507, 265);
 		panel_2.add(panel_4);
 		
 		JLabel label = new JLabel("");
@@ -87,11 +88,20 @@ public class Principal extends JFrame {
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(SystemColor.controlHighlight);
 		panel_5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_5.setBounds(547, 271, 507, 265);
+		panel_5.setBounds(529, 271, 507, 265);
 		panel_2.add(panel_5);
 		
 		JLabel lblEmpleadosEnEspera = new JLabel("empleados en espera");
 		panel_5.add(lblEmpleadosEnEspera);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBackground(SystemColor.controlHighlight);
+		panel_1.setBounds(10, 11, 507, 249);
+		panel_2.add(panel_1);
+		
+		JLabel label_1 = new JLabel("");
+		panel_1.add(label_1);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -106,7 +116,10 @@ public class Principal extends JFrame {
 		panel.add(lblNewLabel_1);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setForeground(Color.PINK);
+		menuBar.setBorderPainted(false);
 		menuBar.setBackground(SystemColor.activeCaption);
+		
 		setJMenuBar(menuBar);
 		
 		JMenu mnPersonal = new JMenu("Personal");
