@@ -11,6 +11,8 @@ protected int min_anios_exp;
 protected boolean vehiculo;
 protected String sexo;
 protected ArrayList<String>idiomas=new ArrayList<String>();
+protected String ciudad;
+protected boolean soltero;
 
 protected boolean disp_viajar;
 
@@ -21,8 +23,12 @@ private static int CODIGO_SIGUIENTE=0;
 
 
 
+
+
+
+
 public Solicitud(Empresa empresa, String codigo, String tipo_de_contrato, int min_anios_exp, boolean vehiculo,
-		String sexo, ArrayList<String> idiomas, boolean disp_viajar) {
+		String sexo, ArrayList<String> idiomas, String ciudad, boolean soltero, boolean disp_viajar) {
 	super();
 	this.empresa = empresa;
 	this.codigo = codigo;
@@ -31,9 +37,9 @@ public Solicitud(Empresa empresa, String codigo, String tipo_de_contrato, int mi
 	this.vehiculo = vehiculo;
 	this.sexo = sexo;
 	this.idiomas = idiomas;//agregar for??
-	
+	this.ciudad = ciudad;
+	this.soltero = soltero;
 	this.disp_viajar = disp_viajar;
-	
 }
 
 
