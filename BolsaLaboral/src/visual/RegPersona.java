@@ -11,6 +11,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegPersona extends JDialog {
 
@@ -40,6 +42,7 @@ public class RegPersona extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegPersona() {
+		setTitle("Registro Personal");
 		setBounds(100, 100, 450, 379);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -113,9 +116,9 @@ public class RegPersona extends JDialog {
 			lblEmail.setBounds(10, 116, 46, 14);
 			panel.add(lblEmail);
 			
-			JLabel label = new JLabel("E-mail:");
-			label.setBounds(231, 116, 46, 14);
-			panel.add(label);
+			JLabel lblTelef = new JLabel("Tel\u00E9fono:");
+			lblTelef.setBounds(229, 116, 61, 14);
+			panel.add(lblTelef);
 			
 			txtEmail = new JTextField();
 			txtEmail.setColumns(10);
@@ -132,7 +135,11 @@ public class RegPersona extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
