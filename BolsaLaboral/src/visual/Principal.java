@@ -24,6 +24,7 @@ import java.awt.SystemColor;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
+import java.awt.Toolkit;
 
 public class Principal extends JFrame {
 
@@ -47,6 +48,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/icon/networking.png")));
 		setResizable(false);
 		setTitle("Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
