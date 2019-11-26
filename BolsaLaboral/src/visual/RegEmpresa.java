@@ -24,7 +24,7 @@ public class RegEmpresa extends JDialog {
 	private JTextField txtId;
 	private JTextField txtApellido;
 	private JTextField txtEmail;
-	private JTextField textField;
+	private JTextField txtTlf;
 
 	/**
 	 * Launch the application.
@@ -55,17 +55,13 @@ public class RegEmpresa extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNombre = new JLabel("Nombre Empresa:");
-			lblNombre.setBounds(10, 54, 128, 14);
+			lblNombre.setBounds(10, 60, 128, 14);
 			panel.add(lblNombre);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(142, 51, 137, 20);
+			txtNombre.setBounds(142, 57, 137, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
-			
-			JLabel lblGnero = new JLabel("Tipo de Empresa:");
-			lblGnero.setBounds(10, 116, 128, 14);
-			panel.add(lblGnero);
 			
 			txtId = new JTextField();
 			txtId.setColumns(10);
@@ -78,23 +74,23 @@ public class RegEmpresa extends JDialog {
 			
 			txtApellido = new JTextField();
 			txtApellido.setColumns(10);
-			txtApellido.setBounds(142, 82, 137, 20);
+			txtApellido.setBounds(142, 94, 137, 20);
 			panel.add(txtApellido);
 			
 			JLabel lblApellido = new JLabel("Ubicaci\u00F3n:");
-			lblApellido.setBounds(10, 86, 128, 14);
+			lblApellido.setBounds(10, 98, 128, 14);
 			panel.add(lblApellido);
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Contacto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel_1.setBounds(10, 147, 455, 92);
+			panel_1.setBounds(10, 141, 455, 98);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
 			
-			textField = new JTextField();
-			textField.setBounds(137, 59, 180, 20);
-			panel_1.add(textField);
-			textField.setColumns(10);
+			txtTlf = new JTextField();
+			txtTlf.setBounds(137, 59, 180, 20);
+			panel_1.add(txtTlf);
+			txtTlf.setColumns(10);
 			
 			JLabel lblEmail = new JLabel("Correo Electr\u00F3nico:");
 			lblEmail.setBounds(10, 31, 128, 14);
@@ -114,10 +110,6 @@ public class RegEmpresa extends JDialog {
 			lblNewLabel_1.setBounds(359, 11, 71, 68);
 			panel_1.add(lblNewLabel_1);
 			
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(142, 113, 137, 20);
-			panel.add(comboBox);
-			
 			JLabel lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/online-store (2).png")));
 			lblNewLabel.setBounds(328, 9, 137, 121);
@@ -129,6 +121,13 @@ public class RegEmpresa extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						//CARGAR DATOS
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

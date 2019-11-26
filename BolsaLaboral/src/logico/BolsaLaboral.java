@@ -3,7 +3,7 @@ package logico;
 import java.util.ArrayList;
 
 public class BolsaLaboral {
-	private ArrayList<SolicCentro> listSolisC;
+	//private ArrayList<SolicCentro> listSolisC;
 	private ArrayList<Solicitud> listSolicitudes;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
@@ -14,7 +14,7 @@ public class BolsaLaboral {
 	
 	public BolsaLaboral() {
 		super();
-		this.listSolisC = listSolisC;
+	//	this.listSolisC = listSolisC;
 		this.listSolicitudes = listSolicitudes;
 		this.listPersonal = listPersonal;
 		this.listEmpresa = listEmpresa;
@@ -29,12 +29,12 @@ public class BolsaLaboral {
 		return bolsa;
 	}
 	
-	public ArrayList<SolicCentro> getListSolisC() {
+	/*public ArrayList<SolicCentro> getListSolisC() {
 		return listSolisC;
 	}
 	public void setListSolisC(ArrayList<SolicCentro> listSolisC) {
 		this.listSolisC = listSolisC;
-	}
+	}*/
 	public ArrayList<Solicitud> getListSollicitudes() {
 		return listSolicitudes;
 	}

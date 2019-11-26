@@ -8,8 +8,8 @@ protected Empresa empresa;
 protected String codigo;
 protected String tipo_de_contrato;
 protected int min_anios_exp;
-protected boolean vehiculo;
-protected String sexo;
+protected boolean vehiculo;//
+protected String sexo;//
 protected ArrayList<String>idiomas=new ArrayList<String>();
 protected String ciudad;
 protected boolean soltero;
