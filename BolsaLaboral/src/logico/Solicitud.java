@@ -22,11 +22,6 @@ private static int CODIGO_SIGUIENTE=0;
 
 
 
-
-
-
-
-
 public Solicitud(Empresa empresa, String codigo, String tipo_de_contrato, int min_anios_exp, boolean vehiculo,
 		String sexo, ArrayList<String> idiomas, String ciudad, boolean soltero, boolean disp_viajar) {
 	super();
