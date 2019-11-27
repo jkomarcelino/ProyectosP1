@@ -14,10 +14,10 @@ public class BolsaLaboral {
 	
 	public BolsaLaboral() {
 		super();
-	//	this.listSolisC = listSolisC;
-		this.listSolicitudes = listSolicitudes;
-		this.listPersonal = listPersonal;
-		this.listEmpresa = listEmpresa;
+		//bolsa null
+		this.listSolicitudes = new ArrayList<Solicitud>();
+		this.listPersonal = new ArrayList<Personal>();
+		this.listEmpresa = new ArrayList<Empresa>();
 	}
 
 	public BolsaLaboral getInstance(){//asegurar una instancia de la clase controladora
@@ -70,6 +70,46 @@ public class BolsaLaboral {
 		listPersonal.add(solicitante);
 		
 	}
+	
+	public int cant_personal_universitario() {
+		
+		int contador=0;
+		for (int i = 0; i < listPersonal.size(); i++) {
+			if (listPersonal.get(i) instanceof Universitario) {
+				contador++;
+			}
+			
+		}
+		return contador;
+		
+	}
+	
+public int cant_personal_obrero() {
+		
+		int contador=0;
+		for (int i = 0; i < listPersonal.size(); i++) {
+			if (listPersonal.get(i) instanceof Obrero) {
+				contador++;
+			}
+			
+		}
+		return contador;
+		
+	}
+
+public int cant_personal_tecnico() {
+	
+	int contador=0;
+	for (int i = 0; i < listPersonal.size(); i++) {
+		if (listPersonal.get(i) instanceof Tecnico) {
+			contador++;
+		}
+		
+	}
+	return contador;
+	
+}
+
 ///*********************METODOS PARA SOLICITUD**********************************
 	
 	
@@ -79,5 +119,43 @@ public class BolsaLaboral {
 ///***********************METODOS PARA MATCHEO**************************************************
 	//para obrero
 	
+	
+	public ArrayList<Personal> matching(Solicitud sol){
+	ArrayList<Personal>aspirantes=new ArrayList<Personal>();
+	
+	if (sol instanceof SolicitudUniversitario) {
+		for (int i = 0; i < listPersonal.size(); i++) {
+			if (listPersonal.get(i) instanceof Universitario) {
+				///validar
+				aspirantes.add(listPersonal.get(i));
+			}
+		}
+		
+	}
+	
+if (sol instanceof SolicitudObrero) {
+	
+	for (int i = 0; i < listPersonal.size(); i++) {
+		if (listPersonal.get(i) instanceof Obrero) {
+			///validar
+			aspirantes.add(listPersonal.get(i));
+		}
+	}
+		
+	}
+	
+	
+if (sol instanceof SolicitudTecnico) {
+	
+	for (int i = 0; i < listPersonal.size(); i++) {
+		if (listPersonal.get(i) instanceof Tecnico) {
+			///validar
+			aspirantes.add(listPersonal.get(i));
+		}
+	}
+		
+	}
+return aspirantes;
+	}
 	
 }
