@@ -165,8 +165,44 @@ public class BolsaLaboral {
 	
 	
 //AGREGAR CONTEO DE PERSONAL POR TIPO
+public int cant_personal_universitario() {
+		
+		int contador=0;
+		for (int i = 0; i < listPersonal.size(); i++) {
+			if (listPersonal.get(i) instanceof Universitario) {
+				contador++;
+			}
+			
+		}
+		return contador;
+		
+	}
 	
+public int cant_personal_obrero() {
+		
+		int contador=0;
+		for (int i = 0; i < listPersonal.size(); i++) {
+			if (listPersonal.get(i) instanceof Obrero) {
+				contador++;
+			}
+			
+		}
+		return contador;
+		
+	}
+
+public int cant_personal_tecnico() {
 	
+	int contador=0;
+	for (int i = 0; i < listPersonal.size(); i++) {
+		if (listPersonal.get(i) instanceof Tecnico) {
+			contador++;
+		}
+		
+	}
+	return contador;
+	
+}
 	
 	
 	
