@@ -21,6 +21,17 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import javax.swing.border.TitledBorder;
+
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.util.Rotation;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.PlotOrientation;
+
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import javax.swing.border.MatteBorder;
@@ -32,6 +43,9 @@ import javax.swing.border.EtchedBorder;
 
 public class Principal extends JFrame implements Runnable {
 	private JPanel panel;
+	private JPanel panelGrafi1;
+	private JPanel panelGrafi2;
+	private JPanel panelGrafi3;
 	JLabel lblHora ;
     int hora, minutos, segundos;
     Calendar calendario;
@@ -63,7 +77,7 @@ public class Principal extends JFrame implements Runnable {
 		setResizable(false);
 		setTitle("Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1072, 729);
+		setBounds(100, 100, 1072, 696);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -76,42 +90,46 @@ public class Principal extends JFrame implements Runnable {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_2.setBounds(10, 94, 1046, 549);
+		panel_2.setBounds(10, 82, 1046, 532);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(SystemColor.controlHighlight);
-		panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(529, 11, 507, 249);
-		panel_2.add(panel_3);
+		panelGrafi1 = new JPanel();
+		panelGrafi1.setBackground(SystemColor.controlHighlight);
+		panelGrafi1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelGrafi1.setBounds(529, 11, 507, 249);
+		panel_2.add(panelGrafi1);
+		showGraf1();
 		
 		JLabel lblPorcientoMujer = new JLabel("porciento por genero");
-		panel_3.add(lblPorcientoMujer);
+		lblPorcientoMujer.setBounds(203, 261, 101, 14);
+		panelGrafi1.add(lblPorcientoMujer);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(SystemColor.controlHighlight);
-		panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_4.setBounds(10, 271, 507, 265);
-		panel_2.add(panel_4);
-		
+		 panelGrafi3 = new JPanel();
+		panelGrafi3.setBackground(SystemColor.controlHighlight);
+		panelGrafi3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelGrafi3.setBounds(10, 271, 507, 249);
+		panel_2.add(panelGrafi3);
+		showGraf3();
 		
 		
 		JLabel label = new JLabel("");
-		panel_4.add(label);
+		label.setBounds(253, 432, 0, 0);
+		panelGrafi3.add(label);
 		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(SystemColor.controlHighlight);
-		panel_5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_5.setBounds(529, 271, 507, 265);
-		panel_2.add(panel_5);
+		 panelGrafi2 = new JPanel();
+		panelGrafi2.setBackground(SystemColor.controlHighlight);
+		panelGrafi2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelGrafi2.setBounds(529, 271, 507, 249);
+		panel_2.add(panelGrafi2);
+		showGraf2();
 		
 		JLabel lblEmpleadosEnEspera = new JLabel("empleados en espera");
-		panel_5.add(lblEmpleadosEnEspera);
+		panelGrafi2.add(lblEmpleadosEnEspera);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBackground(SystemColor.controlHighlight);
+		panel_1.setBackground(SystemColor.inactiveCaption);
 		panel_1.setBounds(10, 11, 507, 249);
 		panel_2.add(panel_1);
 		
@@ -122,7 +140,7 @@ public class Principal extends JFrame implements Runnable {
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/icon/JOBIFY.png")));
-		lblNewLabel.setBounds(413, 11, 237, 76);
+		lblNewLabel.setBounds(407, 11, 237, 76);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -133,7 +151,7 @@ public class Principal extends JFrame implements Runnable {
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_6.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_6.setBounds(984, 71, 72, 20);
+		panel_6.setBounds(984, 59, 72, 20);
 		panel.add(panel_6);
 		
 		lblHora = new JLabel("HO:RA:ACT");
@@ -235,8 +253,112 @@ public class Principal extends JFrame implements Runnable {
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
 		mnNewMenu_3.add(mntmNewMenuItem_3);
+		
+		
 	}
 	
+
+    private void showGraf1() {
+      
+        // Fuente de Datos
+        DefaultPieDataset data = new DefaultPieDataset();
+        data.setValue("C", 40);
+        data.setValue("Java", 45);
+        data.setValue("Python", 15);
+ 
+        // Creando el Grafico
+        JFreeChart chart = ChartFactory.createPieChart(
+         "hola", 
+         data, 
+         true, 
+         true, 
+         false);
+        panelGrafi1.setLayout(null);
+ 
+        // Crear el Panel del Grafico con ChartPanel
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+        chart.setBackgroundPaint( SystemColor.inactiveCaption);
+      
+        chartPanel.setBounds(0, 0, 507, 249);
+        chartPanel.setPreferredSize(new java.awt.Dimension(panelGrafi1.getWidth(), panelGrafi1.getHeight()));
+        panelGrafi1.add(chartPanel);
+    }
+    private void showGraf2() {
+        
+        
+        // Fuente de Datos
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(8, "Mujeres", "Lunes");
+        dataset.setValue(7, "Hombres", "Lunes");
+        dataset.setValue(9, "Mujeres", "Martes");
+        dataset.setValue(4, "Hombres", "Martes");
+        dataset.setValue(4, "Mujeres", "Miercoles");
+        dataset.setValue(5, "Hombres", "Miercoles");
+        dataset.setValue(8, "Mujeres", "Jueves");
+        dataset.setValue(9, "Hombres", "Jueves");
+        dataset.setValue(7, "Mujeres", "Viernes");
+        dataset.setValue(8, "Hombres", "Viernes");
+        
+        // Creando el Grafico
+        JFreeChart chart = ChartFactory.createBarChart3D
+                ("Participacion por Genero","Genero", "Dias", 
+                dataset, PlotOrientation.VERTICAL, true,true, false);
+                chart.setBackgroundPaint(SystemColor.inactiveCaption);
+                chart.getTitle().setPaint(Color.black); 
+                CategoryPlot p = chart.getCategoryPlot(); 
+                p.setRangeGridlinePaint(Color.red); 
+        panelGrafi2.setLayout(null);
+ 
+        // Crear el Panel del Grafico con ChartPanel
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+      //  chart.getPlot().setBackgroundPaint( SystemColor.inactiveCaptionBorder );
+      
+        chartPanel.setBounds(0, 0, 507, 249);
+        chartPanel.setPreferredSize(new java.awt.Dimension(panelGrafi2.getWidth(), panelGrafi2.getHeight()));
+        panelGrafi2.add(chartPanel);
+        
+        
+        
+        
+
+    }
+    
+    private void showGraf3() {
+        
+        // Fuente de Datos
+        DefaultPieDataset data = new DefaultPieDataset();
+        data.setValue("C", 40);
+        data.setValue("Java", 45);
+        data.setValue("Python", 15);
+ 
+        DefaultPieDataset defaultpiedataset = new DefaultPieDataset(); 
+        defaultpiedataset.setValue("Programacion", new Double(41.200000000000003D)); 
+        defaultpiedataset.setValue("Electronica", new Double(11D)); 
+        defaultpiedataset.setValue("Hacking", new Double(19.5D)); 
+        defaultpiedataset.setValue("SEO", new Double(30.5D)); 
+        defaultpiedataset.setValue("Redes", new Double(2.0D)); 
+ 
+        // Creando el Grafico
+        JFreeChart chart = ChartFactory.createPieChart3D("Tematicas Blog", defaultpiedataset, true, true, false); 
+        PiePlot3D pieplot3d = (PiePlot3D)chart.getPlot(); 
+        pieplot3d.setDepthFactor(0.5); 
+        pieplot3d.setStartAngle(290D); 
+        pieplot3d.setDirection(Rotation.CLOCKWISE); 
+        pieplot3d.setForegroundAlpha(0.5F); 
+        panelGrafi3.setLayout(null);
+        
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chart.setBackgroundPaint( SystemColor.inactiveCaption);
+        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+        chartPanel.setBounds(0, 0, 507, 249);
+        panelGrafi3.add(chartPanel);
+    }
+    
+    
+    
+    
 	@Override
 	public void run() {
 		Thread ct = Thread.currentThread();
