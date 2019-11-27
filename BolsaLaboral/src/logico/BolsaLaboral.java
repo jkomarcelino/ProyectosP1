@@ -61,6 +61,20 @@ public class BolsaLaboral {
 		
 	}
 	
+	public void modificarEmpresa(Empresa empr) {
+		
+		for (Empresa laempresa : listEmpresa) {
+			
+			if (empr.getId().equalsIgnoreCase(laempresa.getId())) {
+				laempresa.setNombre(empr.getNombre());
+				laempresa.setCorreo(empr.getCorreo());
+				laempresa.setTelefono(empr.getTelefono());
+				laempresa.setUbicacion(empr.getUbicacion());
+			}
+			
+		}
+	}
+	
 ///*****************************METODOS PARA PERSONAL*********************************************
 	
 	

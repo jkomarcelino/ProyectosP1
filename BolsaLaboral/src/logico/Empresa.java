@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Empresa {
 	
 	private String nombre;
-	private int id;
+	private String id;
 	private String telefono;
 	private String correo;
 	private String ubicacion;
@@ -20,10 +20,10 @@ public class Empresa {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTelefono() {
