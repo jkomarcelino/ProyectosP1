@@ -10,6 +10,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -25,14 +27,22 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.Toolkit;
+import java.awt.GridLayout;
+import javax.swing.border.EtchedBorder;
 
-public class Principal extends JFrame {
+public class Principal extends JFrame implements Runnable {
+	private JPanel panel;
+	JLabel lblHora ;
+    int hora, minutos, segundos;
+    Calendar calendario;
+    Thread h1;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
 					Principal frame = new Principal();
@@ -48,6 +58,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/icon/networking.png")));
 		setResizable(false);
 		setTitle("Bolsa Laboral");
@@ -56,7 +67,7 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
+		 panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(SystemColor.inactiveCaption);
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -83,6 +94,8 @@ public class Principal extends JFrame {
 		panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_4.setBounds(10, 271, 507, 265);
 		panel_2.add(panel_4);
+		
+		
 		
 		JLabel label = new JLabel("");
 		panel_4.add(label);
@@ -117,6 +130,31 @@ public class Principal extends JFrame {
 		lblNewLabel_1.setBounds(434, 51, 296, 26);
 		panel.add(lblNewLabel_1);
 		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(SystemColor.inactiveCaptionBorder);
+		panel_6.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_6.setBounds(984, 71, 72, 20);
+		panel.add(panel_6);
+		
+		lblHora = new JLabel("HO:RA:ACT");
+		lblHora.setVerticalAlignment(SwingConstants.TOP);
+		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblHora, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addComponent(lblHora, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_6.setLayout(gl_panel_6);
+		h1 = new Thread(this);
+	    h1.start();
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(Color.PINK);
 		menuBar.setBorderPainted(false);
@@ -198,4 +236,25 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
 		mnNewMenu_3.add(mntmNewMenuItem_3);
 	}
+	
+	@Override
+	public void run() {
+		Thread ct = Thread.currentThread();
+        while (ct == h1) {
+            calcula();
+            lblHora.setText(hora + ":" + minutos + ":" + segundos);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
+		
+	}
+	
+	public void calcula() {
+        Calendar calendario = new GregorianCalendar();
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+    }
 }

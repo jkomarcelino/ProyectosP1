@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class RegPersona extends JDialog {
 
@@ -24,6 +25,7 @@ public class RegPersona extends JDialog {
 	private JTextField textField_4;
 	private JTextField txtApellido;
 	private JTextField txtEmail;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -43,7 +45,7 @@ public class RegPersona extends JDialog {
 	 */
 	public RegPersona() {
 		setTitle("Registro Personal");
-		setBounds(100, 100, 450, 379);
+		setBounds(100, 100, 448, 378);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -55,80 +57,95 @@ public class RegPersona extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNombre = new JLabel("Nombre:");
-			lblNombre.setBounds(10, 54, 61, 14);
+			lblNombre.setBounds(10, 60, 61, 14);
 			panel.add(lblNombre);
-			
-			txtNombre = new JTextField();
-			txtNombre.setBounds(80, 51, 111, 20);
-			panel.add(txtNombre);
-			txtNombre.setColumns(10);
 			
 			txtGenero = new JTextField();
 			txtGenero.setColumns(10);
-			txtGenero.setBounds(80, 82, 111, 20);
+			txtGenero.setBounds(81, 120, 132, 20);
 			panel.add(txtGenero);
 			
 			JLabel lblGnero = new JLabel("G\u00E9nero:");
-			lblGnero.setBounds(10, 85, 61, 14);
+			lblGnero.setBounds(10, 123, 61, 14);
 			panel.add(lblGnero);
 			
 			txtEdad = new JTextField();
 			txtEdad.setColumns(10);
-			txtEdad.setBounds(294, 82, 111, 20);
+			txtEdad.setBounds(81, 151, 132, 20);
 			panel.add(txtEdad);
 			
 			JLabel lblEdad = new JLabel("Edad:");
-			lblEdad.setBounds(229, 85, 46, 14);
+			lblEdad.setBounds(10, 154, 46, 14);
 			panel.add(lblEdad);
 			
 			txtId = new JTextField();
 			txtId.setColumns(10);
-			txtId.setBounds(80, 23, 74, 20);
+			txtId.setBounds(81, 26, 74, 20);
 			panel.add(txtId);
 			
-			JLabel lblCdigo = new JLabel("C\u00F3digo:");
-			lblCdigo.setBounds(10, 26, 61, 14);
+			JLabel lblCdigo = new JLabel("C\u00E9dula:");
+			lblCdigo.setBounds(10, 29, 61, 14);
 			panel.add(lblCdigo);
 			
-			textField_4 = new JTextField();
-			textField_4.setColumns(10);
-			textField_4.setBounds(80, 113, 111, 20);
-			panel.add(textField_4);
-			
 			JLabel lblIdiomas = new JLabel("Idiomas:");
-			lblIdiomas.setBounds(229, 26, 61, 14);
+			lblIdiomas.setBounds(10, 185, 61, 14);
 			panel.add(lblIdiomas);
 			
 			txtApellido = new JTextField();
 			txtApellido.setColumns(10);
-			txtApellido.setBounds(294, 54, 111, 20);
+			txtApellido.setBounds(81, 89, 132, 20);
 			panel.add(txtApellido);
 			
 			JLabel lblApellido = new JLabel("Apellido:");
-			lblApellido.setBounds(229, 54, 51, 14);
+			lblApellido.setBounds(10, 92, 51, 14);
 			panel.add(lblApellido);
 			
 			JComboBox cmbIdiomas = new JComboBox();
-			cmbIdiomas.setBounds(294, 23, 111, 20);
+			cmbIdiomas.setBounds(81, 182, 132, 20);
 			panel.add(cmbIdiomas);
 			
-			JLabel lblEmail = new JLabel("E-mail:");
-			lblEmail.setBounds(10, 116, 46, 14);
-			panel.add(lblEmail);
-			
-			JLabel lblTelef = new JLabel("Tel\u00E9fono:");
-			lblTelef.setBounds(229, 116, 61, 14);
-			panel.add(lblTelef);
-			
-			txtEmail = new JTextField();
-			txtEmail.setColumns(10);
-			txtEmail.setBounds(294, 113, 111, 20);
-			panel.add(txtEmail);
+			txtNombre = new JTextField();
+			txtNombre.setBounds(81, 57, 132, 20);
+			panel.add(txtNombre);
+			txtNombre.setColumns(10);
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBorder(new TitledBorder(null, "Adicional", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			panel_1.setBounds(10, 154, 404, 132);
+			panel_1.setBorder(new TitledBorder(null, "Contacto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_1.setBounds(10, 223, 405, 62);
 			panel.add(panel_1);
+			panel_1.setLayout(null);
+			
+			JLabel lblEmail = new JLabel("E-mail:");
+			lblEmail.setBounds(10, 27, 46, 14);
+			panel_1.add(lblEmail);
+			
+			textField_4 = new JTextField();
+			textField_4.setBounds(62, 24, 111, 20);
+			panel_1.add(textField_4);
+			textField_4.setColumns(10);
+			
+			JLabel lblTelef = new JLabel("Tel\u00E9fono:");
+			lblTelef.setBounds(205, 27, 61, 14);
+			panel_1.add(lblTelef);
+			
+			txtEmail = new JTextField();
+			txtEmail.setBounds(276, 24, 111, 20);
+			panel_1.add(txtEmail);
+			txtEmail.setColumns(10);
+			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(RegPersona.class.getResource("/icon/boss127.png")));
+			lblNewLabel.setBounds(268, 71, 128, 128);
+			panel.add(lblNewLabel);
+			
+			JLabel lblCdigo_1 = new JLabel("C\u00F3digo: ");
+			lblCdigo_1.setBounds(243, 29, 46, 14);
+			panel.add(lblCdigo_1);
+			
+			textField = new JTextField();
+			textField.setBounds(299, 26, 86, 20);
+			panel.add(textField);
+			textField.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
