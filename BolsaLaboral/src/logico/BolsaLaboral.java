@@ -2,6 +2,8 @@ package logico;
 
 import java.util.ArrayList;
 
+
+
 public class BolsaLaboral {
 	//private ArrayList<SolicCentro> listSolisC;
 	private ArrayList<Solicitud> listSolicitudes;
@@ -10,7 +12,34 @@ public class BolsaLaboral {
 	private static BolsaLaboral bolsa=null;
 	
 	 
-	
+	public ArrayList<Solicitud> getListSolicitudes() {
+		return listSolicitudes;
+	}
+
+	public void setListSolicitudes(ArrayList<Solicitud> listSolicitudes) {
+		this.listSolicitudes = listSolicitudes;
+	}
+
+	public ArrayList<Personal> getListPersonal() {
+		return listPersonal;
+	}
+
+	public void setListPersonal(ArrayList<Personal> listPersonal) {
+		this.listPersonal = listPersonal;
+	}
+
+	public ArrayList<Empresa> getListEmpresa() {
+		return listEmpresa;
+	}
+
+	public void setListEmpresa(ArrayList<Empresa> listEmpresa) {
+		this.listEmpresa = listEmpresa;
+	}
+
+	public void agregarEmpresa(Empresa empresa) {
+		listEmpresa.add(empresa);
+		
+	}
 	
 	public BolsaLaboral() {
 		super();
@@ -29,37 +58,12 @@ public class BolsaLaboral {
 		return bolsa;
 	}
 	
-	/*public ArrayList<SolicCentro> getListSolisC() {
-		return listSolisC;
-	}
-	public void setListSolisC(ArrayList<SolicCentro> listSolisC) {
-		this.listSolisC = listSolisC;
-	}*/
-	public ArrayList<Solicitud> getListSollicitudes() {
-		return listSolicitudes;
-	}
-	public void setListSolisP(ArrayList<Solicitud> listSolisP) {
-		this.listSolicitudes = listSolicitudes;
-	}
-	public ArrayList<Personal> getListPersonal() {
-		return listPersonal;
-	}
-	public void setListPersonal(ArrayList<Personal> listPersonal) {
-		this.listPersonal = listPersonal;
-	}
-	public ArrayList<Empresa> getListEmpresa() {
-		return listEmpresa;
-	}
-	public void setListEmpresa(ArrayList<Empresa> listEmpresa) {
-		this.listEmpresa = listEmpresa;
-	}
+	
+	
 	
 ///**********************METODOS PARA EMPRESA**************************************************
 	
-	public void agregarEmpresa(Empresa empresa) {
-		listEmpresa.add(empresa);
-		
-	}
+	
 	
 	public void modificarEmpresa(Empresa empr) {
 		
@@ -75,6 +79,35 @@ public class BolsaLaboral {
 		}
 	}
 	
+	
+	public int cantSolicitudesEmpresa(String id) {
+		int contador=0;
+		
+		for (Empresa emp : listEmpresa) {
+			if (emp.getId().equalsIgnoreCase(id)) {
+				contador++;
+				
+			}
+			
+		}
+		return contador;
+	}
+	
+	///eliminar una empresa
+	public void eliminar_empresa(String id) {
+		Empresa empresa_borrar = null;
+		for (int i = 0; i < listEmpresa.size(); i++) {
+			
+			if (listEmpresa.get(i).getId().equalsIgnoreCase(id)) {
+				empresa_borrar= listEmpresa.get(i);
+				
+			}
+		}
+		
+		listEmpresa.remove(empresa_borrar);
+		
+	}
+	
 ///*****************************METODOS PARA PERSONAL*********************************************
 	
 	
@@ -85,43 +118,69 @@ public class BolsaLaboral {
 		
 	}
 	
-	public int cant_personal_universitario() {
-		
-		int contador=0;
+	public Personal buscarPersona(String id) {
+		Personal persona = null;
 		for (int i = 0; i < listPersonal.size(); i++) {
-			if (listPersonal.get(i) instanceof Universitario) {
-				contador++;
+			if (listPersonal.get(i).getId().equalsIgnoreCase(id)) {
+				persona=listPersonal.get(i);
+				
 			}
-			
 		}
-		return contador;
 		
+		return persona;
 	}
 	
-public int cant_personal_obrero() {
-		
-		int contador=0;
-		for (int i = 0; i < listPersonal.size(); i++) {
-			if (listPersonal.get(i) instanceof Obrero) {
-				contador++;
+	public void modificarPersonal(Personal persona) {
+		for (Personal p : listPersonal) {
+			if (p.getId().equalsIgnoreCase(persona.getId())) {
+				p.setSoltero(persona.isSoltero());
+				p.setCiudad(persona.getCiudad());
+				p.setTelefono(persona.getTelefono());
+				p.setCorreo(persona.getCorreo());
+				p.setIdiomas(persona.getIdiomas());
+				p.setVehiciculo(persona.isVehiciculo());
+				p.setCiudad(persona.getCiudad());
+				p.setDisp_viajar(persona.isDisp_viajar());
+				
 			}
-			
 		}
-		return contador;
+	}
+	
+	
+	public void eliminar_personal(String id) {
+		Personal persona_borrar=null;
+	
+		for (int i = 0; i < listPersonal.size(); i++) {
+			
+			if (listPersonal.get(i).getId().equalsIgnoreCase(id)) {
+				persona_borrar= listPersonal.get(i);
+				
+			}
+		}
+		
+		listPersonal.remove(persona_borrar);
 		
 	}
 
-public int cant_personal_tecnico() {
 	
-	int contador=0;
-	for (int i = 0; i < listPersonal.size(); i++) {
-		if (listPersonal.get(i) instanceof Tecnico) {
+	
+//AGREGAR CONTEO DE PERSONAL POR TIPO
+	
+	
+	
+	
+	
+///cantidad de personas contratadas
+public int cant_contratados() {
+	
+	int contador = 0;
+	
+	for (Personal per : listPersonal) {
+		if (per.isContratado()) {
 			contador++;
 		}
-		
 	}
 	return contador;
-	
 }
 
 ///*********************METODOS PARA SOLICITUD**********************************
@@ -171,5 +230,33 @@ if (sol instanceof SolicitudTecnico) {
 	}
 return aspirantes;
 	}
+	
+	
+	///validacion
+	
+	
+	public boolean validacion(Personal solicitante, Solicitud sol) {
+		
+		boolean validado = false;
+		
+		if (solicitante.contratado == false) {
+			if (solicitante.isVehiciculo() == sol.isVehiculo()) {
+				if (solicitante.isDisp_viajar() == sol.isDisp_viajar()) {
+						if (solicitante.getAniosExperiencia() >= sol.getMin_anios_exp()) {
+							if (solicitante.getEdad()>= sol.getEdad_minima()) {
+								//agregar idiomas
+									validado=true;
+							}
+
+						}
+
+					
+				}
+			}
+		}
+
+		return validado;
+	}
+	
 	
 }

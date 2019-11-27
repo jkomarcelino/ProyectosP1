@@ -13,6 +13,7 @@ protected String sexo;//
 protected ArrayList<String>idiomas=new ArrayList<String>();
 protected String ciudad;
 protected boolean soltero;
+protected int edad_minima;
 
 protected boolean disp_viajar;
 
@@ -39,9 +40,11 @@ public Solicitud(Empresa empresa, String codigo, String tipo_de_contrato, int mi
 
 
 
+
 public Empresa getEmpresa() {
 	return empresa;
 }
+
 
 
 
@@ -51,9 +54,11 @@ public void setEmpresa(Empresa empresa) {
 
 
 
+
 public String getCodigo() {
 	return codigo;
 }
+
 
 
 
@@ -63,9 +68,11 @@ public void setCodigo(String codigo) {
 
 
 
+
 public String getTipo_de_contrato() {
 	return tipo_de_contrato;
 }
+
 
 
 
@@ -75,9 +82,11 @@ public void setTipo_de_contrato(String tipo_de_contrato) {
 
 
 
+
 public int getMin_anios_exp() {
 	return min_anios_exp;
 }
+
 
 
 
@@ -87,9 +96,11 @@ public void setMin_anios_exp(int min_anios_exp) {
 
 
 
+
 public boolean isVehiculo() {
 	return vehiculo;
 }
+
 
 
 
@@ -99,9 +110,11 @@ public void setVehiculo(boolean vehiculo) {
 
 
 
+
 public String getSexo() {
 	return sexo;
 }
+
 
 
 
@@ -111,9 +124,11 @@ public void setSexo(String sexo) {
 
 
 
+
 public ArrayList<String> getIdiomas() {
 	return idiomas;
 }
+
 
 
 
@@ -124,11 +139,52 @@ public void setIdiomas(ArrayList<String> idiomas) {
 
 
 
+public String getCiudad() {
+	return ciudad;
+}
+
+
+
+
+public void setCiudad(String ciudad) {
+	this.ciudad = ciudad;
+}
+
+
+
+
+public boolean isSoltero() {
+	return soltero;
+}
+
+
+
+
+public void setSoltero(boolean soltero) {
+	this.soltero = soltero;
+}
+
+
+
+
+public int getEdad_minima() {
+	return edad_minima;
+}
+
+
+
+
+public void setEdad_minima(int edad_minima) {
+	this.edad_minima = edad_minima;
+}
+
+
 
 
 public boolean isDisp_viajar() {
 	return disp_viajar;
 }
+
 
 
 
@@ -138,15 +194,7 @@ public void setDisp_viajar(boolean disp_viajar) {
 
 
 
-public static int getCODIGO_SIGUIENTE() {
-	return CODIGO_SIGUIENTE;
-}
 
-
-
-public static void setCODIGO_SIGUIENTE(int cODIGO_SIGUIENTE) {
-	CODIGO_SIGUIENTE = cODIGO_SIGUIENTE;
-}
 
 
 
