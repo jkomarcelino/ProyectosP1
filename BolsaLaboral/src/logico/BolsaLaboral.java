@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 
 
+
+
 public class BolsaLaboral {
-	//private ArrayList<SolicCentro> listSolisC;
+	
 	private ArrayList<Solicitud> listSolicitudes;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
@@ -225,18 +227,34 @@ public int cant_contratados() {
 	public void agregarSolicitud(Solicitud solicitud) {
 		listSolicitudes.add(solicitud);
 	}
+	
+	public boolean buscarSolicitud(Solicitud sol) {
+		boolean encontrado=false;
+		
+		if(listSolicitudes.contains(sol)) {
+			encontrado=true;
+		}
+		return encontrado;
+	}
 ///***********************METODOS PARA MATCHEO**************************************************
 	//para obrero
 	
 	
 	public ArrayList<Personal> matching(Solicitud sol){
-	ArrayList<Personal>aspirantes=new ArrayList<Personal>();
+	ArrayList<Personal>aspirante=new ArrayList<Personal>();
 	
 	if (sol instanceof SolicitudUniversitario) {
 		for (int i = 0; i < listPersonal.size(); i++) {
 			if (listPersonal.get(i) instanceof Universitario) {
 				///validar
-				aspirantes.add(listPersonal.get(i));
+				if (validacion(listPersonal.get(i),sol)) {
+					if (validar_universitario(listPersonal.get(i),sol)) {
+						aspirante.add(listPersonal.get(i));
+					
+				}
+				}
+				
+				
 			}
 		}
 		
@@ -247,7 +265,13 @@ if (sol instanceof SolicitudObrero) {
 	for (int i = 0; i < listPersonal.size(); i++) {
 		if (listPersonal.get(i) instanceof Obrero) {
 			///validar
-			aspirantes.add(listPersonal.get(i));
+			if (validacion(listPersonal.get(i),sol)) {
+				if (validar_obrero(listPersonal.get(i),sol)) {
+					aspirante.add(listPersonal.get(i));
+				
+			}
+			}
+			
 		}
 	}
 		
@@ -259,12 +283,18 @@ if (sol instanceof SolicitudTecnico) {
 	for (int i = 0; i < listPersonal.size(); i++) {
 		if (listPersonal.get(i) instanceof Tecnico) {
 			///validar
-			aspirantes.add(listPersonal.get(i));
+			if (validacion(listPersonal.get(i),sol)) {
+			if (validar_obrero(listPersonal.get(i),sol)) {
+				aspirante.add(listPersonal.get(i));
+			
+		}
+		}
+			
 		}
 	}
 		
 	}
-return aspirantes;
+return aspirante;
 	}
 	
 	
@@ -294,5 +324,39 @@ return aspirantes;
 		return validado;
 	}
 	
+	//Validaciones
+	
+	private boolean validar_obrero(Personal persona, Solicitud soli) {
+		boolean valido=false;
+		for (String skills : ((SolicitudObrero)soli).getSkills()) {
+			if (((Obrero)persona).getSkills().contains(skills)) {
+				valido=true;
+				
+			}
+			
+		}
+		
+		return valido;
+	}
+	
+	//valida el obrero
+	private boolean validar_tecnico(Personal persona, Solicitud sol) {
+		boolean valido = false;
+		if (((Tecnico) persona).getArea().equalsIgnoreCase(((SolicitudTecnico) sol).getArea())) {
+			valido = true;
+		}
+		return valido;
+	}
+	
+	//valida el universitario
+	
+	private boolean validar_universitario(Personal persona, Solicitud sol) {
+		boolean validar = false;
+		if (((Universitario) persona).getProfesion().equalsIgnoreCase(((SolicitudUniversitario) sol).getProfesion())) {
+			validar = true;
+			
+		}
+		return validar;
+	}
 	
 }

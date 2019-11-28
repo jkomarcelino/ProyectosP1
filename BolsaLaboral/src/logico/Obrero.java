@@ -15,6 +15,14 @@ public class Obrero extends Personal {
 		this.skills = skills;
 	}
 
+	public ArrayList<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(ArrayList<String> skills) {
+		this.skills = skills;
+	}
+
 	
 
 	
