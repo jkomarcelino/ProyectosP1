@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 
 
+
+
 public class BolsaLaboral {
 	
 	private ArrayList<Solicitud> listSolicitudes;
@@ -236,6 +238,17 @@ public int cant_contratados() {
 		}
 	}
 	return contador;
+}
+
+//Para contratar
+
+public void contratarPersonal(Solicitud sol, ArrayList<Personal> personal) {
+	Empresa empresa = sol.getEmpresa();
+	for (Personal per : personal) {
+		
+		empresa.agregarContratado(per);
+	}
+
 }
 
 ///*********************METODOS PARA SOLICITUD**********************************
