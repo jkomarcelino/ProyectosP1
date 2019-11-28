@@ -110,6 +110,21 @@ public class BolsaLaboral {
 		
 	}
 	
+	public Empresa buscarempresa(String id) {//encuentra una empresa y la retorna dando un id de empresa
+		Empresa emp_aux=null;
+		int i=0;
+		boolean encontrado=false;
+		while (!encontrado || i<listEmpresa.size()) {
+			if (listEmpresa.get(i).getId().equalsIgnoreCase(id)) {
+				emp_aux=listEmpresa.get(i);
+				encontrado=true;
+				
+			}
+			
+		}
+		
+		return emp_aux;
+	}
 ///*****************************METODOS PARA PERSONAL*********************************************
 	
 	
