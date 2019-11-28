@@ -31,6 +31,9 @@ public class SolicitudEmpresa extends JDialog {
 	private JTextField textField_5;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JRadioButton rdbtnUniv;
+	private JRadioButton rdbtnTcnico;
+	private JRadioButton rdbtnObrero;
 
 	/**
 	 * Launch the application.
@@ -132,15 +135,38 @@ public class SolicitudEmpresa extends JDialog {
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Universitario");
-		rdbtnNewRadioButton.setBounds(76, 24, 107, 25);
-		panel_1.add(rdbtnNewRadioButton);
+		 rdbtnUniv = new JRadioButton("Universitario");
+		rdbtnUniv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnUniv.setSelected(true);
+		 		rdbtnObrero.setSelected(false);
+		 		rdbtnTcnico.setSelected(false);
+		 
+				
+			}
+		});
+		rdbtnUniv.setBounds(76, 24, 107, 25);
+		panel_1.add(rdbtnUniv);
 		
-		JRadioButton rdbtnTcnico = new JRadioButton("T\u00E9cnico");
+		 rdbtnTcnico = new JRadioButton("T\u00E9cnico");
+		 rdbtnTcnico.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		rdbtnObrero.setSelected(false);
+		 		rdbtnTcnico.setSelected(true);
+		 		rdbtnUniv.setSelected(false);
+		 	}
+		 });
 		rdbtnTcnico.setBounds(259, 24, 73, 25);
 		panel_1.add(rdbtnTcnico);
 		
-		JRadioButton rdbtnObrero = new JRadioButton("Obrero");
+		 rdbtnObrero = new JRadioButton("Obrero");
+		 rdbtnObrero.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		rdbtnObrero.setSelected(true);
+		 		rdbtnTcnico.setSelected(false);
+		 		rdbtnUniv.setSelected(false);
+		 	}
+		 });
 		rdbtnObrero.setBounds(408, 24, 73, 25);
 		panel_1.add(rdbtnObrero);
 		
