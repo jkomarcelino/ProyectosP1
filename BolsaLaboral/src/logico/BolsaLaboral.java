@@ -137,7 +137,7 @@ public class BolsaLaboral {
 		
 	}
 	
-	public Personal buscarPersona(String id) {
+	public Personal buscarPersonal(String id) {
 		Personal persona = null;
 		for (int i = 0; i < listPersonal.size(); i++) {
 			if (listPersonal.get(i).getId().equalsIgnoreCase(id)) {
