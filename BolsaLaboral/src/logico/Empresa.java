@@ -13,6 +13,15 @@ public class Empresa {
 	
 	
 	
+	public Empresa(String nombre, String id, String telefono, String correo, String ubicacion) {
+		super();
+		this.nombre = nombre;
+		this.id = id;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.ubicacion = ubicacion;
+		
+	}
 	///***************************SETTER Y GETTERS**************************************************************
 	public String getNombre() {
 		return nombre;

@@ -51,7 +51,7 @@ public class BolsaLaboral {
 		this.listEmpresa = new ArrayList<Empresa>();
 	}
 
-	public BolsaLaboral getInstance(){//asegurar una instancia de la clase controladora
+	public static BolsaLaboral getInstance(){//asegurar una instancia de la clase controladora
 		if (bolsa==null) {
 			bolsa=new BolsaLaboral();
 			
