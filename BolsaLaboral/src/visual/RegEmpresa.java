@@ -89,7 +89,7 @@ public class RegEmpresa extends JDialog {
 			
 			txtId = new JTextField();
 			txtId.setEditable(false);
-			txtId.setText("CE-"+(BolsaLaboral.getInstance().getListEmpresa().size()));
+			txtId.setText("CE-"+(BolsaLaboral.getInstance().getListEmpresa().size()+1));
 			txtId.setColumns(10);
 			txtId.setBounds(142, 20, 137, 20);
 			panel.add(txtId);
@@ -180,7 +180,6 @@ public class RegEmpresa extends JDialog {
 							String telefono = txtTlf.getText();
 							String correo = txtEmail.getText();
 							String ubicacion = txtUbicacion.getText();
-							
 							Empresa aux = new Empresa(nombre, txtId.getText(), telefono, correo, ubicacion);
 							BolsaLaboral.getInstance().agregarEmpresa(aux);
 						}
@@ -188,7 +187,7 @@ public class RegEmpresa extends JDialog {
 							txtEmail.setText("");
 							txtTlf.setText(null);
 							txtUbicacion.setText("");
-							txtId.setText("CE-"+BolsaLaboral.getInstance().getListEmpresa().size()+1);
+							txtId.setText("CE-"+(BolsaLaboral.getInstance().getListEmpresa().size()+1));
 							
 					}
 				});
