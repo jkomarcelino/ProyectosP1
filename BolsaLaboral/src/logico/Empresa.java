@@ -12,7 +12,7 @@ public class Empresa {
 	private ArrayList<Personal>misContratados;//almacenar aquellos contratos de cada empresa
 	
 	
-	
+
 	public Empresa(String nombre, String id, String telefono, String correo, String ubicacion) {
 		super();
 		this.nombre = nombre;
@@ -20,8 +20,10 @@ public class Empresa {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.ubicacion = ubicacion;
-		
+		this.misContratados = new ArrayList<Personal>();
 	}
+	
+
 	///***************************SETTER Y GETTERS**************************************************************
 	public String getNombre() {
 		return nombre;

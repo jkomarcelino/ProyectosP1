@@ -2,10 +2,6 @@ package logico;
 
 import java.util.ArrayList;
 
-
-
-
-
 public class BolsaLaboral {
 	
 	private ArrayList<Solicitud> listSolicitudes;
@@ -67,7 +63,7 @@ public class BolsaLaboral {
 	
 	
 	
-	public void modificarEmpresa(Empresa empr) {
+	public void modificarEmpresa(Empresa empr) {//recibe un objeto empresa y lo busca en en lso id de lalistempresa
 		
 		for (Empresa laempresa : listEmpresa) {
 			
@@ -76,13 +72,15 @@ public class BolsaLaboral {
 				laempresa.setCorreo(empr.getCorreo());
 				laempresa.setTelefono(empr.getTelefono());
 				laempresa.setUbicacion(empr.getUbicacion());
+				
+				//aqui se hizo el cambio
 			}
 			
 		}
 	}
 	
 	
-	public int cantSolicitudesEmpresa(String id) {
+	public int cantSolicitudesEmpresa(String id) {//buscar la cant de solicitudes realizadas por una empresa
 		int contador=0;
 		
 		for (Empresa emp : listEmpresa) {
@@ -135,7 +133,7 @@ public class BolsaLaboral {
 		
 	}
 	
-	public Personal buscarPersona(String id) {
+	public Personal buscarPersonal(String id) {
 		Personal persona = null;
 		for (int i = 0; i < listPersonal.size(); i++) {
 			if (listPersonal.get(i).getId().equalsIgnoreCase(id)) {
@@ -234,6 +232,17 @@ public int cant_contratados() {
 		}
 	}
 	return contador;
+}
+
+//Para contratar
+
+public void contratarPersonal(Solicitud sol, ArrayList<Personal> personal) {
+	Empresa empresa = sol.getEmpresa();
+	for (Personal per : personal) {
+		
+		empresa.agregarContratado(per);
+	}
+
 }
 
 ///*********************METODOS PARA SOLICITUD**********************************
