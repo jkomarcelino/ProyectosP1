@@ -2,13 +2,13 @@ package logico;
 
 public class ParaProbar {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		
 		BolsaLaboral bolsa=new BolsaLaboral();
 		
-		Empresa emp=new Empresa("sirena", "98", "94885", "correo@", "moca");
+		Empresa emp=new Empresa("sirena", "94885", "correo@", "moca");
 		
 		bolsa.agregarEmpresa(emp);
 		
@@ -31,6 +31,6 @@ public class ParaProbar {
 		
 		System.out.println(bolsa.cant_personal_obrero());
 
-	}
+	}*/
 
 }

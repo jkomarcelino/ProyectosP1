@@ -188,12 +188,13 @@ public class Principal extends JFrame implements Runnable {
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
 		mntmRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegPersona regper = new RegPersona();
+				RegPersona regper = new RegPersona(null);
 				regper.setLocationRelativeTo(null);
 				regper.setVisible(true);
 			}
 		});
 		mnPersonal.add(mntmRegistrar);
+		
 		
 		JMenuItem mntmSolicPerson = new JMenuItem("Generar Solicitud");
 		mntmSolicPerson.addActionListener(new ActionListener() {
@@ -216,7 +217,7 @@ public class Principal extends JFrame implements Runnable {
 		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
 		mntmRegEmp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegEmpresa regemp = new RegEmpresa();
+				RegEmpresa regemp = new RegEmpresa(null);
 				regemp.setLocationRelativeTo(null);
 				regemp.setVisible(true);
 				
@@ -232,6 +233,9 @@ public class Principal extends JFrame implements Runnable {
 				solemp.setVisible(true);	
 }
 		});
+		
+		JMenuItem mntmModificarEmpresa = new JMenuItem("Modificar Empresa");
+		mnEmpresa.add(mntmModificarEmpresa);
 		mnEmpresa.add(mntmSoliEmp);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Lista");

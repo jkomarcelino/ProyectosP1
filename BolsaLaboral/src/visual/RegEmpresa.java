@@ -9,9 +9,13 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
@@ -27,6 +31,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class RegEmpresa extends JDialog {
 
@@ -37,6 +43,7 @@ public class RegEmpresa extends JDialog {
 	private JTextField txtEmail;
 	private JTextField txtTlf;
 	private boolean check2=false;
+	int loguito=0;
 
 	/**
 	 * Launch the application.
@@ -54,62 +61,79 @@ public class RegEmpresa extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RegEmpresa() {
+	
+	private Empresa miEmpresa;
+	public RegEmpresa(Empresa empresa) {
+		miEmpresa = empresa;
+		if(miEmpresa == null) {
+			setTitle("Registrar Empresa");
+			loguito=1;
+		}
+		else {
+			setTitle("Modificar Empresa");
+			txtNombre.setText(miEmpresa.getNombre());
+			txtId.setText(miEmpresa.getId());
+			txtUbicacion.setText(miEmpresa.getUbicacion());
+			txtEmail.setText(miEmpresa.getCorreo());
+			txtTlf.setText(miEmpresa.getTelefono());
+			loguito=2;
+		}
 		
 	//	MaskFormatter CedulaFormat = null;
 		MaskFormatter TelFormat = null;
 	//	MaskFormatter EmailFormat = null;
 		try {
 	//		CedulaFormat = new MaskFormatter("###-#######-#");
-			TelFormat  = new MaskFormatter("###-###-####");
+			TelFormat  = new MaskFormatter("(###)-###-####");
 		//	EmailFormat = new MaskFormatter("");
 		}catch (Exception e) {
 			
 		}
 
-		setBounds(100, 100, 501, 346);
-		getContentPane().setLayout(new BorderLayout());
+		setBounds(100, 100, 501, 376);
+		getContentPane().setLayout(null);
+		contentPanel.setBackground(SystemColor.activeCaption);
+		contentPanel.setBounds(0, 0, 485, 304);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n de la Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(SystemColor.inactiveCaptionBorder);
+			panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new EtchedBorder(EtchedBorder.RAISED, new Color(0, 120, 215), new Color(153, 180, 209))));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 	
 			JLabel lblNombre = new JLabel("Nombre Empresa:");
-			lblNombre.setBounds(10, 60, 128, 14);
+			lblNombre.setBounds(21, 104, 128, 14);
 			panel.add(lblNombre);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(142, 57, 137, 20);
+			txtNombre.setBounds(135, 101, 137, 20);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			
 			txtId = new JTextField();
-			txtId.setEditable(false);
-			txtId.setText("CE-"+(BolsaLaboral.getInstance().getListEmpresa().size()+1));
 			txtId.setColumns(10);
-			txtId.setBounds(142, 20, 137, 20);
+			txtId.setBounds(135, 64, 137, 20);
 			panel.add(txtId);
 			
-			JLabel lblCdigo = new JLabel("C\u00F3digo Empresa:");
-			lblCdigo.setBounds(10, 26, 111, 14);
+			JLabel lblCdigo = new JLabel("RNC Empresa:");
+			lblCdigo.setBounds(20, 67, 111, 14);
 			panel.add(lblCdigo);
 			
 			txtUbicacion = new JTextField();
 			txtUbicacion.setColumns(10);
-			txtUbicacion.setBounds(142, 94, 137, 20);
+			txtUbicacion.setBounds(135, 138, 137, 20);
 			panel.add(txtUbicacion);
 			
 			JLabel lblApellido = new JLabel("Ubicaci\u00F3n:");
-			lblApellido.setBounds(10, 98, 128, 14);
+			lblApellido.setBounds(21, 141, 128, 14);
 			panel.add(lblApellido);
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Contacto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel_1.setBounds(10, 141, 455, 98);
+			panel_1.setBounds(21, 169, 432, 98);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
 			
@@ -160,34 +184,66 @@ public class RegEmpresa extends JDialog {
 			
 			JLabel lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/online-store (2).png")));
-			lblNewLabel.setBounds(328, 9, 137, 121);
+			lblNewLabel.setBounds(316, 36, 137, 121);
 			panel.add(lblNewLabel);
+			
+			JLabel lblLogo = new JLabel("");
+			lblLogo.setHorizontalAlignment(SwingConstants.TRAILING);
+			lblLogo.setVerticalAlignment(SwingConstants.BOTTOM);
+			lblLogo.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/JOBIFYpeque.png")));
+			lblLogo.setBounds(10, 9, 146, 44);
+			panel.add(lblLogo);
+			
+
+			if (loguito==1) {
+				JLabel label = new JLabel("");
+				label.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/CrearEmpresa.png")));
+				label.setBounds(111, 0, 205, 44);
+				panel.add(label);
+				
+		
+			}else if (loguito==2) {
+				JLabel label = new JLabel("");
+				label.setIcon(new ImageIcon(RegEmpresa.class.getResource("/icon/ModEmpresa.png")));
+				label.setBounds(91, 0, 205, 44);
+				panel.add(label);
+			}
 			
 			
 			
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(SystemColor.activeCaption);
+			buttonPane.setBounds(0, 304, 485, 33);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			getContentPane().add(buttonPane);
 			{
 				JButton okButton = new JButton("Registrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
-						if(!txtEmail.getText().equalsIgnoreCase("")&&(!txtNombre.getText().equalsIgnoreCase(""))&&(txtUbicacion.getText().equalsIgnoreCase(""))) {
-							String nombre = txtNombre.getText();
-							String telefono = txtTlf.getText();
-							String correo = txtEmail.getText();
-							String ubicacion = txtUbicacion.getText();
-							Empresa aux = new Empresa(nombre, txtId.getText(), telefono, correo, ubicacion);
+						String nombre = txtNombre.getText();
+						String telefono = txtTlf.getText();
+						String correo = txtEmail.getText();
+						String ubicacion = txtUbicacion.getText();
+						String rnc= txtId.getText();
+						if(correo.isEmpty() ||nombre.isEmpty()||ubicacion.isEmpty()||telefono.isEmpty()||rnc.isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
+						}else if(miEmpresa==null) {
+							Empresa aux = new Empresa(nombre, rnc, telefono, correo, ubicacion);
 							BolsaLaboral.getInstance().agregarEmpresa(aux);
+							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
+						}else {
+							miEmpresa.setCorreo(correo);
+							miEmpresa.setUbicacion(ubicacion);
+							miEmpresa.setId(rnc);
+							miEmpresa.setNombre(nombre);
+							miEmpresa.setTelefono(telefono);
+							dispose();
 						}
-							txtNombre.setText("");
-							txtEmail.setText("");
-							txtTlf.setText(null);
-							txtUbicacion.setText("");
-							txtId.setText("CE-"+(BolsaLaboral.getInstance().getListEmpresa().size()+1));
+			
+
 							
 					}
 				});
@@ -206,6 +262,15 @@ public class RegEmpresa extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+	}
+	
+	private void clean() {
+		txtId.setText("");
+		txtNombre.setText("");
+		txtEmail.setText("");
+		txtTlf.setText(null);
+		txtUbicacion.setText("");
 	}
 }
 
