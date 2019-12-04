@@ -36,8 +36,10 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
 
+import logico.BolsaLaboral;
+
 //import de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel;
-import logica.BolsaLaboral;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.UIManager;
@@ -51,8 +53,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.border.BevelBorder;
 import java.awt.Toolkit;
 
-public class Principal extends JFrame {
+public class Principal2 extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static JPanel panelBarras;
 	private static CategoryDataset datasetBarra;
@@ -73,7 +79,7 @@ public class Principal extends JFrame {
 				try {
 	
 
-					Principal frame = new Principal();
+					Principal2 frame = new Principal2();
 
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -86,7 +92,7 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public Principal2() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/img/icon.png")));
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -94,10 +100,10 @@ public class Principal extends JFrame {
 				if (JOptionPane.showConfirmDialog(null, "¿Desea guardar los nuevos cambios en la bolsa laboral?",
 						"Atención Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-					ProgressBar progress = new ProgressBar(1);
+				/*	ProgressBar progress = new ProgressBar(1);
 					progress.setVisible(true);
-					progress.setLocationRelativeTo(null);
-					BolsaLaboral.getInstance().esribirBolsa();
+					progress.setLocationRelativeTo(null);*/
+					BolsaLaboral.getInstance().writeBolsa();
 					dispose();
 				} else {
 					dispose();
@@ -105,7 +111,7 @@ public class Principal extends JFrame {
 				}
 			}
 		});
-		BolsaLaboral.getInstance().leerBolsa();
+		BolsaLaboral.getInstance().readBolsa();
 		setBackground(new Color(248, 248, 255));
 		setResizable(false);
 		setTitle("Man Power Group");
@@ -164,48 +170,16 @@ public class Principal extends JFrame {
 		});
 		mnMacheo.add(mntmRealizarMacheo);
 
-		JMenu mnNewMenu = new JMenu("Exportar");
-		mnNewMenu.setIcon(new ImageIcon(Principal.class.getResource("/img/exportar.png")));
-		mnMacheo.add(mnNewMenu);
+	
 
-		JMenuItem mntmExportarEmpresa = new JMenuItem("Exportar Empresa");
-		mntmExportarEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
-		mntmExportarEmpresa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ImportarEmpresa imem = new ImportarEmpresa();
-				imem.setModal(true);
-				imem.setLocationRelativeTo(null);
-				imem.setVisible(true);
-			}
-		});
-		mnNewMenu.add(mntmExportarEmpresa);
-
-		JMenuItem mntmExportarSolicitud = new JMenuItem("Exportar Solicitante");
-		mntmExportarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/persona.png")));
-		mntmExportarSolicitud.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ImportarEmpleado im;
-				try {
-					im = new ImportarEmpleado();
-					im.setModal(true);
-					im.setLocationRelativeTo(null);
-					im.setVisible(true);
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}
-		});
-		mnNewMenu.add(mntmExportarSolicitud);
 		
 		JMenuItem mntmGuardarTodo = new JMenuItem("Guardar Todo");
 		mntmGuardarTodo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BolsaLaboral.getInstance().esribirBolsa();
-				ProgressBar progress = new ProgressBar(4);
+				BolsaLaboral.getInstance().writeBolsa();
+				/*ProgressBar progress = new ProgressBar(4);
 				progress.setVisible(true);
-				progress.setLocationRelativeTo(null);
+				progress.setLocationRelativeTo(null);*/
 				
 				
 			}
@@ -223,10 +197,10 @@ public class Principal extends JFrame {
 				if (JOptionPane.showConfirmDialog(null, "ï¿½Desea guardar los nuevos cambios en la bolsa laboral?",
 						"Atenciï¿½n Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-					ProgressBar progress = new ProgressBar(1);
+					/*ProgressBar progress = new ProgressBar(1);
 					progress.setVisible(true);
-					progress.setLocationRelativeTo(null);
-					BolsaLaboral.getInstance().esribirBolsa();
+					progress.setLocationRelativeTo(null);*/
+					BolsaLaboral.getInstance().writeBolsa();
 					dispose();
 				} else {
 					dispose();
@@ -243,7 +217,7 @@ public class Principal extends JFrame {
 		mntmRegistrarCandidato.setIcon(new ImageIcon(Principal.class.getResource("/img/agregarSolicitante.png")));
 		mntmRegistrarCandidato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InsertarSolicitate soli = new InsertarSolicitate("Insertar Solicitante", false, null, null);
+				RegSolicitud soli = new RegSolicitud("Insertar Solicitante", false, null, null);
 
 				soli.setModal(true);
 				soli.setLocationRelativeTo(null);
@@ -256,7 +230,7 @@ public class Principal extends JFrame {
 		mntmListarCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarCandidatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarSolicitante soli = new ListarSolicitante();
+				ListaSolicitud soli = new ListaSolicitud();
 				soli.setModal(true);
 				soli.setLocationRelativeTo(null);
 				soli.setVisible(true);
@@ -284,9 +258,9 @@ public class Principal extends JFrame {
 		mntmRegistrarEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
 		mntmRegistrarEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InsertarEmpresa empre;
+				RegEmpresa empre;
 				try {
-					empre = new InsertarEmpresa("Insertar Empresa", false, null, null);
+					empre = new RegEmpresa("Insertar Empresa", false, null, null);
 					empre.setModal(true);
 					empre.setLocationRelativeTo(null);
 					empre.setVisible(true);
@@ -303,7 +277,7 @@ public class Principal extends JFrame {
 		mntmListarEmpresas.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarEmpresas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ListarEmpresa lista = new ListarEmpresa();
+				ListaEmpresas lista = new ListaEmpresas();
 				lista.setModal(true);
 				lista.setLocationRelativeTo(null);
 				lista.setVisible(true);
@@ -330,7 +304,7 @@ public class Principal extends JFrame {
 		mntmRegistrarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
 		mntmRegistrarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InsertarSolicitud solicitud = new InsertarSolicitud(null);
+				SolicitudEmpresa solicitud = new SolicitudEmpresa(null);
 				solicitud.setModal(true);
 				solicitud.setVisible(true);
 			}
