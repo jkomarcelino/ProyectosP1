@@ -11,12 +11,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import logica.Obrero;
-import logica.Solicitante;
-import logica.Solicitud;
-import logica.Tecnico;
-import logica.Universitario;
-
 
 
 public class BolsaLaboral implements  Serializable{

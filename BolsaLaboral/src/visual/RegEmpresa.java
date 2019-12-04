@@ -287,7 +287,7 @@ public class RegEmpresa extends JDialog {
 
 					public void actionPerformed(ActionEvent arg0) {
 						if (!(modi)) {
-							String rnc = ftxtRnc.getText();
+							String id = ftxtRnc.getText();
 							String nombre = txtNombre.getText();
 							String tele = txtTel.getText();
 							String email = txtEmail.getText();
@@ -300,7 +300,7 @@ public class RegEmpresa extends JDialog {
 							String calle = txtCalle.getText();
 							String referencia = txtReferencia.getText();
 							int local = (int) spnlocalidad.getValue();
-							Empresa miEmpresa = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
+						//	Empresa miEmpresa = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
 							Empresa mEmpresa = new Empresa(nombre, id, telefono, correo, ubicacion);
 
 							if (txtNombre.getText().isEmpty()) {
