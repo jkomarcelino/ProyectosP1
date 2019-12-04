@@ -43,8 +43,11 @@ import logico.BolsaLaboral;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.UIManager;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -54,7 +57,8 @@ import javax.swing.border.BevelBorder;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
 
-public class Principal2 extends JFrame {
+
+public class Principal2 extends JFrame implements Runnable{
 
 	/**
 	 * 
@@ -67,8 +71,11 @@ public class Principal2 extends JFrame {
 	private static JFreeChart chartBarra;
 	private static JFreeChart chartPastel;
 	private static JPanel panelPastel;
-	private JLabel lblYear;
-	private JLabel lblhora;
+
+	private JLabel lblHora ;
+    int hora, minutos, segundos;
+    Calendar calendario;
+	Thread h1;
 	//private Dimension dim;
 
 	/**
@@ -115,7 +122,7 @@ public class Principal2 extends JFrame {
 		BolsaLaboral.getInstance().readBolsa();
 		setBackground(new Color(248, 248, 255));
 		setResizable(false);
-		setTitle("Man Power Group");
+		setTitle("JOBIFY ~ Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1304, 727);
 		//dim = super.getToolkit().getScreenSize();
@@ -123,6 +130,7 @@ public class Principal2 extends JFrame {
 		setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(SystemColor.inactiveCaption);
 		setJMenuBar(menuBar);
 
 		JMenu mnCandidatos = new JMenu("Personal");
@@ -382,20 +390,11 @@ public class Principal2 extends JFrame {
 
 		panelPastel = new JPanel();
 		panelPastel.setBackground(SystemColor.inactiveCaption);
-		panelPastel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panelPastel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panelPastel.setBounds(658, 332, 610, 294);
 		panel.add(panelPastel);
 		panelPastel.setLayout(null);
 
-		lblhora = new JLabel("");
-		lblhora.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblhora.setBounds(10, 595, 140, 39);
-		panel.add(lblhora);
-		
-		lblYear = new JLabel("");
-		lblYear.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblYear.setBounds(105, 595, 116, 39);
-		panel.add(lblYear);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Principal2.class.getResource("/img/JOBIFY.png")));
@@ -413,12 +412,25 @@ public class Principal2 extends JFrame {
 		panel.add(separator_1);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_1.setBounds(10, 104, 1270, 538);
 		panel.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
+		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_2.setBounds(1191, 66, 77, 24);
+		panel.add(panel_2);
+		
+		lblHora = new JLabel("HH::MM::RR");
+		lblHora.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panel_2.add(lblHora);
 		actualizarChart();
 		actualizarPastel();
-		reloj();
+		h1 = new Thread(this);
+	    h1.start();
+	
 		// hiloBarras();
 
 	}
@@ -446,6 +458,7 @@ public class Principal2 extends JFrame {
 		chartBarra = creadorGraficoB(datasetBarra, "Solicitantes Desempleados");
 		panelBarras.setLayout(new BorderLayout(0, 0));
 		ChartPanel chartPanel = new ChartPanel(chartBarra);
+		chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
 		panelBarras.add(chartPanel, BorderLayout.CENTER);
 		chartPanel.setLayout(null);
@@ -516,83 +529,25 @@ public class Principal2 extends JFrame {
 		};
 		actualizar.start();
 	}
-
-	public void reloj() {
-
-		Thread reloj = new Thread() {
-			public void run() {
-				try {
-					for (;;) {
-						Calendar calen = new GregorianCalendar();
-						int dia = calen.get(Calendar.DAY_OF_WEEK_IN_MONTH);
-						int diaSemana = calen.get(Calendar.DAY_OF_WEEK);
-						int mes = calen.get(Calendar.MONTH + 1);
-						int minutos = calen.get(Calendar.MINUTE);
-						int hora = calen.get(Calendar.HOUR);
-						int sec = calen.get(Calendar.SECOND);
-						int meri = calen.get(Calendar.AM_PM);
-						LocalDate date = LocalDate.now();
-						int anno = date.getYear();
-						int mess= date.getMonthValue();
-						int dias = date.getDayOfMonth();
-						String realmes = "";
-						String merid = "";
-						if (meri == 1) {
-							merid = " PM";
-						} else {
-							merid = " AM";
-						}
-						if (mess == 1) {
-							realmes = "Enero";
-						}
-						if (mess == 1) {
-							realmes = "Enero";
-						}
-						if (mess == 2) {
-							realmes = "Febreo";
-						}
-						if (mess == 3) {
-							realmes = "Marzo";
-						}
-						if (mess == 4) {
-							realmes = "Abril";
-						}
-						if (mess == 5) {
-							realmes = "Mayo";
-						}
-						if (mess == 6) {
-							realmes = "Junio";
-						}
-						if (mess == 7) {
-							realmes = "Julio";
-						}
-						if (mess == 8) {
-							realmes = "Agosto";
-						}
-						if (mess == 9) {
-							realmes = "Septiembre";
-						}
-						if (mess == 10) {
-							realmes = "Octubre";
-						}
-						if (mess == 11) {
-							realmes = "Novienbre";
-						}
-						if (mess == 12) {
-							realmes = "Diciembre";
-						}
-						lblhora.setText(hora + ":" + minutos + ":" + sec + merid);
-						lblYear.setText(dias+", "+realmes+", "+anno);
-						
-
-						sleep(1000);
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		reloj.start();
-
+	
+	@Override
+	public void run() {
+		Thread ct = Thread.currentThread();
+        while (ct == h1) {
+            calcula();
+            lblHora.setText(hora + ":" + minutos + ":" + segundos);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
+		
 	}
+	
+	public void calcula() {
+        Calendar calendario = new GregorianCalendar();
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+    }
 }
