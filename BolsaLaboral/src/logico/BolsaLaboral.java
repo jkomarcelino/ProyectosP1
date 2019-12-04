@@ -14,16 +14,7 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import logica.BolsaLaboral;
-import logica.Empresa;
-import logica.Obrero;
-import logica.Solicitante;
-import logica.Solicitud;
-import logica.SolicitudObrero;
-import logica.SolicitudTecnico;
-import logica.SolicitudUniversitario;
-import logica.Tecnico;
-import logica.Universitario;
+
 
 
 
@@ -784,7 +775,7 @@ return aspirante;
 	}
 
 	// Validacion Tecnico con solicitud
-	private boolean ValidarTecnico(Solicitante solicitante, Solicitud soli) {
+	private boolean ValidarTecnico(Personal solicitante, Solicitud soli) {
 		boolean validar = false;
 		if (((Tecnico) solicitante).getArea().equalsIgnoreCase(((SolicitudTecnico) soli).getArea())) {
 			validar = true;
@@ -793,7 +784,7 @@ return aspirante;
 	}
 
 	// Validacion Universitario con solicitud
-	private boolean validarUniversitario(Solicitante solicitante, Solicitud soli) {
+	private boolean validarUniversitario(Personal solicitante, Solicitud soli) {
 		boolean validar = false;
 		if (((Universitario) solicitante).getCarrera().equalsIgnoreCase(((SolicitudUniversitario) soli).getCarrera())) {
 			validar = true;
@@ -806,7 +797,7 @@ return aspirante;
 	}
 
 	// Validar Idiomas
-	public boolean validarIdiomas(Solicitante persona, Solicitud soli) {
+	public boolean validarIdiomas(Personal persona, Solicitud soli) {
 		boolean aux = false;
 		if (soli.idiomas.size() == 0) {
 			aux = true;
@@ -824,11 +815,11 @@ return aspirante;
 		return aux;
 	}
 
-	public ArrayList<Solicitante> matcheo(Solicitud soli) {
+	public ArrayList<Personal> matcheo(Solicitud soli) {
 
-		ArrayList<Solicitante> candito = new ArrayList<>();
+		ArrayList<Personal> candito = new ArrayList<>();
 		if (soli instanceof SolicitudObrero) {
-			for (Solicitante solicitante : misSolicitantes) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Obrero) {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarObrero(solicitante, soli)) {
@@ -847,7 +838,7 @@ return aspirante;
 		}
 
 		if (soli instanceof SolicitudTecnico) {
-			for (Solicitante solicitante : misSolicitantes) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Tecnico) {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarTecnico(solicitante, soli)) {
@@ -864,7 +855,7 @@ return aspirante;
 			}
 		}
 		if (soli instanceof SolicitudUniversitario) {
-			for (Solicitante solicitante : misSolicitantes) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Universitario) {
 					if (validarGeneral(solicitante, soli)) {
 						if (validarUniversitario(solicitante, soli)) {
@@ -884,8 +875,7 @@ return aspirante;
 		return candito;
 	}
 
-	// Escritura & Lectura Binarios
-	public void esribirBolsa() {
+	public void writeBolsa() {
 		FileOutputStream bolsaFile = null;
 		ObjectOutputStream bolsaOut = null;
 
@@ -910,7 +900,7 @@ return aspirante;
 		}
 	}
 
-	public void leerBolsa() {
+	public void readBolsa() {
 		FileInputStream bolsaFile = null;
 		ObjectInputStream bolsaIn = null;
 		try {
@@ -1003,7 +993,7 @@ return aspirante;
 		int CantconO = 0;
 		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
-				for (Solicitante soli : empresa.getMisContratados()) {
+				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Obrero) {
 						CantconO++;
 					}
@@ -1019,7 +1009,7 @@ return aspirante;
 		int CantconU = 0;
 		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
-				for (Solicitante soli : empresa.getMisContratados()) {
+				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Universitario) {
 						CantconU++;
 					}
@@ -1034,7 +1024,7 @@ return aspirante;
 		int CantconT = 0;
 		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
-				for (Solicitante soli : empresa.getMisContratados()) {
+				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Tecnico) {
 						CantconT++;
 					}
@@ -1057,9 +1047,9 @@ return aspirante;
 	}
 
 	// Retornar Solicitante dando una cedula
-	public Solicitante retornarSolicitante(String cedula) {
-		Solicitante solicitante = null;
-		for (Solicitante soli : misSolicitantes) {
+	public Personal retornarSolicitante(String cedula) {
+		Personal solicitante = null;
+		for (Personal soli : misSolicitantes) {
 			if (soli.getCedula().equalsIgnoreCase(cedula))
 				solicitante = soli;
 		}
@@ -1120,7 +1110,7 @@ return aspirante;
 	// Retornar cant. Universitarios desempleado
 	public int desempleadoU() {
 		int cant = 0;
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Universitario) {
 					cant++;
@@ -1133,7 +1123,7 @@ return aspirante;
 	// Retornar cant. Tecnicos desempleado
 	public int desempleadoT() {
 		int cant = 0;
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Tecnico) {
 					cant++;
@@ -1146,7 +1136,7 @@ return aspirante;
 	// Retornar cant. Obreros desempleado
 	public int desempleadoO() {
 		int cant = 0;
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Obrero) {
 					cant++;
@@ -1161,7 +1151,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Obrero) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1179,7 +1169,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Universitario) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1197,7 +1187,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Tecnico) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1213,7 +1203,7 @@ return aspirante;
 	// Retorna total de contratados
 	public int totalContratado() {
 		int cant = 0;
-		for (Solicitante soli : misSolicitantes) {
+		for (Personal soli : misSolicitantes) {
 			if (soli.isContratado()) {
 				cant++;
 			}
@@ -1222,8 +1212,8 @@ return aspirante;
 	}
 
 	// Modificar solicitante
-	public void updateSolicitante(Solicitante soli) {
-		for (Solicitante solis : misSolicitantes) {
+	public void updateSolicitante(Personal soli) {
+		for (Personal solis : misSolicitantes) {
 			if (solis.getCedula().equalsIgnoreCase(soli.getCedula())) {
 				solis.setEstadoCivil(soli.getEstadoCivil());
 				solis.setCategoriaLicencia(soli.getCategoriaLicencia());
@@ -1253,15 +1243,15 @@ return aspirante;
 	}
 
 	// Elimianr solicitante por codigo
-	public void eliminarSolicitante(Solicitante persona) {
+	public void eliminarSolicitante(Personal persona) {
 		int index = indexSolicitante(persona.getCodigo());
 		misSolicitantes.remove(index);
 	}
 
 	// Contratar Candidatos
-	public void contratarCandidatos(Solicitud solicitud, ArrayList<Solicitante> empleados) {
+	public void contratarCandidatos(Solicitud solicitud, ArrayList<Personal> empleados) {
 		Empresa empresa = solicitud.getEmpresa();
-		for (Solicitante solicitante : empleados) {
+		for (Personal solicitante : empleados) {
 			solicitud.IncreasedCantReal();
 			empresa.insertContratado(solicitante);
 		}
@@ -1333,9 +1323,9 @@ return aspirante;
 	}
 	// buscar solicitante por cedula
 
-	public Solicitante BuscarSoliCedula(String Cedula) {
-		Solicitante solicitante = null;
-		for (Solicitante soli : misSolicitantes) {
+	public Personal BuscarSoliCedula(String Cedula) {
+		Personal solicitante = null;
+		for (Personal soli : misSolicitantes) {
 			if (soli.getCedula().equalsIgnoreCase(Cedula)) {
 				solicitante = soli;
 			}
@@ -1347,7 +1337,7 @@ return aspirante;
 	// retorna si existe un solicitante
 	public boolean SolicitanteExiste(String cedula) {
 		boolean existe = false;
-		for (Solicitante solicitante : misSolicitantes) {
+		for (Personal solicitante : misSolicitantes) {
 
 			if (solicitante.getCedula().equalsIgnoreCase(cedula)) {
 				existe = true;
@@ -1357,7 +1347,7 @@ return aspirante;
 	}
 
 	// retorna el tipo de solicitante
-	public String tipoSolicitante(Solicitante soli) {
+	public String tipoSolicitante(Personal soli) {
 		String solici = null;
 
 		if (soli instanceof Obrero) {
@@ -1379,7 +1369,7 @@ return aspirante;
 
 	// retorna si esta contratado o no
 
-	public String contradato(Solicitante soli) {
+	public String contradato(Personal soli) {
 		String estado = null;
 		if (soli.isContratado()) {
 			estado = "Contratado";
@@ -1391,9 +1381,9 @@ return aspirante;
 	}
 
 	// retorna cantidad de solicitudes del solicitane
-	public int cantidadSolicitante(Solicitante soli) {
+	public int cantidadSolicitante(Personal soli) {
 		int cant = 0;
-		for (Solicitante misoli : misSolicitantes) {
+		for (Personal misoli : misSolicitantes) {
 			if (soli.getCedula().equalsIgnoreCase(misoli.getCedula())) {
 				cant++;
 			}
@@ -1405,7 +1395,7 @@ return aspirante;
 
 	public void writeSolicitanteTXT(String cedula) throws IOException {
 		writer_1 = new FileWriter(new File("Archivo.txt"));
-		Solicitante soli = BuscarSoliCedula(cedula);
+		Personal soli = BuscarSoliCedula(cedula);
 		writer_1.write("***********************************************************************************" + "\n");
 		writer_1.write("*                               Bolsa Laboral                                     *" + "\n");
 		writer_1.write("*                                 Empleado                                        *" + "\n");
@@ -1420,10 +1410,10 @@ return aspirante;
 
 	}
 	//Remover solicitudes de contratados
-	public void removerContratados(ArrayList<Solicitante>misContratados){
+	public void removerContratados(ArrayList<Personal>misContratados){
 		
-		for (Solicitante contratado : misContratados) {
-			for (Solicitante solicitante : misSolicitantes) {
+		for (Personal contratado : misContratados) {
+			for (Personal solicitante : misSolicitantes) {
 				if(solicitante.isContratado()==false){
 					if(contratado.getCedula().equalsIgnoreCase(solicitante.getCedula())){
 						misSolicitantes.remove(solicitante);

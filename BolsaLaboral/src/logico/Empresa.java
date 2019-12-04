@@ -20,7 +20,7 @@ public class Empresa implements Serializable{
 	private String calle;
 	private int numeroLocal;
 	private String referencia;
-	private ArrayList<Solicitante>misContratados;
+	private ArrayList<Personal>misContratados;
 
 
 
@@ -40,10 +40,10 @@ public class Empresa implements Serializable{
 		this.referencia = referencia;
 		this.misContratados = new ArrayList<>();
 	}
-	public ArrayList<Solicitante> getMisContratados() {
+	public ArrayList<Personal> getMisContratados() {
 		return misContratados;
 	}
-public void insertContratado(Solicitante trabajador){
+public void insertContratado(Personal trabajador){
 	LocalDate date = LocalDate.now();
 	trabajador.setFechaContratado(date);
 	trabajador.setContratado(true);
