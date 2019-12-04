@@ -460,18 +460,9 @@ return aspirante;
 		}
 	}
 	
-	///*****************Contratados**************************8
+	///*****************Contratados***********************************
 	  
-	  // Actualizar una solicitud cuando se modifica
-	    public void ActualizarSolicitud(Solicitud modi, Solicitud modificarSoli) {
-	      int index = 0;
-	      if (listSolicitudes.contains(modi)) {
-	        index = listSolicitudes.indexOf(modi);
-	      }
-	      listPersonal.set(index, modificarSoli);
-
-	    }
-
+	 
 	    // Retornar cant. Universitarios desempleado
 	    public int desempleadoU() {
 	      int cant = 0;
