@@ -266,13 +266,13 @@ public class Principal extends JFrame implements Runnable {
       
         // Fuente de Datos
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("C", 40);
-        data.setValue("Java", 45);
-        data.setValue("Python", 15);
+        data.setValue("Obrero", 40);
+        data.setValue("Universitario", 45);
+        data.setValue("Tecnico", 15);
  
         // Creando el Grafico
         JFreeChart chart = ChartFactory.createPieChart(
-         "hola", 
+         "Cantidad de solicitantes en espera", 
          data, 
          true, 
          true, 
@@ -333,19 +333,19 @@ public class Principal extends JFrame implements Runnable {
         
         // Fuente de Datos
         DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("C", 40);
-        data.setValue("Java", 45);
-        data.setValue("Python", 15);
+        data.setValue("Obrero", 40);
+        data.setValue("Universitario", 45);
+        data.setValue("Tecnico", 15);
  
         DefaultPieDataset defaultpiedataset = new DefaultPieDataset(); 
-        defaultpiedataset.setValue("Programacion", new Double(41.200000000000003D)); 
-        defaultpiedataset.setValue("Electronica", new Double(11D)); 
-        defaultpiedataset.setValue("Hacking", new Double(19.5D)); 
+        defaultpiedataset.setValue("Mujeres", new Double(41.200000000000003D)); 
+        defaultpiedataset.setValue("Hombres", new Double(11D)); 
+       /* defaultpiedataset.setValue("Hacking", new Double(19.5D)); 
         defaultpiedataset.setValue("SEO", new Double(30.5D)); 
-        defaultpiedataset.setValue("Redes", new Double(2.0D)); 
+        defaultpiedataset.setValue("Redes", new Double(2.0D)); */
  
         // Creando el Grafico
-        JFreeChart chart = ChartFactory.createPieChart3D("Tematicas Blog", defaultpiedataset, true, true, false); 
+        JFreeChart chart = ChartFactory.createPieChart3D("Porcentaje de contratacion por genero", defaultpiedataset, true, true, false); 
         PiePlot3D pieplot3d = (PiePlot3D)chart.getPlot(); 
         pieplot3d.setDepthFactor(0.5); 
         pieplot3d.setStartAngle(290D); 

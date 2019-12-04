@@ -207,7 +207,7 @@ public class RegPersona extends JDialog {
 			panel.add(lblLogo);
 			
 			txtNacionalidad = new JTextField();
-			txtNacionalidad.setBounds(81, 104, 132, 20);
+			txtNacionalidad.setBounds(91, 104, 122, 20);
 			panel.add(txtNacionalidad);
 			txtNacionalidad.setColumns(10);
 			
