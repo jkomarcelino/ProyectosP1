@@ -511,7 +511,7 @@ return aspirante;
 			}
 			return cant;
 		}
-
+ 
 		// Retorna % de Obreros Contratados
 		public float porcientoO() {
 			float cant = 0;
