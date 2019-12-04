@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class SolicitudTecnico extends Solicitud implements Serializable{
-	
+public class SolicitudTecnico extends Solicitud {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String area;
