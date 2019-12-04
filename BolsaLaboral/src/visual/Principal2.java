@@ -315,7 +315,7 @@ public class Principal2 extends JFrame {
 		mntmListarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarSolicitud soli = new ListarSolicitud();
+				ListaSolicitud soli = new ListaSolicitud();
 				soli.setModal(true);
 				soli.setVisible(true);
 			}
@@ -337,7 +337,7 @@ public class Principal2 extends JFrame {
 		mnReporte.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		mnReporte.setIcon(new ImageIcon(Principal.class.getResource("/img/reportar24.png")));
 		menuBar.add(mnReporte);
-
+/*
 		JMenuItem mntmReporteDeEmpresa = new JMenuItem("Reporte de Empresa");
 		mntmReporteDeEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
 		mntmReporteDeEmpresa.addActionListener(new ActionListener() {
@@ -349,9 +349,9 @@ public class Principal2 extends JFrame {
 
 			}
 		});
-		mnReporte.add(mntmReporteDeEmpresa);
+		mnReporte.add(mntmReporteDeEmpresa);*/
 
-		JMenuItem mntmReporteDeSolicitudes = new JMenuItem("Reporte de Solicitudes");
+	/*	JMenuItem mntmReporteDeSolicitudes = new JMenuItem("Reporte de Solicitudes");
 		mntmReporteDeSolicitudes.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
 		mntmReporteDeSolicitudes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -361,7 +361,7 @@ public class Principal2 extends JFrame {
 				soli.setVisible(true);
 			}
 		});
-		mnReporte.add(mntmReporteDeSolicitudes);
+		mnReporte.add(mntmReporteDeSolicitudes);*/
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(248, 248, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
