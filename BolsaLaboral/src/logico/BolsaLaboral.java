@@ -1,6 +1,8 @@
 package logico;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BolsaLaboral {
 	
@@ -321,6 +323,16 @@ if (sol instanceof SolicitudTecnico) {
 return aspirante;
 	}
 	
+	public boolean validarEmail(String email) {
+		Pattern patt = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		Matcher match = patt.matcher(email);
+		if (!match.find()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	
 	///validacion
 	
