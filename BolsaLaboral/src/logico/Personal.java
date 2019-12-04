@@ -16,7 +16,7 @@ public abstract class Personal implements Serializable {
 	protected String nombres;
 	protected String apellidos;
 	protected String telefono;
-	protected LocalDate fechaNacimiento;
+	//protected LocalDate fechaNacimiento;
 	protected String nacionalidad;
 	protected String sexo;
 	protected String estadoCivil;
@@ -39,8 +39,7 @@ public abstract class Personal implements Serializable {
 
 	
 
-	public Personal( String cedula, String nombres, String apellidos, String telefono,
-			LocalDate fechaNacimiento, String nacionalidad, String sexo, String estadoCivil, String direccion,
+	public Personal( String cedula, String nombres, String apellidos, String telefono, String nacionalidad, String sexo, String estadoCivil, String direccion,
 			String provincia, String email, boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia,
 			ArrayList<String> idiomas, boolean contratado, boolean mudarse, String ciudad, String sector,
 			String calle, int numeroCasa, String referencia) {
@@ -49,7 +48,7 @@ public abstract class Personal implements Serializable {
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
-		this.fechaNacimiento = fechaNacimiento;
+		//this.fechaNacimiento = fechaNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
@@ -168,13 +167,7 @@ public abstract class Personal implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public LocalDate getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+	
 
 	public String getNacionalidad() {
 		return nacionalidad;
@@ -265,7 +258,7 @@ public abstract class Personal implements Serializable {
 	}
 
 	public long getEdad() {
-		setEdadSolicitante();
+		
 		return edad;
 	}
 
@@ -274,14 +267,7 @@ public abstract class Personal implements Serializable {
 		this.edad = edad;
 	}
 
-	public int setEdadSolicitante() {
-		LocalDate now = LocalDate.now();
-		Period periodo = Period.between(fechaNacimiento, now);
-		int edad = periodo.getYears();
-		setEdad(edad);
-		return edad;
-	}
-
+	
 
 
 

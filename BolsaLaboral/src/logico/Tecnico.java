@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Tecnico extends Personal {
 
 	
-	public Tecnico(String cedula, String nombres, String apellidos, String telefono, LocalDate fechaNacimiento,
+	public Tecnico(String cedula, String nombres, String apellidos, String telefono,
 			String nacionalidad, String sexo, String estadoCivil, String direccion, String provincia, String email,
 			boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia, ArrayList<String> idiomas,
 			boolean contratado, boolean mudarse, String ciudad, String sector, String calle, int numeroCasa,
 			String referencia, String area) {
-		super(cedula, nombres, apellidos, telefono, fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+		super(cedula, nombres, apellidos, telefono,nacionalidad, sexo, estadoCivil, direccion, provincia,
 				email, vehiculoPropio, categoriaLicencia, annosExperiencia, idiomas, contratado, mudarse, ciudad, sector, calle,
 				numeroCasa, referencia);
 		this.area = area;
