@@ -188,9 +188,9 @@ public class Starter extends JFrame implements Runnable {
 		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
 		mntmRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegPersona regper = new RegPersona(null);
+		/*		RegPersona regper = new RegPersona(null);
 				regper.setLocationRelativeTo(null);
-				regper.setVisible(true);
+				regper.setVisible(true);*/
 			}
 		});
 		mnPersonal.add(mntmRegistrar);
@@ -217,9 +217,9 @@ public class Starter extends JFrame implements Runnable {
 		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
 		mntmRegEmp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegEmpresa regemp = new RegEmpresa();
+			/*	RegEmpresa regemp = new RegEmpresa();
 				regemp.setLocationRelativeTo(null);
-				regemp.setVisible(true);
+				regemp.setVisible(true);*/
 				
 			}
 		});
@@ -228,9 +228,9 @@ public class Starter extends JFrame implements Runnable {
 		JMenuItem mntmSoliEmp = new JMenuItem("Generar Solicitud");
 		mntmSoliEmp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				SolicitudEmpresa solemp = new SolicitudEmpresa();
+			/*	SolicitudEmpresa solemp = new SolicitudEmpresa();
 				solemp.setLocationRelativeTo(null);
-				solemp.setVisible(true);	
+				solemp.setVisible(true);	*/
 }
 		});
 		

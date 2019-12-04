@@ -303,8 +303,8 @@ public class RegEmpresa extends JDialog {
 							String calle = txtCalle.getText();
 							String referencia = txtReferencia.getText();
 							int local = (int) spnlocalidad.getValue();
-						//	Empresa miEmpresa = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
-							Empresa miEmpresa = new Empresa(nombre, id, tele, email, ciudad);
+							Empresa miEmpresa = new Empresa(id, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
+							
 
 							if (txtNombre.getText().isEmpty()) {
 								JOptionPane
@@ -400,7 +400,7 @@ public class RegEmpresa extends JDialog {
 									txtEmail.setText(null);
 
 								} else {
-									BolsaLaboral.getInstance().agregarEmpresa(miEmpresa);;
+									BolsaLaboral.getInstance().insertEmpresa(miEmpresa);;
 									if (RNCsoli == null) {
 										ftxtRnc.setText(null);
 									}
@@ -489,8 +489,8 @@ if(modi){
 
 	public boolean empresaRep(String rnc) {
 		boolean aux = false;
-		for (Empresa empresa : BolsaLaboral.getInstance().getListEmpresa()) {
-			if (empresa.getId().equalsIgnoreCase(rnc)) {
+		for (Empresa empresa : BolsaLaboral.getInstance().getMisEmpresas()) {
+			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
 				aux = true;
 			}
 

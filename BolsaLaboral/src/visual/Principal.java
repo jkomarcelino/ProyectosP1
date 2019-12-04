@@ -125,8 +125,7 @@ public class Principal extends JFrame implements Runnable{
 		setTitle("JOBIFY ~ Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1304, 727);
-		//dim = super.getToolkit().getScreenSize();
-		//super.setSize(dim.width - 60, dim.height - 50);
+
 		setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -165,12 +164,12 @@ public class Principal extends JFrame implements Runnable{
 		mntmRealizarMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo.png")));
 		mntmRealizarMacheo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Macheo macheo;
+				Matching match;
 				try {
-					macheo = new Macheo();
-					macheo.setModal(true);
-					macheo.setLocationRelativeTo(null);
-					macheo.setVisible(true);
+					match = new Matching();
+					match.setModal(true);
+					match.setLocationRelativeTo(null);
+					match.setVisible(true);
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
@@ -313,7 +312,7 @@ public class Principal extends JFrame implements Runnable{
 		mntmRegistrarSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/addSolicitud.png")));
 		mntmRegistrarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SolicitudEmpresa solicitud = new SolicitudEmpresa();
+				SolicitudEmpresa solicitud = new SolicitudEmpresa(null);
 				solicitud.setModal(true);
 				solicitud.setVisible(true);
 			}

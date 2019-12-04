@@ -128,7 +128,7 @@ public class Matching extends JDialog {
 					}
 					{
 						JButton button = new JButton("");
-						button.setIcon(new ImageIcon(Macheo.class.getResource("/img/buscar.png")));
+						button.setIcon(new ImageIcon(Matching.class.getResource("/img/buscar.png")));
 						button.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								ftxtCodSolicitud.setValue("");
@@ -188,7 +188,7 @@ public class Matching extends JDialog {
 					}
 					{
 						btnCandidatos = new JButton("Ver Solicitantes");
-						btnCandidatos.setIcon(new ImageIcon(Macheo.class.getResource("/img/ver.png")));
+						btnCandidatos.setIcon(new ImageIcon(Matching.class.getResource("/img/ver.png")));
 						btnCandidatos.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent arg0) {
 
@@ -221,7 +221,7 @@ public class Matching extends JDialog {
 					}
 
 					JButton btnFiltralTodo = new JButton("Filtrar todo");
-					btnFiltralTodo.setIcon(new ImageIcon(Macheo.class.getResource("/img/filtrar.png")));
+					btnFiltralTodo.setIcon(new ImageIcon(Matching.class.getResource("/img/filtrar.png")));
 					btnFiltralTodo.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							loadTable(null);
@@ -261,7 +261,7 @@ public class Matching extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnContratar = new JButton("Contratar");
-				btnContratar.setIcon(new ImageIcon(Macheo.class.getResource("/img/Contratar.png")));
+				btnContratar.setIcon(new ImageIcon(Matching.class.getResource("/img/Contratar.png")));
 				btnContratar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if (misSolicitantesC.size() != 0) {
@@ -269,8 +269,8 @@ public class Matching extends JDialog {
 							BolsaLaboral.getInstance().contratarCandidatos(solicitud, misSolicitantesC);
 							JOptionPane.showMessageDialog(null, "Los solicitantes han sido contratados.", "Información",
 									JOptionPane.INFORMATION_MESSAGE, null);
-							Starter.actualizarChart();
-							Starter.actualizarPastel();
+							Principal.actualizarChart();
+							Principal.actualizarPastel();
 							BolsaLaboral.getInstance().removerContratados(misSolicitantesC);
 							clean();
 						} else {
@@ -286,7 +286,7 @@ public class Matching extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setIcon(new ImageIcon(Macheo.class.getResource("/img/cancelar.png")));
+				cancelButton.setIcon(new ImageIcon(Matching.class.getResource("/img/cancelar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
