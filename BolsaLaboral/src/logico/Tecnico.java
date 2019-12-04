@@ -1,11 +1,11 @@
 package logico;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Tecnico extends Personal {
+public class Tecnico extends Personal implements Serializable{
 
-	
 	public Tecnico(String cedula, String nombres, String apellidos, String telefono,
 			String nacionalidad, String sexo, String estadoCivil, String direccion, String provincia, String email,
 			boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia, ArrayList<String> idiomas,

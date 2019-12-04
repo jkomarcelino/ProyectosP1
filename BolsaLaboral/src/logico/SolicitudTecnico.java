@@ -1,12 +1,13 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class SolicitudTecnico extends Solicitud {
-	
+public class SolicitudTecnico extends Solicitud implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	private String area;
 
 	public SolicitudTecnico(float cantVacantes, int annosExperiencia, int edadMax, int edadMin, String tipoContrato,

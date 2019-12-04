@@ -1,9 +1,10 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class SolicitudObrero extends Solicitud {
+public class SolicitudObrero extends Solicitud implements Serializable{
 	
 	/**
 	 * 

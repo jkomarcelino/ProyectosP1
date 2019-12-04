@@ -1,11 +1,11 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-public class SolicitudUniversitario extends Solicitud {
-	
+public class SolicitudUniversitario extends Solicitud implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private boolean postGrado;

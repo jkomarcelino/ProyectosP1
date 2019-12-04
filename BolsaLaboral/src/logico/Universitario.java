@@ -1,10 +1,12 @@
 package logico;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Universitario extends Personal {
+public class Universitario extends Personal implements Serializable{
 	
+
 	private static final long serialVersionUID = 1L;
 	private boolean PostGrado;
 	private String Carrera;
