@@ -69,7 +69,7 @@ public class Principal2 extends JFrame {
 	private static JPanel panelPastel;
 	private JLabel lblYear;
 	private JLabel lblhora;
-	private Dimension dim;
+	//private Dimension dim;
 
 	/**
 	 * Launch the application.
@@ -115,11 +115,11 @@ public class Principal2 extends JFrame {
 		BolsaLaboral.getInstance().readBolsa();
 		setBackground(new Color(248, 248, 255));
 		setResizable(false);
-		setTitle("Jobify ~ Bolsa Laboral");
+		setTitle("Man Power Group");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 1306, 727);
-		dim = super.getToolkit().getScreenSize();
-		super.setSize(dim.width - 60, dim.height - 50);
+		setBounds(100, 100, 1304, 727);
+		//dim = super.getToolkit().getScreenSize();
+		//super.setSize(dim.width - 60, dim.height - 50);
 		setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
