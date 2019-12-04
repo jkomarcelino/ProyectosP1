@@ -38,7 +38,11 @@ public class RegPersona extends JDialog {
 	private JTextField txtEdad;
 	private JTextField txtCorreo;
 	private JTextField txtApellido;
-
+	//txtCiudad
+	//txtxAniosExp
+	//soltero
+	//vehiculo
+	//disp_viajar
 	private	JLabel lblLogoCrear;
 	private JLabel lblLogoModif;
 	private JFormattedTextField txtTelefono;
@@ -273,6 +277,14 @@ public class RegPersona extends JDialog {
 						String apellido = txtApellido.getText();
 						String telefono = txtTelefono.getText();
 						String nacionalidad = txtNacionalidad.getText();
+						//soltero
+						//ciudad
+						String ciudad=txtCiudad.getText();
+						//aniosexp
+						String anios_exp=txtAniosExp.getText;
+						//disp_viajar
+						//vehiculo
+						
 						if (nacionalidad.isEmpty()||nombre.isEmpty()||genero.isEmpty()||edad.isEmpty()||cedula.isEmpty()||correo.isEmpty()||apellido.isEmpty()||telefono.isEmpty()) {   
 							JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
 
