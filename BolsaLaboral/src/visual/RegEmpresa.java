@@ -31,6 +31,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
+import logico.BolsaLaboral;
 import logico.Empresa;
 
 
@@ -301,7 +302,7 @@ public class RegEmpresa extends JDialog {
 							String referencia = txtReferencia.getText();
 							int local = (int) spnlocalidad.getValue();
 						//	Empresa miEmpresa = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
-							Empresa mEmpresa = new Empresa(nombre, id, telefono, correo, ubicacion);
+							Empresa miEmpresa = new Empresa(nombre, id, tele, email, ciudad);
 
 							if (txtNombre.getText().isEmpty()) {
 								JOptionPane
@@ -383,7 +384,7 @@ public class RegEmpresa extends JDialog {
 												"ATENCIÓN",
 												JOptionPane.WARNING_MESSAGE,
 												null);
-							} else if (empresaRep(rnc)) {
+							} else if (empresaRep(id)) {
 								JOptionPane.showMessageDialog(null,
 										"Empresa existente", "ATENCIÓN",
 										JOptionPane.WARNING_MESSAGE, null);
@@ -397,8 +398,7 @@ public class RegEmpresa extends JDialog {
 									txtEmail.setText(null);
 
 								} else {
-									BolsaLaboral.getInstance().insertEmpresa(
-											miEmpresa);
+									BolsaLaboral.getInstance().agregarEmpresa(miEmpresa);;
 									if (RNCsoli == null) {
 										ftxtRnc.setText(null);
 									}
@@ -436,8 +436,8 @@ public class RegEmpresa extends JDialog {
 						String calle = txtCalle.getText();
 						String referencia = txtReferencia.getText();
 						int local = (int) spnlocalidad.getValue();
-						Empresa modiEmpre = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
-							BolsaLaboral.getInstance().modificaEmpresa(modiEmpre);
+						//Empresa modiEmpre = new Empresa(rnc, nombre, tele, email, provincia, direcion, sector, ciudad, calle, local, referencia);
+							//BolsaLaboral.getInstance().modificaEmpresa(modiEmpre);
 							JOptionPane.showMessageDialog(null, "Empresa Modificada");
 							dispose();
 							
@@ -451,7 +451,7 @@ public class RegEmpresa extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setIcon(new ImageIcon(InsertarEmpresa.class.getResource("/img/cancelar.png")));
+				//cancelButton.setIcon(new ImageIcon(InsertarEmpresa.class.getResource("/img/cancelar.png")));
 				cancelButton.setBackground(UIManager.getColor("Button.darkShadow"));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
@@ -471,24 +471,24 @@ if(modi){
 	private void loadEmpresaModi() {
 		if (modificarEmpre != null) {
 			ftxtRnc.setEnabled(false);
-			ftxtRnc.setText(modificarEmpre.getRNC());
-			txtEmail.setText(modificarEmpre.getEmail());
+		//	ftxtRnc.setText(modificarEmpre.getRNC());
+		//	txtEmail.setText(modificarEmpre.getEmail());
 			txtNombre.setText(modificarEmpre.getNombre());
 			txtTel.setText(modificarEmpre.getTelefono());
-			txtSector.setText(modificarEmpre.getSector());
-			spnlocalidad.setValue(modificarEmpre.getNumeroLocal());
-			txtCuidad.setText(modificarEmpre.getCiudad());
-			txtReferencia.setText(modificarEmpre.getReferencia());
-			txtCalle.setText(modificarEmpre.getCalle());
-			cbxProvincia.setSelectedItem(modificarEmpre.getArea());
+		//	txtSector.setText(modificarEmpre.getSector());
+			//spnlocalidad.setValue(modificarEmpre.getNumeroLocal());
+			//txtCuidad.setText(modificarEmpre.getCiudad());
+			//txtReferencia.setText(modificarEmpre.getReferencia());
+		//	txtCalle.setText(modificarEmpre.getCalle());
+			//cbxProvincia.setSelectedItem(modificarEmpre.getArea());
 		}
 
 	}
 
 	public boolean empresaRep(String rnc) {
 		boolean aux = false;
-		for (Empresa empresa : BolsaLaboral.getInstance().getMisEmpresas()) {
-			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
+		for (Empresa empresa : BolsaLaboral.getInstance().getListEmpresa()) {
+			if (empresa.getId().equalsIgnoreCase(rnc)) {
 				aux = true;
 			}
 

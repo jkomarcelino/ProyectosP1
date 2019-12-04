@@ -53,7 +53,7 @@ public class Principal extends JFrame implements Runnable {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			
@@ -217,7 +217,7 @@ public class Principal extends JFrame implements Runnable {
 		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
 		mntmRegEmp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegEmpresa regemp = new RegEmpresa(null);
+				RegEmpresa regemp = new RegEmpresa();
 				regemp.setLocationRelativeTo(null);
 				regemp.setVisible(true);
 				

@@ -304,7 +304,7 @@ public class Principal2 extends JFrame {
 		mntmRegistrarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
 		mntmRegistrarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SolicitudEmpresa solicitud = new SolicitudEmpresa(null);
+				SolicitudEmpresa solicitud = new SolicitudEmpresa();
 				solicitud.setModal(true);
 				solicitud.setVisible(true);
 			}
