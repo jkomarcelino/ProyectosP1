@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import logica.Obrero;
+import logica.Solicitante;
+import logica.Solicitud;
+import logica.Tecnico;
+import logica.Universitario;
+
 
 
 public class BolsaLaboral implements  Serializable{
@@ -455,7 +461,120 @@ return aspirante;
 	}
 	
 	
+	////*****************Contratados**************************8
 	
+	// Actualizar una solicitud cuando se modifica
+		public void ActualizarSolicitud(Solicitud modi, Solicitud modificarSoli) {
+			int index = 0;
+			if (listSolicitudes.contains(modi)) {
+				index = listSolicitudes.indexOf(modi);
+			}
+			misSolicitudes.set(index, modificarSoli);
+
+		}
+
+		// Retornar cant. Universitarios desempleado
+		public int desempleadoU() {
+			int cant = 0;
+			for (Personal soli : listPersonal) {
+				if (!soli.isContratado()) {
+					if (soli instanceof Universitario) {
+						cant++;
+					}
+				}
+			}
+			return cant;
+		}
+
+		// Retornar cant. Tecnicos desempleado
+		public int desempleadoT() {
+			int cant = 0;
+			for (Personal soli : listPersonal) {
+				if (!soli.isContratado()) {
+					if (soli instanceof Tecnico) {
+						cant++;
+					}
+				}
+			}
+			return cant;
+		}
+
+		// Retornar cant. Obreros desempleado
+		public int desempleadoO() {
+			int cant = 0;
+			for (Personal soli : listPersonal) {
+				if (!soli.isContratado()) {
+					if (soli instanceof Obrero) {
+						cant++;
+					}
+				}
+			}
+			return cant;
+		}
+
+		// Retorna % de Obreros Contratados
+		public float porcientoO() {
+			float cant = 0;
+			float porciento = 0;
+			float total = totalContratado();
+			for (Personal soli : listPersonal) {
+				if (soli instanceof Obrero) {
+					if (soli.isContratado()) {
+						cant++;
+					}
+				}
+			}
+			if (total != 0) {
+				porciento = (cant / total) * 100;
+			}
+			return porciento;
+		}
+
+		// Retorna % de Universitarios Contratados
+		public float porcientoU() {
+			float cant = 0;
+			float porciento = 0;
+			float total = totalContratado();
+			for (Personal soli : listPersonal) {
+				if (soli instanceof Universitario) {
+					if (soli.isContratado()) {
+						cant++;
+					}
+				}
+			}
+			if (total != 0) {
+				porciento = (cant / total) * 100;
+			}
+			return porciento;
+		}
+
+		// Retorna % de Tecnicos Contratados
+		public float porcientoT() {
+			float cant = 0;
+			float porciento = 0;
+			float total = totalContratado();
+			for (Personal soli : listPersonal) {
+				if (soli instanceof Tecnico) {
+					if (soli.isContratado()) {
+						cant++;
+					}
+				}
+			}
+			if (total != 0) {
+				porciento = (cant / total) * 100;
+			}
+			return porciento;
+		}
 	
-	
+
+		// Retorna total de contratados
+		public int totalContratado() {
+			int cant = 0;
+			for (Personal soli : listPersonal) {
+				if (soli.isContratado()) {
+					cant++;
+				}
+			}
+			return cant;
+		}
 }
