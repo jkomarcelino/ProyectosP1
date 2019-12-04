@@ -1,77 +1,134 @@
 package logico;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Empresa {
+
+
+public class Empresa implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+	private String RNC;
 	private String nombre;
-	private String id;
 	private String telefono;
-	private String correo;
-	private String ubicacion;
-	private ArrayList<Personal>misContratados;//almacenar aquellos contratos de cada empresa
-	
-	
+	private String email;
+	private String area;
+	private String direccion;
+	private String sector;
+	private String ciudad;
+	private String calle;
+	private int numeroLocal;
+	private String referencia;
+	private ArrayList<Solicitante>misContratados;
 
-	public Empresa(String nombre, String id, String telefono, String correo, String ubicacion) {
+
+
+	public Empresa(String rNC, String nombre, String telefono, String email, String area, String direccion,
+			String sector, String ciudad, String calle, int numeroLocal, String referencia) {
 		super();
+		RNC = rNC;
 		this.nombre = nombre;
-		this.id = id;
 		this.telefono = telefono;
-		this.correo = correo;
-		this.ubicacion = ubicacion;
-		this.misContratados = new ArrayList<Personal>();
+		this.email = email;
+		this.area = area;
+		this.direccion = direccion;
+		this.sector = sector;
+		this.ciudad = ciudad;
+		this.calle = calle;
+		this.numeroLocal = numeroLocal;
+		this.referencia = referencia;
+		this.misContratados = new ArrayList<>();
 	}
-	
+	public ArrayList<Solicitante> getMisContratados() {
+		return misContratados;
+	}
+public void insertContratado(Solicitante trabajador){
+	LocalDate date = LocalDate.now();
+	trabajador.setFechaContratado(date);
+	trabajador.setContratado(true);
+	misContratados.add(trabajador);
+}
 
-	///***************************SETTER Y GETTERS**************************************************************
+
+	public String getSector() {
+	return sector;
+}
+public void setSector(String sector) {
+	this.sector = sector;
+}
+public String getCiudad() {
+	return ciudad;
+}
+public void setCiudad(String ciudad) {
+	this.ciudad = ciudad;
+}
+public String getCalle() {
+	return calle;
+}
+public void setCalle(String calle) {
+	this.calle = calle;
+}
+public int getNumeroLocal() {
+	return numeroLocal;
+}
+public void setNumeroLocal(int numeroLocal) {
+	this.numeroLocal = numeroLocal;
+}
+public String getReferencia() {
+	return referencia;
+}
+public void setReferencia(String referencia) {
+	this.referencia = referencia;
+}
+	public String getRNC() {
+		return RNC;
+	}
+
+	public void setRNC(String rNC) {
+		RNC = rNC;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getTelefono() {
 		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getCorreo() {
-		return correo;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getUbicacion() {
-		return ubicacion;
+
+	public String getArea() {
+		return area;
 	}
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
+
+	public void setArea(String area) {
+		this.area = area;
 	}
-	
-	public ArrayList<Personal> getMisContratados() {
-		return misContratados;
+
+	public String getDireccion() {
+		return direccion;
 	}
-	
-	/*
-	 * public void setMisContratados(ArrayList<Personal> misContratados) {
-	 * this.misContratados = misContratados; }
-	 */
-	
-	public void agregarContratado(Personal empleado) {//PARA AGREGAR UN EMPLEADO AL ARREGLO
-		//FECHA
-		empleado.setContratado(true);
-		misContratados.add(empleado);
-		
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
-	
+
 
 	
 //************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
@@ -87,12 +144,12 @@ public class Empresa {
 		}
 		
 		if (arroba) {
-			this.correo=correo;
+			this.email=correo;
 			
 		}
 		
 		else {
-			this.correo="No valido";
+			this.email="No valido";
 		}
 	}
 }

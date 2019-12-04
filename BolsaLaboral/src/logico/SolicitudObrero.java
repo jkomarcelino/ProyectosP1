@@ -2,32 +2,33 @@ package logico;
 
 import java.util.ArrayList;
 
+
 public class SolicitudObrero extends Solicitud {
 	
-	private ArrayList<String>skills=new ArrayList<String>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ArrayList<String> habilidades = new ArrayList<>();
 
-	
-	
-	
-	public SolicitudObrero(Empresa empresa, String codigo, String tipo_de_contrato, int min_anios_exp, boolean vehiculo,
-			String sexo, ArrayList<String> idiomas, String ciudad, boolean soltero, boolean disp_viajar,
-			ArrayList<String> skills) {
-		super(empresa, codigo, tipo_de_contrato, min_anios_exp, vehiculo, sexo, idiomas, ciudad, soltero, disp_viajar);
-		this.skills = skills;
+	public SolicitudObrero(float cantVacantes, int annosExperiencia, int edadMax, int edadMin, String tipoContrato,
+			boolean vehiculoPropio, String localidad, Empresa empresa, boolean mudarse, ArrayList<String> idiomas,
+			int categoriaLicencia, ArrayList<String> habilidades) {
+		super(cantVacantes, annosExperiencia, edadMax, edadMin, tipoContrato, vehiculoPropio, localidad, empresa,
+				mudarse, idiomas, categoriaLicencia);
+		for (String habili : habilidades) {
+			this.habilidades.add(habili);
+			
+		}
 	}
 
-
-
-	public ArrayList<String> getSkills() {
-		return skills;
+	public ArrayList<String> getHabilidades() {
+		return habilidades;
 	}
 
-	
-
-	public void setSkills(ArrayList<String> skills) {
-		this.skills = skills;
+	public void setHabilidades(ArrayList<String> habilidades) {
+		this.habilidades = habilidades;
 	}
-	
 	
 
 }

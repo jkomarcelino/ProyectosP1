@@ -1,31 +1,41 @@
 package logico;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Universitario extends Personal {
 	
+	private static final long serialVersionUID = 1L;
+	private boolean PostGrado;
+	private String Carrera;
 	
-	private String profesion;
-
-	
-
-	
-
-	public Universitario(String nombre, String apellido, String sexo, String nacionalidad, String id, int edad,
-			ArrayList<String> idiomas, String telefono, String correo, boolean vehiciculo, boolean disp_viajar,
-			int aniosExperiencia, boolean contratado, int codigo_persona, boolean soltero, String ciudad,
-			String profesion) {
-		super(nombre, apellido, sexo, nacionalidad, id, edad, idiomas, telefono, correo, vehiciculo, disp_viajar,
-				aniosExperiencia, contratado, codigo_persona, soltero, ciudad);
-		this.profesion = profesion;
+	public Universitario(String cedula, String nombres, String apellidos, String telefono, LocalDate fechaNacimiento,
+			String nacionalidad, String sexo, String estadoCivil, String direccion, String provincia, String email,
+			boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia, ArrayList<String> idiomas,
+			boolean contratado, boolean mudarse, String ciudad, String sector, String calle, int numeroCasa,
+			String referencia, boolean PostGrado, String Carrera) {
+		super(cedula, nombres, apellidos, telefono, fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+				email, vehiculoPropio, categoriaLicencia, annosExperiencia, idiomas, contratado, mudarse, ciudad, sector, calle,
+				numeroCasa, referencia);
+		this.PostGrado = PostGrado;
+		this.Carrera = Carrera;
 	}
+	
+	
+///***************************SETTERS Y GETTERS***********************
+	
 
-	public String getProfesion() {
-		return profesion;
+	public boolean isPostGrado() {
+		return PostGrado;
 	}
-
-	public void setProfesion(String profesion) {
-		this.profesion = profesion;
+	public void setPostGrado(boolean postGrado) {
+		PostGrado = postGrado;
+	}
+	public String getCarrera() {
+		return Carrera;
+	}
+	public void setCarrera(String carrera) {
+		Carrera = carrera;
 	}
 	
 	

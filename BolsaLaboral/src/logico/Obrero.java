@@ -1,26 +1,38 @@
 package logico;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Obrero extends Personal {
 	
-	private ArrayList<String>skills;
+	
+	private static final long serialVersionUID = 1L;
+	ArrayList<String> habilidades;
 
-	public Obrero(String nombre, String apellido, String sexo, String nacionalidad, String id, int edad,
-			ArrayList<String> idiomas, String telefono, String correo, boolean vehiciculo, boolean disp_viajar,
-			int aniosExperiencia, boolean contratado, int codigo_persona, boolean soltero, String ciudad,
-			ArrayList<String> skills) {
-		super(nombre, apellido, sexo, nacionalidad, id, edad, idiomas, telefono, correo, vehiciculo, disp_viajar,
-				aniosExperiencia, contratado, codigo_persona, soltero, ciudad);
-		this.skills = skills;
+	
+	
+	
+	public Obrero(String cedula, String nombres, String apellidos, String telefono, LocalDate fechaNacimiento,
+			String nacionalidad, String sexo, String estadoCivil, String direccion, String provincia, String email,
+			boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia, ArrayList<String> idiomas,
+			boolean contratado, boolean mudarse, String ciudad, String sector, String calle, int numeroCasa,
+			String referencia, ArrayList<String> habilidades) {
+		super(cedula, nombres, apellidos, telefono, fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+				email, vehiculoPropio, categoriaLicencia, annosExperiencia, idiomas, contratado, mudarse, ciudad, sector, calle,
+				numeroCasa, referencia);
+	this.habilidades = habilidades;
 	}
 
-	public ArrayList<String> getSkills() {
-		return skills;
+	
+	
+
+
+	public ArrayList<String> getHabilidades() {
+		return habilidades;
 	}
 
-	public void setSkills(ArrayList<String> skills) {
-		this.skills = skills;
+	public void setHabilidades(ArrayList<String> habilidades) {
+		this.habilidades = habilidades;
 	}
 
 	

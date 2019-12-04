@@ -2,196 +2,154 @@ package logico;
 
 import java.util.ArrayList;
 
+
+
 public abstract class Solicitud {
 	
-protected Empresa empresa;
-protected String codigo;
-protected String tipo_de_contrato;
-protected int min_anios_exp;
-protected boolean vehiculo;//
-protected String sexo;//
-protected ArrayList<String>idiomas=new ArrayList<String>();
-protected String ciudad;
-protected boolean soltero;
-protected int edad_minima;
-
-protected boolean disp_viajar;
-
-
-private static int CODIGO_SIGUIENTE=0;
-
-
-
-
-public Solicitud(Empresa empresa, String codigo, String tipo_de_contrato, int min_anios_exp, boolean vehiculo,
-		String sexo, ArrayList<String> idiomas, String ciudad, boolean soltero, boolean disp_viajar) {
-	super();
-	this.empresa = empresa;
-	this.codigo = codigo;
-	this.tipo_de_contrato = tipo_de_contrato;
-	this.min_anios_exp = min_anios_exp;
-	this.vehiculo = vehiculo;
-	this.sexo = sexo;
-	this.idiomas = idiomas;//agregar for??
-	this.ciudad = ciudad;
-	this.soltero = soltero;
-	this.disp_viajar = disp_viajar;
-}
-
-
-
-
-public Empresa getEmpresa() {
-	return empresa;
-}
-
-
-
-
-public void setEmpresa(Empresa empresa) {
-	this.empresa = empresa;
-}
-
-
-
-
-public String getCodigo() {
-	return codigo;
-}
-
-
-
-
-public void setCodigo(String codigo) {
-	this.codigo = codigo;
-}
-
-
-
-
-public String getTipo_de_contrato() {
-	return tipo_de_contrato;
-}
-
-
-
-
-public void setTipo_de_contrato(String tipo_de_contrato) {
-	this.tipo_de_contrato = tipo_de_contrato;
-}
-
-
-
-
-public int getMin_anios_exp() {
-	return min_anios_exp;
-}
-
-
-
-
-public void setMin_anios_exp(int min_anios_exp) {
-	this.min_anios_exp = min_anios_exp;
-}
-
-
-
-
-public boolean isVehiculo() {
-	return vehiculo;
-}
-
-
-
-
-public void setVehiculo(boolean vehiculo) {
-	this.vehiculo = vehiculo;
-}
-
-
-
-
-public String getSexo() {
-	return sexo;
-}
-
-
-
-
-public void setSexo(String sexo) {
-	this.sexo = sexo;
-}
-
-
-
-
-public ArrayList<String> getIdiomas() {
-	return idiomas;
-}
-
-
-
-
-public void setIdiomas(ArrayList<String> idiomas) {
-	this.idiomas = idiomas;
-}
-
-
-
-
-public String getCiudad() {
-	return ciudad;
-}
-
-
-
-
-public void setCiudad(String ciudad) {
-	this.ciudad = ciudad;
-}
-
-
-
-
-public boolean isSoltero() {
-	return soltero;
-}
-
-
-
-
-public void setSoltero(boolean soltero) {
-	this.soltero = soltero;
-}
-
-
-
-
-public int getEdad_minima() {
-	return edad_minima;
-}
-
-
-
-
-public void setEdad_minima(int edad_minima) {
-	this.edad_minima = edad_minima;
-}
-
-
-
-
-public boolean isDisp_viajar() {
-	return disp_viajar;
-}
-
-
-
-
-public void setDisp_viajar(boolean disp_viajar) {
-	this.disp_viajar = disp_viajar;
-}
-
+	private static final long serialVersionUID = 1L;
+	protected String codigo;
+	protected float cantVacantes;
+	protected float cantReal;
+	protected int annosExperiencia;
+	protected int edadMax;
+	protected int edadMin;
+	protected String tipoContrato;
+	protected boolean vehiculoPropio;
+	protected int categoriaLicencia;
+	protected String localidad;
+	protected Empresa empresa;
+	protected boolean mudarse;
+	protected ArrayList<String> idiomas = new ArrayList<>();
+
+	public Solicitud(float cantVacantes, int annosExperiencia, int edadMax, int edadMin, String tipoContrato,
+			boolean vehiculoPropio, String localidad, Empresa empresa, boolean mudarse, ArrayList<String> idiomas,int categoriaLicencia) {
+		super();
+		this.cantVacantes = cantVacantes;
+		this.annosExperiencia = annosExperiencia;
+		this.edadMax = edadMax;
+		this.edadMin = edadMin;
+		this.tipoContrato = tipoContrato;
+		this.vehiculoPropio = vehiculoPropio;
+		this.localidad = localidad;
+		this.empresa = empresa;
+		this.mudarse = mudarse;		
+		this.cantReal=0;
+		this.categoriaLicencia = categoriaLicencia;
+		for (String idio : idiomas) {
+			this.idiomas.add(idio);
+		}
+		
+
+	}
+
+	public int getCategoriaLicencia() {
+		return categoriaLicencia;
+	}
+
+	public void setCategoriaLicencia(int categoriaLicencia) {
+		this.categoriaLicencia = categoriaLicencia;
+	}
+
+	public ArrayList<String> getIdiomas() {
+		return idiomas;
+	}
+
+	public void setIdiomas(ArrayList<String> idiomas) {
+		this.idiomas = idiomas;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public float getCantVacantes() {
+		return cantVacantes;
+	}
+
+	public void setCantVacantes(float cantVacantes) {
+		this.cantVacantes = cantVacantes;
+	}
+
+	public int getAnnosExperiencia() {
+		return annosExperiencia;
+	}
+
+	public void setAnnosExperiencia(int annosExperiencia) {
+		this.annosExperiencia = annosExperiencia;
+	}
+
+	public int getEdadMax() {
+		return edadMax;
+	}
+
+	public void setEdadMax(int edadMax) {
+		this.edadMax = edadMax;
+	}
+
+	public int getEdadMin() {
+		return edadMin;
+	}
+
+	public void setEdadMin(int edadMin) {
+		this.edadMin = edadMin;
+	}
+
+	public String getTipoContrato() {
+		return tipoContrato;
+	}
+
+	public void setTipoContrato(String tipoContrato) {
+		this.tipoContrato = tipoContrato;
+	}
+
+	public boolean isVehiculoPropio() {
+		return vehiculoPropio;
+	}
+
+	public void setVehiculoPropio(boolean vehiculoPropio) {
+		this.vehiculoPropio = vehiculoPropio;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public boolean isMudarse() {
+		return mudarse;
+	}
+
+	public void setMudarse(boolean mudarse) {
+		this.mudarse = mudarse;
+	}
+
+	public float getCantReal() {
+		return cantReal;
+	}
+
+	public void setCantReal(int cantReal) {
+		this.cantReal = cantReal;
+	}
+
+	
+	public void IncreasedCantReal(){
+		cantReal++;
+	}
 
 
 

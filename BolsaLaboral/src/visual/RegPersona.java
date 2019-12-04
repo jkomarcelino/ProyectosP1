@@ -994,6 +994,10 @@ public class RegPersona extends JDialog {
 							if (!error) {
 								if (!modificar) {
 									int annos = new Integer((int) spnAnnosExpObrero.getValue());
+									
+									
+									
+									
 									Personal solicitante = new Obrero(cedula, nombre, apellido, telefono,
 											20, nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,

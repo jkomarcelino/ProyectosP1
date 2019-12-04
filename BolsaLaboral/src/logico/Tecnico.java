@@ -1,24 +1,30 @@
 package logico;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tecnico extends Personal {
 
 	
-	private String area;
-
-	
-
-
-	public Tecnico(String nombre, String apellido, String sexo, String nacionalidad, String id, int edad,
-			ArrayList<String> idiomas, String telefono, String correo, boolean vehiciculo, boolean disp_viajar,
-			int aniosExperiencia, boolean contratado, int codigo_persona, boolean soltero, String ciudad, String area) {
-		super(nombre, apellido, sexo, nacionalidad, id, edad, idiomas, telefono, correo, vehiciculo, disp_viajar,
-				aniosExperiencia, contratado, codigo_persona, soltero, ciudad);
+	public Tecnico(String cedula, String nombres, String apellidos, String telefono, LocalDate fechaNacimiento,
+			String nacionalidad, String sexo, String estadoCivil, String direccion, String provincia, String email,
+			boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia, ArrayList<String> idiomas,
+			boolean contratado, boolean mudarse, String ciudad, String sector, String calle, int numeroCasa,
+			String referencia, String area) {
+		super(cedula, nombres, apellidos, telefono, fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+				email, vehiculoPropio, categoriaLicencia, annosExperiencia, idiomas, contratado, mudarse, ciudad, sector, calle,
+				numeroCasa, referencia);
 		this.area = area;
 	}
 
+	private static final long serialVersionUID = 1L;
+	private String area;
+
+
 	
+
+	
+
 	public String getArea() {
 		return area;
 	}
@@ -26,6 +32,7 @@ public class Tecnico extends Personal {
 	public void setArea(String area) {
 		this.area = area;
 	}
+	
 	
 	
 	
