@@ -52,6 +52,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.border.BevelBorder;
 import java.awt.Toolkit;
+import java.awt.SystemColor;
 
 public class Principal2 extends JFrame {
 
@@ -124,7 +125,7 @@ public class Principal2 extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnCandidatos = new JMenu("Solicitante");
+		JMenu mnCandidatos = new JMenu("Personal");
 		mnCandidatos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -213,7 +214,7 @@ public class Principal2 extends JFrame {
 		mnCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/Solicitante24.png")));
 		menuBar.add(mnCandidatos);
 
-		JMenuItem mntmRegistrarCandidato = new JMenuItem("Registrar Solicitante");
+		JMenuItem mntmRegistrarCandidato = new JMenuItem("Registrar Persona");
 		mntmRegistrarCandidato.setIcon(new ImageIcon(Principal.class.getResource("/img/agregarSolicitante.png")));
 		mntmRegistrarCandidato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -226,7 +227,7 @@ public class Principal2 extends JFrame {
 		});
 		mnCandidatos.add(mntmRegistrarCandidato);
 
-		JMenuItem mntmListarCandidatos = new JMenuItem("Listar Solicitante");
+		JMenuItem mntmListarCandidatos = new JMenuItem("Listar Persona");
 		mntmListarCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarCandidatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -284,7 +285,7 @@ public class Principal2 extends JFrame {
 			}
 		});
 		mnEmpresa.add(mntmListarEmpresas);
-		JMenu mnSolicitud = new JMenu("Solicitudes Empresariales");
+		JMenu mnSolicitud = new JMenu("Solicitud Empresa");
 		mnSolicitud.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -322,7 +323,7 @@ public class Principal2 extends JFrame {
 		});
 		mnSolicitud.add(mntmListarSolicitud);
 
-		JMenu mnReporte = new JMenu("Reporte");
+		JMenu mnReporte = new JMenu("Reportes");
 		mnReporte.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -369,31 +370,22 @@ public class Principal2 extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(248, 248, 255));
+		panel.setBackground(SystemColor.inactiveCaption);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
 		panelBarras = new JPanel();
 		panelBarras.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panelBarras.setBounds(10, 250, 613, 294);
+		panelBarras.setBounds(22, 332, 610, 294);
 		panel.add(panelBarras);
 		panelBarras.setLayout(null);
 
-		JLabel lblCharVacio = new JLabel("        No hay solicitantes desempledos");
-		lblCharVacio.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lblCharVacio.setBounds(10, 22, 559, 261);
-		panelBarras.add(lblCharVacio);
-
 		panelPastel = new JPanel();
+		panelPastel.setBackground(SystemColor.inactiveCaption);
 		panelPastel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panelPastel.setBounds(667, 250, 613, 294);
+		panelPastel.setBounds(658, 332, 610, 294);
 		panel.add(panelPastel);
 		panelPastel.setLayout(null);
-
-		JLabel lblNoHayEmpledos = new JLabel("                        No hay empledos");
-		lblNoHayEmpledos.setFont(new Font("Tahoma", Font.PLAIN, 27));
-		lblNoHayEmpledos.setBounds(10, 22, 559, 261);
-		panelPastel.add(lblNoHayEmpledos);
 
 		lblhora = new JLabel("");
 		lblhora.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -405,20 +397,25 @@ public class Principal2 extends JFrame {
 		lblYear.setBounds(105, 595, 116, 39);
 		panel.add(lblYear);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_1.setBounds(0, 595, 1290, 58);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(Principal2.class.getResource("/img/JOBIFY.png")));
+		lblLogo.setBounds(483, -17, 333, 89);
+		panel.add(lblLogo);
 		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Principal.class.getResource("/img/Manpower.png")));
-		label.setBounds(322, 26, 645, 182);
-		panel.add(label);
+		JLabel lblBolsa = new JLabel("New label");
+		lblBolsa.setIcon(new ImageIcon(Principal2.class.getResource("/img/bolsalaboral.png")));
+		lblBolsa.setBounds(558, 50, 221, 29);
+		panel.add(lblBolsa);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(10, 216, 1270, 12);
+		separator_1.setBackground(SystemColor.activeCaption);
+		separator_1.setBounds(10, 93, 1270, 9);
 		panel.add(separator_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
+		panel_1.setBounds(10, 104, 1270, 538);
+		panel.add(panel_1);
 		actualizarChart();
 		actualizarPastel();
 		reloj();
@@ -431,10 +428,13 @@ public class Principal2 extends JFrame {
 		panelPastel.revalidate();
 		datasetPastel = dataSetPastel();
 		chartPastel = creadorGraficoP(datasetPastel, "Trabajadores Contratados por Tipo");
-		panelPastel.setLayout(new BorderLayout(0, 0));
+		panelPastel.setLayout(null);
 		ChartPanel chartPanel = new ChartPanel(chartPastel);
+		chartPanel.setBorder(null);
+		chartPanel.setBounds(10, 2, 590, 281);
 		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
-		panelPastel.add(chartPanel, BorderLayout.CENTER);
+		panelPastel.add(chartPanel);
+		chartPanel.setLayout(null);
 		panelPastel.repaint();
 
 	}
@@ -448,15 +448,16 @@ public class Principal2 extends JFrame {
 		ChartPanel chartPanel = new ChartPanel(chartBarra);
 		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
 		panelBarras.add(chartPanel, BorderLayout.CENTER);
+		chartPanel.setLayout(null);
 		panelBarras.repaint();
-
+		
 	}
 
 	public static JFreeChart creadorGraficoB(CategoryDataset dataSet, String titulo) {
 		JFreeChart grafico = ChartFactory.createBarChart(titulo, "Tipo de Solicitante", "Catidad Desempleados", dataSet,
 				PlotOrientation.VERTICAL, false, true, false);
-		Color color = new Color(255, 249, 234);
-		grafico.setBackgroundPaint(color);
+	
+		grafico.setBackgroundPaint(	SystemColor.inactiveCaption);
 		CategoryPlot plot = (CategoryPlot) grafico.getPlot();
 		plot.setForegroundAlpha(0.8f);
 		plot.setBackgroundPaint(new Color(254, 253, 241));
@@ -465,8 +466,8 @@ public class Principal2 extends JFrame {
 
 	public static JFreeChart creadorGraficoP(PieDataset dataSet, String titulo) {
 		JFreeChart chart = ChartFactory.createPieChart3D(titulo, dataSet, true, true, false);
-		Color col = new Color(255, 249, 234);
-		chart.setBackgroundPaint(col);
+		//Color col = new Color(255, 249, 234);
+		chart.setBackgroundPaint(	SystemColor.inactiveCaption);
 		PiePlot3D plot = (PiePlot3D) chart.getPlot();
 		plot.setStartAngle(0.5);
 		plot.setDirection(Rotation.CLOCKWISE);
