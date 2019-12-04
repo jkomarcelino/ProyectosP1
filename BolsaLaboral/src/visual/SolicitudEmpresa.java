@@ -37,7 +37,7 @@ public class SolicitudEmpresa extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			SolicitudEmpresa dialog = new SolicitudEmpresa();

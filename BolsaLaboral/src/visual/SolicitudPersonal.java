@@ -32,7 +32,7 @@ public class SolicitudPersonal extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			SolicitudPersonal dialog = new SolicitudPersonal();

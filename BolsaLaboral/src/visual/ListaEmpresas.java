@@ -14,7 +14,7 @@ public class ListaEmpresas extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			ListaEmpresas dialog = new ListaEmpresas();
