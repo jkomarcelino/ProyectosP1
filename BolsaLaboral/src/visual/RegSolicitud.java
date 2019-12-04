@@ -14,7 +14,7 @@ public class RegSolicitud extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			RegSolicitud dialog = new RegSolicitud();

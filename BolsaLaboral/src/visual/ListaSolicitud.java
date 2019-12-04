@@ -14,7 +14,7 @@ public class ListaSolicitud extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			ListaSolicitud dialog = new ListaSolicitud();

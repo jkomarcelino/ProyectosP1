@@ -279,9 +279,9 @@ public class RegPersona extends JDialog {
 						String nacionalidad = txtNacionalidad.getText();
 						//soltero
 						//ciudad
-						String ciudad=txtCiudad.getText();
+					//	String ciudad=txtCiudad.getText();
 						//aniosexp
-						String anios_exp=txtAniosExp.getText;
+					//	String anios_exp=txtAniosExp.getText;
 						//disp_viajar
 						//vehiculo
 						

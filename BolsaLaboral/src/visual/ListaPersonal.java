@@ -14,7 +14,7 @@ public class ListaPersonal extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 *
 	public static void main(String[] args) {
 		try {
 			ListaPersonal dialog = new ListaPersonal();
