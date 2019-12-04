@@ -1,14 +1,24 @@
 package logico;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BolsaLaboral {
+
+
+public class BolsaLaboral implements  Serializable{
 	
 	private ArrayList<Solicitud> listSolicitudes;
 	private ArrayList<Personal> listPersonal;
 	private ArrayList<Empresa> listEmpresa;
+	private String archivo = "BolsaLaboral.dat";
 	private static BolsaLaboral bolsa=null;
 	
 	 
@@ -394,5 +404,58 @@ return aspirante;
 		}
 		return validar;
 	}
+	
+/////**********************ESCRIBIR FICHEROS*************************************************
+	
+	
+	public void writeBolsa() {
+		FileOutputStream bolsaFile = null;
+		ObjectOutputStream bolsaOut = null;
+
+		try {
+			bolsaFile = new FileOutputStream(archivo);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			bolsaOut = new ObjectOutputStream(bolsaFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			bolsaOut.writeObject(bolsa);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void readBolsa() {
+		FileInputStream bolsaFile = null;
+		ObjectInputStream bolsaIn = null;
+		try {
+			bolsaFile = new FileInputStream("BolsaLaboral.dat");
+			bolsaIn = new ObjectInputStream(bolsaFile);
+			try {
+				bolsa = (BolsaLaboral) bolsaIn.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 	
 }
