@@ -218,7 +218,7 @@ public class Principal2 extends JFrame {
 		mntmRegistrarCandidato.setIcon(new ImageIcon(Principal.class.getResource("/img/agregarSolicitante.png")));
 		mntmRegistrarCandidato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegSolicitud soli = new RegSolicitud("Insertar Solicitante", false, null, null);
+				RegPersona soli = new RegPersona("Insertar Solicitante", false, null, null);
 
 				soli.setModal(true);
 				soli.setLocationRelativeTo(null);
