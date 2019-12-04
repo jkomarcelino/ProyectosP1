@@ -33,6 +33,8 @@ import javax.swing.text.MaskFormatter;
 
 import logico.BolsaLaboral;
 import logico.Empresa;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
 
 
 public class RegEmpresa extends JDialog {
@@ -77,14 +79,14 @@ public class RegEmpresa extends JDialog {
 		setModal(true);
 		setBounds(100, 100, 614, 413);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(248, 248, 255));
+		contentPanel.setBackground(SystemColor.inactiveCaption);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		setTitle(title);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(248, 248, 255));
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Información General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
 		panel.setBounds(5, 26, 605, 118);
 		contentPanel.add(panel);
 		panel.setLayout(null);
@@ -146,7 +148,7 @@ public class RegEmpresa extends JDialog {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 248, 255));
-		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ubicación", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBorder(new CompoundBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), new Color(153, 180, 209), null)), null));
 		panel_1.setBounds(5, 155, 605, 166);
 		contentPanel.add(panel_1);
 		panel_1.setLayout(null);

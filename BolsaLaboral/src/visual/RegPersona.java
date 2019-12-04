@@ -16,6 +16,8 @@ import javax.swing.text.MaskFormatter;
 import logico.BolsaLaboral;
 import logico.Obrero;
 import logico.Personal;
+import logico.Tecnico;
+import logico.Universitario;
 
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -39,6 +41,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JSeparator;
@@ -115,6 +118,7 @@ public class RegPersona extends JDialog {
 	private boolean estado = false;
 	private Personal modiS = null;
 	private Personal verSoli = null;
+	Calendar cal= Calendar.getInstance();
 
 	/**
 	 * Launch the application.
@@ -996,14 +1000,16 @@ public class RegPersona extends JDialog {
 									int annos = new Integer((int) spnAnnosExpObrero.getValue());
 									
 									
-									
+							
 									
 									Personal solicitante = new Obrero(cedula, nombre, apellido, telefono,
-											20, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, misHabilidades);
+									
+									
 
-									BolsaLaboral.getInstance().insertPersonal(solicitante);
+									BolsaLaboral.getInstance().insertSolicitante(solicitante);
 									estado = false;
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha registrado de manera exitosa.", "Información",
@@ -1017,10 +1023,10 @@ public class RegPersona extends JDialog {
 								if (modificar) {
 									int annos = new Integer((int) spnAnnosExpObrero.getValue());
 									Personal solicitante = new Obrero(cedula, nombre, apellido, telefono,
-											fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, misHabilidades);
-									BolsaLaboral.getInstance().updatePersonal(solicitante);
+									BolsaLaboral.getInstance().updateSolicitante(solicitante);
 									estado = false;
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha modificado de manera exitosa.", "Información",
@@ -1034,13 +1040,15 @@ public class RegPersona extends JDialog {
 						if (rdbUniversitario.isSelected()) {
 							if (!error) {
 								if (!modificar) {
-									int annos = new Integer((int) spnAnosExpUniversitario.getValue());
+									int annos = new Integer((int) spnAnosExpUniversitario.getValue());								
+									
 									Personal solicitante = new Universitario(cedula, nombre, apellido, telefono,
-											fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, false,
 											cbxCarrera.getSelectedItem().toString());
-									BolsaLaboral.getInstance().insertPersonal(solicitante);
+									
+									BolsaLaboral.getInstance().insertSolicitante(solicitante);
 									estado = false;
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha registrado de manera exitosa.", "Información",
@@ -1052,13 +1060,13 @@ public class RegPersona extends JDialog {
 								if (modificar) {
 									int annos = new Integer((int) spnAnosExpUniversitario.getValue());
 									Personal solicitante = new Universitario(cedula, nombre, apellido, telefono,
-											fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, false,
 											cbxCarrera.getSelectedItem().toString());
 
 									estado = false;
-									BolsaLaboral.getInstance().updatePersonal(solicitante);
+									BolsaLaboral.getInstance().updateSolicitante(solicitante);
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha modificado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
@@ -1073,15 +1081,15 @@ public class RegPersona extends JDialog {
 								if (!modificar) {
 									int annos = new Integer((int) spnAnosExpTecnico.getValue());
 									Personal solicitante = new Tecnico(cedula, nombre, apellido, telefono,
-											fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia,
 											cbxAreaTecnico.getSelectedItem().toString());
-									BolsaLaboral.getInstance().insertPersonal(solicitante);
+									BolsaLaboral.getInstance().insertSolicitante(solicitante);
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha registrado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
-									BolsaLaboral.getInstance().updatePersonal(solicitante);
+									BolsaLaboral.getInstance().updateSolicitante(solicitante);
 									Principal.actualizarChart();
 									estado = false;
 									clean();
@@ -1089,11 +1097,11 @@ public class RegPersona extends JDialog {
 								if (modificar) {
 									int annos = new Integer((int) spnAnosExpTecnico.getValue());
 									Personal solicitante = new Tecnico(cedula, nombre, apellido, telefono,
-											fechaNacimiento, nacionalidad, sexo, estadoCivil, direccion, provincia,
+											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia,
 											cbxAreaTecnico.getSelectedItem().toString());
-									BolsaLaboral.getInstance().updatePersonal(solicitante);
+									BolsaLaboral.getInstance().updateSolicitante(solicitante);
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha modificado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
@@ -1116,8 +1124,8 @@ public class RegPersona extends JDialog {
 								btnMover.setIcon(
 										new ImageIcon(RegPersona.class.getResource("/img/retroceso.png")));
 							}
-
-							String fecha = ((JTextField) FechaNacimiento.getDateEditor().getUiComponent()).getText();
+							
+							
 							String sexo = "";
 							if (rdbFemenino.isSelected()) {
 								sexo = "Femenino";
@@ -1132,7 +1140,7 @@ public class RegPersona extends JDialog {
 
 							} else if (panel1.isVisible()) {
 								if (txtApellidos.getText().isEmpty() || txtNombre.getText().isEmpty()
-										|| textCedula.getText().isEmpty() || fecha.equalsIgnoreCase("")
+										|| textCedula.getText().isEmpty()
 										|| cbxLicencia.getSelectedIndex() == 0 || sexo.equalsIgnoreCase("")
 										|| cbxProvincia.getSelectedIndex() == 0) {
 									JOptionPane.showMessageDialog(null, "Favor llenar todos los campos.", "ATENCIÓN",
@@ -1270,9 +1278,9 @@ public class RegPersona extends JDialog {
 		spnNumeroCasa.setValue(0);
 		btnMover.setText("Continuar ");
 		btnRegistrar.setEnabled(false);
-		LocalDate fecha = LocalDate.now();
+	/*	LocalDate fecha = LocalDate.now();
 		Date date = java.sql.Date.valueOf(fecha);
-		FechaNacimiento.setDate(date);
+		FechaNacimiento.setDate(date);*/
 		misHabilidades = new ArrayList<>();
 		misIdiomas = new ArrayList<>();
 		modeloHabilidad.clear();
@@ -1314,14 +1322,14 @@ public class RegPersona extends JDialog {
 	public void loadPersonalModi() {
 		if (modiS != null) {
 			btnRegistrar.setText("Modificar");
-			LocalDate fecha = modiS.getFechaNacimiento();
-			Date date = java.sql.Date.valueOf(fecha);
+		/*	LocalDate fecha = modiS.getFechaNacimiento();
+			Date date = java.sql.Date.valueOf(fecha);*/
 			txtApellidos.setEnabled(false);
 			txtNombre.setEnabled(false);
 			rdbFemenino.setEnabled(false);
 			rdbMasculino.setEnabled(false);
 			textCedula.setEnabled(false);
-			FechaNacimiento.setEnabled(false);
+			//FechaNacimiento.setEnabled(false);
 			cbxNacionalidad.setEnabled(false);
 			rdbSiReelocalizacion.setEnabled(false);
 			rdbNoReelocalizacion.setEnabled(false);
@@ -1339,7 +1347,7 @@ public class RegPersona extends JDialog {
 			txtNombre.setText(modiS.getNombres());
 			txtApellidos.setText(modiS.getApellidos());
 			textCedula.setText(modiS.getCedula());
-			FechaNacimiento.setDate(date);
+			//FechaNacimiento.setDate(date);
 			cbxNacionalidad.setSelectedItem(modiS.getNacionalidad());
 			cbxEstadoCilvil.setSelectedItem(modiS.getEstadoCivil());
 			cbxProvincia.setSelectedItem(modiS.getProvincia());
@@ -1439,14 +1447,14 @@ public class RegPersona extends JDialog {
 	public void laodVer() {
 		panel1.setEnabled(false);
 		panel2.setEnabled(false);
-		LocalDate fecha = verSoli.getFechaNacimiento();
-		Date date = java.sql.Date.valueOf(fecha);
+		/*LocalDate fecha = verSoli.getFechaNacimiento();
+		Date date = java.sql.Date.valueOf(fecha);*/
 		txtApellidos.setEnabled(false);
 		txtNombre.setEnabled(false);
 		rdbFemenino.setEnabled(false);
 		rdbMasculino.setEnabled(false);
 		textCedula.setEnabled(false);
-		FechaNacimiento.setEnabled(false);
+		//FechaNacimiento.setEnabled(false);
 		cbxNacionalidad.setEnabled(false);
 		rdbSiReelocalizacion.setEnabled(false);
 		rdbNoReelocalizacion.setEnabled(false);
@@ -1464,7 +1472,7 @@ public class RegPersona extends JDialog {
 		txtNombre.setText(verSoli.getNombres());
 		txtApellidos.setText(verSoli.getApellidos());
 		textCedula.setText(verSoli.getCedula());
-		FechaNacimiento.setDate(date);
+	//	FechaNacimiento.setDate(date);
 		cbxNacionalidad.setSelectedItem(verSoli.getNacionalidad());
 		cbxEstadoCilvil.setSelectedItem(verSoli.getEstadoCivil());
 		cbxProvincia.setSelectedItem(verSoli.getProvincia());

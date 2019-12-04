@@ -1,65 +1,94 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Paint;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale.Category;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import javax.swing.border.BevelBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.FlowLayout;
 import javax.swing.border.TitledBorder;
 
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.util.Rotation;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.util.Rotation;
 
-import javax.swing.SwingConstants;
-import java.awt.SystemColor;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import javax.swing.border.SoftBevelBorder;
-import java.awt.Toolkit;
-import java.awt.GridLayout;
+import logico.BolsaLaboral;
+
+//import de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EtchedBorder;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.border.BevelBorder;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
 
-public class Principal extends JFrame implements Runnable {
-	private JPanel panel;
-	private JPanel panelGrafi1;
-	private JPanel panelGrafi2;
-	private JPanel panelGrafi3;
-	JLabel lblHora ;
+
+public class Principal extends JFrame implements Runnable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private static JPanel panelBarras;
+	private static CategoryDataset datasetBarra;
+	private static PieDataset datasetPastel;
+	private static JFreeChart chartBarra;
+	private static JFreeChart chartPastel;
+	private static JPanel panelPastel;
+
+	private JLabel lblHora ;
     int hora, minutos, segundos;
     Calendar calendario;
-    Thread h1;
+	Thread h1;
+	//private Dimension dim;
 
 	/**
 	 * Launch the application.
-	 *
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			
 			public void run() {
 				try {
+	
+
 					Principal frame = new Principal();
+
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,297 +101,435 @@ public class Principal extends JFrame implements Runnable {
 	 * Create the frame.
 	 */
 	public Principal() {
-		
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/icon/networking.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Starter.class.getResource("/img/icon.png")));
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				if (JOptionPane.showConfirmDialog(null, "¿Desea guardar los nuevos cambios en la bolsa laboral?",
+						"Atención Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+				/*	ProgressBar progress = new ProgressBar(1);
+					progress.setVisible(true);
+					progress.setLocationRelativeTo(null);*/
+					BolsaLaboral.getInstance().writeBolsa();
+					dispose();
+				} else {
+					dispose();
+
+				}
+			}
+		});
+		BolsaLaboral.getInstance().readBolsa();
+		setBackground(new Color(248, 248, 255));
 		setResizable(false);
-		setTitle("Bolsa Laboral");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1072, 696);
+		setTitle("JOBIFY ~ Bolsa Laboral");
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 1304, 727);
+		//dim = super.getToolkit().getScreenSize();
+		//super.setSize(dim.width - 60, dim.height - 50);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout(0, 0));
+
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(SystemColor.inactiveCaption);
+		setJMenuBar(menuBar);
+
+		JMenu mnCandidatos = new JMenu("Personal");
+		mnCandidatos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/24.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitante24.png")));
+			}
+		});
+		JMenu mnMacheo = new JMenu("Ubicaci\u00F3n Laboral");
+		mnMacheo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/macheo.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo24.png")));
+			}
+		});
+		mnMacheo.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo24.png")));
+		menuBar.add(mnMacheo);
+
+		JMenuItem mntmRealizarMacheo = new JMenuItem("Realizar Pareo");
+		mntmRealizarMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo.png")));
+		mntmRealizarMacheo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Macheo macheo;
+				try {
+					macheo = new Macheo();
+					macheo.setModal(true);
+					macheo.setLocationRelativeTo(null);
+					macheo.setVisible(true);
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		mnMacheo.add(mntmRealizarMacheo);
+
+	
+
 		
-		 panel = new JPanel();
-		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JMenuItem mntmGuardarTodo = new JMenuItem("Guardar Todo");
+		mntmGuardarTodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BolsaLaboral.getInstance().writeBolsa();
+				/*ProgressBar progress = new ProgressBar(4);
+				progress.setVisible(true);
+				progress.setLocationRelativeTo(null);*/
+				
+				
+			}
+		});
+		mntmGuardarTodo.setIcon(new ImageIcon(Starter.class.getResource("/img/guardar.png")));
+		mnMacheo.add(mntmGuardarTodo);
+
+		JSeparator separator = new JSeparator();
+		mnMacheo.add(separator);
+
+		JMenuItem mntmCerrar = new JMenuItem("Salir");
+		mntmCerrar.setIcon(new ImageIcon(Starter.class.getResource("/img/cancelar.png")));
+		mntmCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (JOptionPane.showConfirmDialog(null, "ï¿½Desea guardar los nuevos cambios en la bolsa laboral?",
+						"Atenciï¿½n Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+					/*ProgressBar progress = new ProgressBar(1);
+					progress.setVisible(true);
+					progress.setLocationRelativeTo(null);*/
+					BolsaLaboral.getInstance().writeBolsa();
+					dispose();
+				} else {
+					dispose();
+
+				}
+			}
+		});
+		mnMacheo.add(mntmCerrar);
+		mnCandidatos.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitante24.png")));
+		menuBar.add(mnCandidatos);
+
+		JMenuItem mntmRegistrarCandidato = new JMenuItem("Registrar Persona");
+		mntmRegistrarCandidato.setIcon(new ImageIcon(Starter.class.getResource("/img/agregarSolicitante.png")));
+		mntmRegistrarCandidato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegPersona soli = new RegPersona("Insertar Solicitante", false, null, null);
+
+				soli.setModal(true);
+				soli.setLocationRelativeTo(null);
+				soli.setVisible(true);
+			}
+		});
+		mnCandidatos.add(mntmRegistrarCandidato);
+
+		JMenuItem mntmListarCandidatos = new JMenuItem("Listar Persona");
+		mntmListarCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarCandidatos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaSolicitud soli = new ListaSolicitud();
+				soli.setModal(true);
+				soli.setLocationRelativeTo(null);
+				soli.setVisible(true);
+			}
+		});
+		mnCandidatos.add(mntmListarCandidatos);
+
+		JMenu mnEmpresa = new JMenu("Empresa");
+		mnEmpresa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/edificio.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/empresa24.png")));
+			}
+		});
+		mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/empresa24.png")));
+		mnEmpresa.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		menuBar.add(mnEmpresa);
+
+		JMenuItem mntmRegistrarEmpresa = new JMenuItem("Registrar Empresa");
+		mntmRegistrarEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/addEmpresa.png")));
+		mntmRegistrarEmpresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegEmpresa empre;
+				try {
+					empre = new RegEmpresa("Insertar Empresa", false, null, null);
+					empre.setModal(true);
+					empre.setLocationRelativeTo(null);
+					empre.setVisible(true);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		mnEmpresa.add(mntmRegistrarEmpresa);
+
+		JMenuItem mntmListarEmpresas = new JMenuItem("Listar Empresas");
+		mntmListarEmpresas.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarEmpresas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListaEmpresas lista = new ListaEmpresas();
+				lista.setModal(true);
+				lista.setLocationRelativeTo(null);
+				lista.setVisible(true);
+			}
+		});
+		mnEmpresa.add(mntmListarEmpresas);
+		JMenu mnSolicitud = new JMenu("Solicitud Empresa");
+		mnSolicitud.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud24.png")));
+			}
+		});
+		mnSolicitud.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud24.png")));
+		menuBar.add(mnSolicitud);
+
+		JMenuItem mntmRegistrarSolicitud = new JMenuItem("Solicitud Empresarial");
+		mntmRegistrarSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/addSolicitud.png")));
+		mntmRegistrarSolicitud.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SolicitudEmpresa solicitud = new SolicitudEmpresa();
+				solicitud.setModal(true);
+				solicitud.setVisible(true);
+			}
+		});
+		mnSolicitud.add(mntmRegistrarSolicitud);
+
+		JMenuItem mntmListarSolicitud = new JMenuItem("Listar Solicitud");
+		mntmListarSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarSolicitud.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaSolicitud soli = new ListaSolicitud();
+				soli.setModal(true);
+				soli.setVisible(true);
+			}
+		});
+		mnSolicitud.add(mntmListarSolicitud);
+
+		JMenu mnReporte = new JMenu("Reportes");
+		mnReporte.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar.png")));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar24.png")));
+			}
+		});
+		mnReporte.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar24.png")));
+		menuBar.add(mnReporte);
+/*
+		JMenuItem mntmReporteDeEmpresa = new JMenuItem("Reporte de Empresa");
+		mntmReporteDeEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
+		mntmReporteDeEmpresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarEmpleados emple = new ListarEmpleados();
+				emple.setModal(true);
+				emple.setLocationRelativeTo(null);
+				emple.setVisible(true);
+
+			}
+		});
+		mnReporte.add(mntmReporteDeEmpresa);*/
+
+	/*	JMenuItem mntmReporteDeSolicitudes = new JMenuItem("Reporte de Solicitudes");
+		mntmReporteDeSolicitudes.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
+		mntmReporteDeSolicitudes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ReporteSolicitud soli = new ReporteSolicitud();
+				soli.setModal(true);
+				soli.setLocationRelativeTo(null);
+				soli.setVisible(true);
+			}
+		});
+		mnReporte.add(mntmReporteDeSolicitudes);*/
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(248, 248, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+
+		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.inactiveCaption);
-		getContentPane().add(panel, BorderLayout.CENTER);
+		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
+
+		panelBarras = new JPanel();
+		panelBarras.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panelBarras.setBounds(22, 332, 610, 294);
+		panel.add(panelBarras);
+		panelBarras.setLayout(null);
+
+		panelPastel = new JPanel();
+		panelPastel.setBackground(SystemColor.inactiveCaption);
+		panelPastel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelPastel.setBounds(658, 332, 610, 294);
+		panel.add(panelPastel);
+		panelPastel.setLayout(null);
+
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(Principal.class.getResource("/img/JOBIFY.png")));
+		lblLogo.setBounds(483, -17, 333, 89);
+		panel.add(lblLogo);
+		
+		JLabel lblBolsa = new JLabel("New label");
+		lblBolsa.setIcon(new ImageIcon(Principal.class.getResource("/img/bolsalaboral.png")));
+		lblBolsa.setBounds(558, 50, 221, 29);
+		panel.add(lblBolsa);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBackground(SystemColor.activeCaption);
+		separator_1.setBounds(10, 93, 1270, 9);
+		panel.add(separator_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
+		panel_1.setBounds(10, 104, 1270, 538);
+		panel.add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_2.setBounds(10, 82, 1046, 532);
+		panel_2.setBounds(1191, 66, 77, 24);
 		panel.add(panel_2);
-		panel_2.setLayout(null);
 		
-		panelGrafi1 = new JPanel();
-		panelGrafi1.setBackground(SystemColor.controlHighlight);
-		panelGrafi1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelGrafi1.setBounds(529, 11, 507, 249);
-		panel_2.add(panelGrafi1);
-		showGraf1();
-		
-		JLabel lblPorcientoMujer = new JLabel("porciento por genero");
-		lblPorcientoMujer.setBounds(203, 261, 101, 14);
-		panelGrafi1.add(lblPorcientoMujer);
-		
-		 panelGrafi3 = new JPanel();
-		panelGrafi3.setBackground(SystemColor.controlHighlight);
-		panelGrafi3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelGrafi3.setBounds(10, 271, 507, 249);
-		panel_2.add(panelGrafi3);
-		showGraf3();
-		
-		
-		JLabel label = new JLabel("");
-		label.setBounds(253, 432, 0, 0);
-		panelGrafi3.add(label);
-		
-		 panelGrafi2 = new JPanel();
-		panelGrafi2.setBackground(SystemColor.controlHighlight);
-		panelGrafi2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelGrafi2.setBounds(529, 271, 507, 249);
-		panel_2.add(panelGrafi2);
-		showGraf2();
-		
-		JLabel lblEmpleadosEnEspera = new JLabel("empleados en espera");
-		panelGrafi2.add(lblEmpleadosEnEspera);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBackground(SystemColor.inactiveCaption);
-		panel_1.setBounds(10, 11, 507, 249);
-		panel_2.add(panel_1);
-		
-		JLabel label_1 = new JLabel("");
-		panel_1.add(label_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/icon/JOBIFY.png")));
-		lblNewLabel.setBounds(407, 11, 237, 76);
-		panel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/icon/bolsalaboral.png")));
-		lblNewLabel_1.setBounds(434, 51, 296, 26);
-		panel.add(lblNewLabel_1);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(SystemColor.inactiveCaptionBorder);
-		panel_6.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_6.setBounds(984, 59, 72, 20);
-		panel.add(panel_6);
-		
-		lblHora = new JLabel("HO:RA:ACT");
-		lblHora.setVerticalAlignment(SwingConstants.TOP);
-		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblHora, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addComponent(lblHora, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		panel_6.setLayout(gl_panel_6);
+		lblHora = new JLabel("HH::MM::RR");
+		lblHora.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panel_2.add(lblHora);
+		actualizarChart();
+		actualizarPastel();
 		h1 = new Thread(this);
 	    h1.start();
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setForeground(Color.PINK);
-		menuBar.setBorderPainted(false);
-		menuBar.setBackground(SystemColor.activeCaption);
-		
-		setJMenuBar(menuBar);
-		
-		JMenu mnPersonal = new JMenu("Personal");
-		mnPersonal.setBackground(SystemColor.activeCaption);
-		mnPersonal.setIcon(new ImageIcon(Principal.class.getResource("/icon/empresario.png")));
-		menuBar.add(mnPersonal);
-		
-		JMenuItem mntmRegistrar = new JMenuItem("Registrar Persona");
-		mntmRegistrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegPersona regper = new RegPersona(null);
-				regper.setLocationRelativeTo(null);
-				regper.setVisible(true);
-			}
-		});
-		mnPersonal.add(mntmRegistrar);
-		
-		
-		JMenuItem mntmSolicPerson = new JMenuItem("Generar Solicitud");
-		mntmSolicPerson.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SolicitudPersonal solper = new SolicitudPersonal();
-				solper.setLocationRelativeTo(null);
-				solper.setVisible(true);
-			}
-		});
-		mnPersonal.add(mntmSolicPerson);
-		
-		JMenuItem mntmLista = new JMenuItem("Lista");
-		mnPersonal.add(mntmLista);
-		
-		JMenu mnEmpresa = new JMenu("Empresa");
-		mnEmpresa.setBackground(SystemColor.activeCaption);
-		mnEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/icon/edificio-de-oficinas.png")));
-		menuBar.add(mnEmpresa);
-		
-		JMenuItem mntmRegEmp = new JMenuItem("Registrar Empresa");
-		mntmRegEmp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegEmpresa regemp = new RegEmpresa();
-				regemp.setLocationRelativeTo(null);
-				regemp.setVisible(true);
-				
-			}
-		});
-		mnEmpresa.add(mntmRegEmp);
-		
-		JMenuItem mntmSoliEmp = new JMenuItem("Generar Solicitud");
-		mntmSoliEmp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
-				SolicitudEmpresa solemp = new SolicitudEmpresa();
-				solemp.setLocationRelativeTo(null);
-				solemp.setVisible(true);	
-}
-		});
-		
-		JMenuItem mntmModificarEmpresa = new JMenuItem("Modificar Empresa");
-		mnEmpresa.add(mntmModificarEmpresa);
-		mnEmpresa.add(mntmSoliEmp);
-		
-		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Lista");
-		mnEmpresa.add(mntmNewMenuItem_8);
-		
-		JMenu mnReporte = new JMenu("Reportes");
-		mnReporte.setBackground(SystemColor.activeCaption);
-		mnReporte.setIcon(new ImageIcon(Principal.class.getResource("/icon/impresora.png")));
-		menuBar.add(mnReporte);
-		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("New menu item");
-		mnReporte.add(mntmNewMenuItem_5);
-		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("New menu item");
-		mnReporte.add(mntmNewMenuItem_4);
-		
-		JMenu mnNewMenu_3 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_3);
-		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
-		mnNewMenu_3.add(mntmNewMenuItem_3);
-		
+	
+		// hiloBarras();
+
+	}
+
+	public static void actualizarPastel() {
+		panelPastel.removeAll();
+		panelPastel.revalidate();
+		datasetPastel = dataSetPastel();
+		chartPastel = creadorGraficoP(datasetPastel, "Trabajadores Contratados por Tipo");
+		panelPastel.setLayout(null);
+		ChartPanel chartPanel = new ChartPanel(chartPastel);
+		chartPanel.setBorder(null);
+		chartPanel.setBounds(10, 2, 590, 281);
+		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
+		panelPastel.add(chartPanel);
+		chartPanel.setLayout(null);
+		panelPastel.repaint();
+
+	}
+
+	public static void actualizarChart() {
+		panelBarras.removeAll();
+		panelBarras.revalidate();
+		datasetBarra = creadorCategoria();
+		chartBarra = creadorGraficoB(datasetBarra, "Solicitantes Desempleados");
+		panelBarras.setLayout(new BorderLayout(0, 0));
+		ChartPanel chartPanel = new ChartPanel(chartBarra);
+		chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
+		panelBarras.add(chartPanel, BorderLayout.CENTER);
+		chartPanel.setLayout(null);
+		panelBarras.repaint();
 		
 	}
+
+	public static JFreeChart creadorGraficoB(CategoryDataset dataSet, String titulo) {
+		JFreeChart grafico = ChartFactory.createBarChart(titulo, "Tipo de Solicitante", "Catidad Desempleados", dataSet,
+				PlotOrientation.VERTICAL, false, true, false);
 	
+		grafico.setBackgroundPaint(	SystemColor.inactiveCaption);
+		CategoryPlot plot = (CategoryPlot) grafico.getPlot();
+		plot.setForegroundAlpha(0.8f);
+		plot.setBackgroundPaint(new Color(254, 253, 241));
+		return grafico;
+	}
 
-    private void showGraf1() {
-      
-        // Fuente de Datos
-        DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Obrero", 40);
-        data.setValue("Universitario", 45);
-        data.setValue("Tecnico", 15);
- 
-        // Creando el Grafico
-        JFreeChart chart = ChartFactory.createPieChart(
-         "Cantidad de solicitantes en espera", 
-         data, 
-         true, 
-         true, 
-         false);
-        panelGrafi1.setLayout(null);
- 
-        // Crear el Panel del Grafico con ChartPanel
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-        chart.setBackgroundPaint( SystemColor.inactiveCaption);
-      
-        chartPanel.setBounds(0, 0, 507, 249);
-        chartPanel.setPreferredSize(new java.awt.Dimension(panelGrafi1.getWidth(), panelGrafi1.getHeight()));
-        panelGrafi1.add(chartPanel);
-    }
-    private void showGraf2() {
-        
-        
-        // Fuente de Datos
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(8, "Mujeres", "Lunes");
-        dataset.setValue(7, "Hombres", "Lunes");
-        dataset.setValue(9, "Mujeres", "Martes");
-        dataset.setValue(4, "Hombres", "Martes");
-        dataset.setValue(4, "Mujeres", "Miercoles");
-        dataset.setValue(5, "Hombres", "Miercoles");
-        dataset.setValue(8, "Mujeres", "Jueves");
-        dataset.setValue(9, "Hombres", "Jueves");
-        dataset.setValue(7, "Mujeres", "Viernes");
-        dataset.setValue(8, "Hombres", "Viernes");
-        
-        // Creando el Grafico
-        JFreeChart chart = ChartFactory.createBarChart3D
-                ("Participacion por Genero","Genero", "Dias", 
-                dataset, PlotOrientation.VERTICAL, true,true, false);
-                chart.setBackgroundPaint(SystemColor.inactiveCaption);
-                chart.getTitle().setPaint(Color.black); 
-                CategoryPlot p = chart.getCategoryPlot(); 
-                p.setRangeGridlinePaint(Color.red); 
-        panelGrafi2.setLayout(null);
- 
-        // Crear el Panel del Grafico con ChartPanel
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-      //  chart.getPlot().setBackgroundPaint( SystemColor.inactiveCaptionBorder );
-      
-        chartPanel.setBounds(0, 0, 507, 249);
-        chartPanel.setPreferredSize(new java.awt.Dimension(panelGrafi2.getWidth(), panelGrafi2.getHeight()));
-        panelGrafi2.add(chartPanel);
-        
-        
-        
-        
+	public static JFreeChart creadorGraficoP(PieDataset dataSet, String titulo) {
+		JFreeChart chart = ChartFactory.createPieChart3D(titulo, dataSet, true, true, false);
+		//Color col = new Color(255, 249, 234);
+		chart.setBackgroundPaint(	SystemColor.inactiveCaption);
+		PiePlot3D plot = (PiePlot3D) chart.getPlot();
+		plot.setStartAngle(0.5);
+		plot.setDirection(Rotation.CLOCKWISE);
+		plot.setForegroundAlpha(0.5f);
+		plot.setBackgroundPaint(new Color(254, 253, 241));
+		return chart;
 
-    }
-    
-    private void showGraf3() {
-        
-        // Fuente de Datos
-        DefaultPieDataset data = new DefaultPieDataset();
-        data.setValue("Obrero", 40);
-        data.setValue("Universitario", 45);
-        data.setValue("Tecnico", 15);
- 
-        DefaultPieDataset defaultpiedataset = new DefaultPieDataset(); 
-        defaultpiedataset.setValue("Mujeres", new Double(41.200000000000003D)); 
-        defaultpiedataset.setValue("Hombres", new Double(11D)); 
-       /* defaultpiedataset.setValue("Hacking", new Double(19.5D)); 
-        defaultpiedataset.setValue("SEO", new Double(30.5D)); 
-        defaultpiedataset.setValue("Redes", new Double(2.0D)); */
- 
-        // Creando el Grafico
-        JFreeChart chart = ChartFactory.createPieChart3D("Porcentaje de contratacion por genero", defaultpiedataset, true, true, false); 
-        PiePlot3D pieplot3d = (PiePlot3D)chart.getPlot(); 
-        pieplot3d.setDepthFactor(0.5); 
-        pieplot3d.setStartAngle(290D); 
-        pieplot3d.setDirection(Rotation.CLOCKWISE); 
-        pieplot3d.setForegroundAlpha(0.5F); 
-        panelGrafi3.setLayout(null);
-        
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chart.setBackgroundPaint( SystemColor.inactiveCaption);
-        chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-        chartPanel.setBounds(0, 0, 507, 249);
-        panelGrafi3.add(chartPanel);
-    }
-    
-    
-    
-    
+	}
+
+	public static CategoryDataset creadorCategoria() {
+		DefaultCategoryDataset setter = new DefaultCategoryDataset();
+		setter.setValue(BolsaLaboral.getInstance().desempleadoO(), "Tipo de Solicitante", "Obreros");
+		setter.setValue(BolsaLaboral.getInstance().desempleadoU(), "Tipo de Solicitante", "Universitarios");
+		setter.setValue(BolsaLaboral.getInstance().desempleadoT(), "Tipo de Solicitante", "Técnicos");
+		return setter;
+	}
+
+	public static PieDataset dataSetPastel() {
+		DefaultPieDataset result = new DefaultPieDataset();
+		if (BolsaLaboral.getInstance().porcientoO() != 0) {
+			result.setValue("Obrero", BolsaLaboral.getInstance().porcientoO());
+		}
+		if (BolsaLaboral.getInstance().porcientoT() != 0) {
+			result.setValue("Tecnico", BolsaLaboral.getInstance().porcientoT());
+		}
+		if (BolsaLaboral.getInstance().porcientoU() != 0) {
+			result.setValue("Universitario", BolsaLaboral.getInstance().porcientoU());
+		}
+
+		return result;
+	}
+
+	public void hiloBarras() {
+		Thread actualizar = new Thread() {
+			public void run() {
+				try {
+					for (;;) {
+						actualizarChart();
+						sleep(1000);
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		};
+		actualizar.start();
+	}
+	
 	@Override
 	public void run() {
 		Thread ct = Thread.currentThread();

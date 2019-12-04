@@ -269,8 +269,8 @@ public class Matching extends JDialog {
 							BolsaLaboral.getInstance().contratarCandidatos(solicitud, misSolicitantesC);
 							JOptionPane.showMessageDialog(null, "Los solicitantes han sido contratados.", "Información",
 									JOptionPane.INFORMATION_MESSAGE, null);
-							Principal.actualizarChart();
-							Principal.actualizarPastel();
+							Starter.actualizarChart();
+							Starter.actualizarPastel();
 							BolsaLaboral.getInstance().removerContratados(misSolicitantesC);
 							clean();
 						} else {

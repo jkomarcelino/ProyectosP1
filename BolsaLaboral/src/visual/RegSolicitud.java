@@ -1004,7 +1004,7 @@ public class RegSolicitud extends JDialog {
 											"El solicitante se ha registrado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
 
-									Principal.actualizarChart();
+									Starter.actualizarChart();
 									clean();
 									// call();
 
@@ -1020,7 +1020,7 @@ public class RegSolicitud extends JDialog {
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha modificado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
-									Principal.actualizarChart();
+									Starter.actualizarChart();
 									dispose();
 
 								}
@@ -1040,7 +1040,7 @@ public class RegSolicitud extends JDialog {
 									JOptionPane.showMessageDialog(null,
 											"El solicitante se ha registrado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
-									Principal.actualizarChart();
+									Starter.actualizarChart();
 									clean();
 
 								}
@@ -1058,7 +1058,7 @@ public class RegSolicitud extends JDialog {
 											"El solicitante se ha modificado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
 
-									Principal.actualizarChart();
+									Starter.actualizarChart();
 									dispose();
 								}
 							}
@@ -1077,7 +1077,7 @@ public class RegSolicitud extends JDialog {
 											"El solicitante se ha registrado de manera exitosa.", "Información",
 											JOptionPane.INFORMATION_MESSAGE, null);
 									BolsaLaboral.getInstance().updatePersonal(solicitante);
-									Principal.actualizarChart();
+									Starter.actualizarChart();
 									estado = false;
 									clean();
 								}
