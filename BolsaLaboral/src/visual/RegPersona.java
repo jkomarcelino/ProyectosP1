@@ -295,4 +295,15 @@ public class RegPersona extends JDialog {
 			}
 		}
 	}
+	
+	public void validacion(KeyEvent e) {//esto valida si se intenta introducir un numero en campo texto
+		char c = e.getKeyChar();
+		if (Character.isDigit(c)) {
+			getToolkit().beep();
+
+			e.consume();
+			JOptionPane.showMessageDialog(null, "Este campo no adminte número");
+		}
+
+	}
 }
