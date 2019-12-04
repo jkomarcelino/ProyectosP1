@@ -115,7 +115,7 @@ public class Principal2 extends JFrame {
 		BolsaLaboral.getInstance().readBolsa();
 		setBackground(new Color(248, 248, 255));
 		setResizable(false);
-		setTitle("Man Power Group");
+		setTitle("Jobify ~ Bolsa Laboral");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1306, 727);
 		dim = super.getToolkit().getScreenSize();
