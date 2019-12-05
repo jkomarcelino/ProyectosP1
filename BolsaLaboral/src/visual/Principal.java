@@ -524,7 +524,7 @@ public class Principal extends JFrame implements Runnable{
 		return result;
 	}
 
-
+/*
 	public void hiloBarras() {
 		Thread actualizar = new Thread() {
 			public void run() {
@@ -540,7 +540,7 @@ public class Principal extends JFrame implements Runnable{
 
 		};
 		actualizar.start();
-	}
+	}*/
 	
 	@Override
 	public void run() {
