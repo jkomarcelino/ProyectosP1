@@ -178,7 +178,7 @@ public class ListaEmpresas extends JDialog {
 	private void loadTable() {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		for (Empresa miemp : bolsa.getlistEmpresa()) {
+		for (Empresa miemp : bolsa.getMisEmpresas()) {
 			fila[0] = miemp.getRNC();
 			fila[1] = miemp.getNombre();
 			fila[2] = miemp.getArea();

@@ -305,7 +305,7 @@ public class Matching extends JDialog {
 		fila = new Object[modelo.getColumnCount()];
 
 		if (empresa == null) {
-			for (Solicitud soli : BolsaLaboral.getInstance().getlistSolicitud()) {
+			for (Solicitud soli : BolsaLaboral.getInstance().getMisSolicitudes()) {
 				if (soli.getCantVacantes() > 0) {
 					fila[0] = soli.getCodigo();
 					if (soli instanceof SolicitudUniversitario) {
