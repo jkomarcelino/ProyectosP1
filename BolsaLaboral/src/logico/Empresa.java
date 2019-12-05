@@ -17,7 +17,7 @@ public class Empresa implements Serializable{
 	private String direccion;
 	private String sector;
 	private String ciudad;
-	private String calle;
+	private String calle; 
 	private int numeroLocal;
 	private String referencia;
 	private ArrayList<Personal>misContratados;
