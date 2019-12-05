@@ -57,6 +57,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.ImageIcon;
 import javax.swing.SpinnerNumberModel;
 import java.awt.SystemColor;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
 
 public class RegPersona extends JDialog {
 
@@ -90,6 +92,7 @@ public class RegPersona extends JDialog {
 	private JRadioButton rdbFemenino;
 	private JRadioButton rdbSiPost;
 	private JRadioButton rdbNoPost;
+	private JFormattedTextField fTxtEdad;
 	private JFormattedTextField txtTelefono;
 	private JFormattedTextField txtEmail;
 	private JFormattedTextField textCedula;
@@ -101,7 +104,7 @@ public class RegPersona extends JDialog {
 	private JComboBox cbxHabilidades;
 	private JComboBox cbxAreaTecnico;
 	private JComboBox cbxCarrera;
-	private JSpinner spnEdad;
+
 	private JSpinner spnAnosExpUniversitario;
 	private JSpinner spnNumeroCasa;
 	private JSpinner spnAnnosExpObrero;
@@ -112,6 +115,7 @@ public class RegPersona extends JDialog {
 	private ArrayList<String> misHabilidades = new ArrayList<>();
 	private MaskFormatter telefono;
 	private MaskFormatter cedula;
+	private MaskFormatter edad;
 //	private JDateChooser FechaNacimiento; QUE PONGA LA EDAD
 	private DefaultListModel<String> modeloIdiomas = new DefaultListModel<>();
 	private DefaultListModel<String> modeloHabilidad = new DefaultListModel<>();
@@ -153,6 +157,8 @@ public class RegPersona extends JDialog {
 		try {
 			telefono = new MaskFormatter("(###)-###-####");
 			cedula = new MaskFormatter("###-#######-#");
+			edad = new MaskFormatter("##");
+			
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -173,8 +179,7 @@ public class RegPersona extends JDialog {
 
 			panel_infoPersonal = new JPanel();
 			panel_infoPersonal.setBackground(new Color(248, 248, 255));
-			panel_infoPersonal.setBorder(new TitledBorder(null, "Informaci\u00F3n General", TitledBorder.LEADING,
-					TitledBorder.TOP, null, null));
+			panel_infoPersonal.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
 			panel_infoPersonal.setBounds(10, 29, 590, 164);
 			panel1.add(panel_infoPersonal);
 			panel_infoPersonal.setLayout(null);
@@ -330,9 +335,9 @@ public class RegPersona extends JDialog {
 			label_5.setBounds(365, 134, 38, 14);
 			panel_infoPersonal.add(label_5);
 			
-			JSpinner spnEdad = new JSpinner();
-			spnEdad.setBounds(100, 131, 57, 20);
-			panel_infoPersonal.add(spnEdad);
+			fTxtEdad = new JFormattedTextField(edad);
+			fTxtEdad.setBounds(100, 131, 134, 20);
+			panel_infoPersonal.add(fTxtEdad);
 
 			JLabel lblpriority = new JLabel("Campos con * son obligatorios.");
 			lblpriority.setForeground(Color.RED);
@@ -342,8 +347,7 @@ public class RegPersona extends JDialog {
 
 			JPanel panel_Direccion = new JPanel();
 			panel_Direccion.setBackground(new Color(248, 248, 255));
-			panel_Direccion.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
-					"Ubicaci\u00F3n Actual", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel_Direccion.setBorder(new CompoundBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)), null));
 			panel_Direccion.setBounds(10, 198, 590, 159);
 			panel1.add(panel_Direccion);
 			panel_Direccion.setLayout(null);
@@ -914,7 +918,7 @@ public class RegPersona extends JDialog {
 						String ciudad = txtCiudad.getText();
 						String sector = txtSector.getText();
 						String calle = txtCalle.getText();
-						int edad = Integer.parseInt(spnEdad.toString());
+						int edad = Integer.parseInt(fTxtEdad.toString());
 						String direccion = "";
 						int numeroCasa = new Integer((int) spnNumeroCasa.getValue());
 						String referencia = txtReferencia.getText();
@@ -1261,7 +1265,7 @@ public class RegPersona extends JDialog {
 		txtSector.setText("");
 		txtTelefono.setText("");
 		textCedula.setText("");
-		//spnEdad.setText("");
+		fTxtEdad.setText("");
 		cbxAreaTecnico.setSelectedIndex(0);
 		cbxCarrera.setSelectedIndex(0);
 		cbxEstadoCilvil.setSelectedIndex(0);
@@ -1348,7 +1352,7 @@ public class RegPersona extends JDialog {
 			txtNombre.setText(modiS.getNombres());
 			txtApellidos.setText(modiS.getApellidos());
 			textCedula.setText(modiS.getCedula());
-			spnEdad.setToolTipText(String.valueOf(modiS.getEdad()));
+			fTxtEdad.setText(String.valueOf(modiS.getEdad()));
 			cbxNacionalidad.setSelectedItem(modiS.getNacionalidad());
 			cbxEstadoCilvil.setSelectedItem(modiS.getEstadoCivil());
 			cbxProvincia.setSelectedItem(modiS.getProvincia());
