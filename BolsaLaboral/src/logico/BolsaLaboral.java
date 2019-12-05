@@ -1120,7 +1120,74 @@ return aspirante;
 		}
 		return cant;
 	}
-
+	
+	// por genero
+	// Retorna % de Obreros Contratados
+		public float porcientoF() {
+			float cant = 0;
+			float porciento = 0;
+			float total = totalContratado();
+			for (Personal soli : misSolicitantes) {
+				if (soli instanceof Obrero) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Femenino")) {
+							cant++;
+						}
+					}
+				}
+				if (soli instanceof Universitario) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Femenino")) {
+							cant++;
+						}
+					}
+				}
+				if (soli instanceof Tecnico) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Femenino")) {
+							cant++;
+						}
+					}
+				}
+			}
+			if (total != 0) {
+				porciento = (cant / total) * 100;
+			}
+			return porciento;
+		}
+		
+		public float porcientoH() {
+			float cant = 0;
+			float porciento = 0;
+			float total = totalContratado();
+			for (Personal soli : misSolicitantes) {
+				if (soli instanceof Obrero) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Masculino")) {
+							cant++;
+						}
+					}
+				}
+				if (soli instanceof Universitario) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Masculino")) {
+							cant++;
+						}
+					}
+				}
+				if (soli instanceof Tecnico) {
+					if(soli.isContratado()) {
+						if (soli.sexo.equalsIgnoreCase("Masculino")) {
+							cant++;
+						}
+					}
+				}
+			}
+			if (total != 0) {
+				porciento = (cant / total) * 100;
+			}
+			return porciento;
+		}
 	// Retorna % de Obreros Contratados
 	public float porcientoO() {
 		float cant = 0;

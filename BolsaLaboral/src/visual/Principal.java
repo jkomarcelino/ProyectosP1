@@ -68,9 +68,13 @@ public class Principal extends JFrame implements Runnable{
 	private static JPanel panelBarras;
 	private static CategoryDataset datasetBarra;
 	private static PieDataset datasetPastel;
+	private static PieDataset datasetPastel2;
 	private static JFreeChart chartBarra;
 	private static JFreeChart chartPastel;
+	private static JFreeChart chartPastel2;
 	private static JPanel panelPastel;
+	private static JPanel panelPastel2;
+
 
 	private JLabel lblHora ;
     int hora, minutos, segundos;
@@ -383,16 +387,30 @@ public class Principal extends JFrame implements Runnable{
 
 		panelBarras = new JPanel();
 		panelBarras.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panelBarras.setBounds(22, 332, 610, 294);
+		panelBarras.setBounds(22, 373, 610, 253);
 		panel.add(panelBarras);
 		panelBarras.setLayout(null);
 
 		panelPastel = new JPanel();
 		panelPastel.setBackground(SystemColor.inactiveCaption);
 		panelPastel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panelPastel.setBounds(658, 332, 610, 294);
+		panelPastel.setBounds(658, 373, 610, 253);
 		panel.add(panelPastel);
 		panelPastel.setLayout(null);
+		
+		panelPastel2 = new JPanel();
+		panelPastel2.setBackground(SystemColor.inactiveCaption);
+		panelPastel2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		panelPastel2.setBounds(658, 113, 610, 249);
+		panel.add(panelPastel2);
+		panelPastel2.setLayout(null);
+		
+		/*ChartPanel chartPanel2 = new ChartPanel((JFreeChart) null);
+		chartPanel2.setLayout(null);
+		chartPanel2.setPreferredSize(new Dimension(800, 500));
+		chartPanel2.setBorder(null);
+		chartPanel2.setBounds(10, 11, 590, 240);
+		panelPastel2.add(chartPanel2);*/
 
 		
 		JLabel lblLogo = new JLabel("");
@@ -427,10 +445,26 @@ public class Principal extends JFrame implements Runnable{
 		panel_2.add(lblHora);
 		actualizarChart();
 		actualizarPastel();
+		actualizarPastel2();
 		h1 = new Thread(this);
 	    h1.start();
 	
 		// hiloBarras();
+
+	}
+	public static void actualizarPastel2() {
+		panelPastel2.removeAll();
+		panelPastel2.revalidate();
+		datasetPastel2 = dataSetPastel2();
+		chartPastel2 = creadorGraficoP2(datasetPastel2, "Trabajadores Contratados por Género");
+		panelPastel2.setLayout(null);
+		ChartPanel chartPanel2 = new ChartPanel(chartPastel2);
+		chartPanel2.setBorder(null);
+		chartPanel2.setBounds(10, 2, 590, 236);
+		chartPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
+		panelPastel2.add(chartPanel2);
+		chartPanel2.setLayout(null);
+		panelPastel2.repaint();
 
 	}
 
@@ -442,7 +476,7 @@ public class Principal extends JFrame implements Runnable{
 		panelPastel.setLayout(null);
 		ChartPanel chartPanel = new ChartPanel(chartPastel);
 		chartPanel.setBorder(null);
-		chartPanel.setBounds(10, 2, 590, 281);
+		chartPanel.setBounds(10, 2, 590, 240);
 		chartPanel.setPreferredSize(new java.awt.Dimension(800, 500));
 		panelPastel.add(chartPanel);
 		chartPanel.setLayout(null);
@@ -488,6 +522,19 @@ public class Principal extends JFrame implements Runnable{
 		return chart;
 
 	}
+	public static JFreeChart creadorGraficoP2(PieDataset dataSet, String titulo) {
+		JFreeChart chart = ChartFactory.createPieChart3D(titulo, dataSet, true, true, false);
+		//Color col = new Color(255, 249, 234);
+		chart.setBackgroundPaint(	SystemColor.inactiveCaption);
+		PiePlot3D plot = (PiePlot3D) chart.getPlot();
+		plot.setStartAngle(0.5);
+		plot.setDirection(Rotation.CLOCKWISE);
+		plot.setForegroundAlpha(0.5f);
+		plot.setBackgroundPaint(new Color(254, 253, 241));
+		return chart;
+
+	}
+
 
 	public static CategoryDataset creadorCategoria() {
 		DefaultCategoryDataset setter = new DefaultCategoryDataset();
@@ -511,6 +558,19 @@ public class Principal extends JFrame implements Runnable{
 
 		return result;
 	}
+	
+	public static PieDataset dataSetPastel2() {
+		DefaultPieDataset result = new DefaultPieDataset();
+		if (BolsaLaboral.getInstance().porcientoH() != 0) {
+			result.setValue("Masculino", BolsaLaboral.getInstance().porcientoH());
+		}
+		if (BolsaLaboral.getInstance().porcientoF() != 0) {
+			result.setValue("Femenino", BolsaLaboral.getInstance().porcientoF());
+		}
+
+		return result;
+	}
+
 
 	public void hiloBarras() {
 		Thread actualizar = new Thread() {
