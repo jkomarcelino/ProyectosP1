@@ -371,7 +371,7 @@ public class Principal extends JFrame implements Runnable{
 		});
 		mnReporte.add(mntmReporteDeSolicitudes);*/
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(248, 248, 255));
+		contentPane.setBackground(SystemColor.inactiveCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

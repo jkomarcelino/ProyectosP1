@@ -119,6 +119,7 @@ public class RegPersona extends JDialog {
 	private Personal modiS = null;
 	private Personal verSoli = null;
 	Calendar cal= Calendar.getInstance();
+	private JTextField txtEdad;
 
 	/**
 	 * Launch the application.
@@ -328,6 +329,12 @@ public class RegPersona extends JDialog {
 			label_5.setForeground(Color.RED);
 			label_5.setBounds(365, 134, 38, 14);
 			panel_infoPersonal.add(label_5);
+			
+			txtEdad = new JTextField();
+			txtEdad.setColumns(10);
+			txtEdad.setBackground(Color.WHITE);
+			txtEdad.setBounds(100, 131, 134, 23);
+			panel_infoPersonal.add(txtEdad);
 
 			JLabel lblpriority = new JLabel("Campos con * son obligatorios.");
 			lblpriority.setForeground(Color.RED);
