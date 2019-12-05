@@ -543,7 +543,10 @@ return aspirante;
 	    }
 	
 	*/
-	 
+//********************************************EMPRESA*****************************************************************
+
+//********************************************PERSONA***************************************************************
+//********************************************SOLICITUD**************************************************************
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Empresa> misEmpresas;
 	private ArrayList<Personal> misSolicitantes;
@@ -715,7 +718,7 @@ return aspirante;
 				if (persona.isMudarse() == solicitud.isMudarse()) {
 					if (persona.getCategoriaLicencia() >= solicitud.getCategoriaLicencia()) {
 						if (persona.getAnnosExperiencia() >= solicitud.getAnnosExperiencia()) {
-							if ((persona.getEdad() >= solicitud.getEdadMin())
+							if ((persona.getEdad()>= solicitud.getEdadMin())
 									&& (persona.getEdad() <= solicitud.getEdadMax())) {
 								if (validarIdiomas(persona, solicitud)) {
 									valido = true;
