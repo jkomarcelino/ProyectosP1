@@ -33,6 +33,9 @@ import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.SystemColor;
 
 public class ListaEmpresas extends JDialog {
 
@@ -60,9 +63,8 @@ public class ListaEmpresas extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Listado de Empresas",
-					TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(SystemColor.inactiveCaption);
+			panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Lista de Empresas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 
@@ -108,7 +110,7 @@ public class ListaEmpresas extends JDialog {
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBorder(null);
-			buttonPane.setBackground(new Color(248, 248, 255));
+			buttonPane.setBackground(SystemColor.inactiveCaption);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

@@ -39,6 +39,9 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
 
 public class ListaPersonal extends JDialog {
 
@@ -80,15 +83,14 @@ public class ListaPersonal extends JDialog {
 		setResizable(false);
 		setBounds(100, 100, 987, 511);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(248, 248, 255));
+		contentPanel.setBackground(SystemColor.activeCaption);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
-			panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-					"Listado De Solicitantes", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(SystemColor.inactiveCaption);
+			panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Listado de Solicitantes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 
@@ -159,7 +161,7 @@ public class ListaPersonal extends JDialog {
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBorder(null);
-			buttonPane.setBackground(new Color(248, 248, 255));
+			buttonPane.setBackground(SystemColor.activeCaption);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
