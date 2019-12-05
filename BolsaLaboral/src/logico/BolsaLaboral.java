@@ -568,7 +568,7 @@ return aspirante;
 	    }
 	
 	*/
-	
+	 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Empresa> misEmpresas;
 	private ArrayList<Personal> misSolicitantes;
