@@ -166,7 +166,7 @@ public class RegPersona extends JDialog {
 		setResizable(false);
 		setModal(true);
 		setTitle(title);
-		setBounds(100, 100, 612, 453);
+		setBounds(100, 100, 617, 470);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(248, 248, 255));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -180,7 +180,7 @@ public class RegPersona extends JDialog {
 			panel_infoPersonal = new JPanel();
 			panel_infoPersonal.setBackground(new Color(248, 248, 255));
 			panel_infoPersonal.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
-			panel_infoPersonal.setBounds(10, 29, 590, 164);
+			panel_infoPersonal.setBounds(10, 61, 590, 164);
 			panel1.add(panel_infoPersonal);
 			panel_infoPersonal.setLayout(null);
 
@@ -339,16 +339,10 @@ public class RegPersona extends JDialog {
 			fTxtEdad.setBounds(100, 131, 134, 20);
 			panel_infoPersonal.add(fTxtEdad);
 
-			JLabel lblpriority = new JLabel("Campos con * son obligatorios.");
-			lblpriority.setForeground(Color.RED);
-			lblpriority.setFont(new Font("Tahoma", Font.PLAIN, 10));
-			lblpriority.setBounds(445, 11, 155, 13);
-			panel1.add(lblpriority);
-
 			JPanel panel_Direccion = new JPanel();
 			panel_Direccion.setBackground(new Color(248, 248, 255));
 			panel_Direccion.setBorder(new CompoundBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)), null));
-			panel_Direccion.setBounds(10, 198, 590, 159);
+			panel_Direccion.setBounds(10, 236, 590, 159);
 			panel1.add(panel_Direccion);
 			panel_Direccion.setLayout(null);
 
@@ -430,6 +424,11 @@ public class RegPersona extends JDialog {
 			spnNumeroCasa.setBackground(new Color(255, 255, 255));
 			spnNumeroCasa.setBounds(100, 111, 134, 23);
 			panel_Direccion.add(spnNumeroCasa);
+			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(RegPersona.class.getResource("/img/JOBIFYpeque.png")));
+			lblNewLabel.setBounds(222, 11, 147, 39);
+			panel1.add(lblNewLabel);
 		}
 
 		panel2 = new JPanel();
@@ -445,8 +444,7 @@ public class RegPersona extends JDialog {
 
 		panel_Contactos = new JPanel();
 		panel_Contactos.setBackground(new Color(248, 248, 255));
-		panel_Contactos
-				.setBorder(new TitledBorder(null, "Contactos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_Contactos.setBorder(new TitledBorder(null, "Contactos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_Contactos.setBounds(10, 22, 590, 62);
 		panel2.add(panel_Contactos);
 		panel_Contactos.setLayout(null);
@@ -516,7 +514,7 @@ public class RegPersona extends JDialog {
 		rdbNoVehiculo.setBounds(165, 22, 53, 23);
 		panel_InformacionG.add(rdbNoVehiculo);
 
-		JLabel lblDiponibilidad = new JLabel("Diponible Reelocalizaci\u00F3n:");
+		JLabel lblDiponibilidad = new JLabel("Disponibilidad Mudanza:");
 		lblDiponibilidad.setBounds(10, 67, 162, 14);
 		panel_InformacionG.add(lblDiponibilidad);
 
@@ -580,17 +578,7 @@ public class RegPersona extends JDialog {
 				}
 			}
 		});
-		cbxIdiomas.setModel(new DefaultComboBoxModel(new String[] { "< Seleccione >", "Afrikaans", "Alban\u00E9s",
-				"Alem\u00E1n", "Amharico", "Arabe", "Armenio", "Bengali", "Bieloruso", "Birman\u00E9s", "Bulgaro",
-				"Catalan", "Checo", "Chino", "Coreano", "Croata", "Dan\u00E9s", "Dari", "Dzongkha", "Escoc\u00E9s",
-				"Eslovaco", "Esloveniano", "Espa\u00F1ol", "Esperanto", "Estoniano", "Faroese", "Farsi",
-				"Finland\u00E9s", "Franc\u00E9s", "Gaelico", "Galese", "Gallego", "Griego", "Hebreo", "Hindi",
-				"Holand\u00E9s", "Hungaro", "Ingl\u00E9s", "Indonesio", "Inuktitut (Eskimo)", "Islandico", "Italiano",
-				"Japon\u00E9s", "Khmer", "Kurdo", "Lao", "Laponico", "Latviano", "Lituano", "Macedonio", "Malay\u00E9s",
-				"Malt\u00E9s", "Nepali", "Noruego", "Pashto", "Polaco", "Portugu\u00E9s", "Rumano", "Ruso", "Serbio",
-				"Somali", "Suahili", "Sueco", "Tagalog-Filipino", "Tajik", "Tamil", "Tailand\u00E9s", "Tibetano",
-				"Tigrinia", "Tongan\u00E9s", "Turco", "Turkmenistano", "Ucraniano", "Urdu", "Uzbekistano", "Vasco",
-				"Vietnam\u00E9s" }));
+		cbxIdiomas.setModel(new DefaultComboBoxModel(new String[] { "< Seleccione >", "Inglés","Español","Creol", "Italiano","Venezolano", "Ruso"  }));
 		cbxIdiomas.setBounds(305, 45, 123, 23);
 		panel_InformacionG.add(cbxIdiomas);
 
@@ -1580,7 +1568,7 @@ public class RegPersona extends JDialog {
 			getToolkit().beep();
 
 			e.consume();
-			JOptionPane.showMessageDialog(null, "Este campo no adminte número");
+			JOptionPane.showMessageDialog(null, "No puedes colocar un valor numérico");
 		}
 
 	}
