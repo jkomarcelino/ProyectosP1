@@ -25,7 +25,7 @@ public class BolsaLaboral implements  Serializable{
 	private ArrayList<Empresa> listEmpresa;
 	private String archivo = "BolsaLaboral.dat";
 	private static BolsaLaboral bolsa=null;
-	d
+	borrar
 	 
 	public ArrayList<Solicitud> getListSolicitudes() {
 		return listSolicitudes;

@@ -14,7 +14,7 @@ public class ParaProbar {
 		
 		Universitario obr=new Universitario("juan", "lamur", "masculino", "haitiana", "3", 34, null, "5544", "hhfd@", false, false,4, false, 4, false, "moca", "itt");
 		bolsa.agregarPersonal(obr);
-		
+		kkd
 		Obrero obr2=new Obrero("jimmy", "gomez", "masculino", "dominicana", "3", 34, null, "5544", "hhfd@", false, false,4, false, 4, false, "moca", null);
 		bolsa.agregarPersonal(obr2);
 		
