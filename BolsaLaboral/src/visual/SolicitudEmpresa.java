@@ -44,7 +44,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.ImageIcon;
 
-public class SolicitudEmpresa extends JDialog {
+public class SolicitudEmpresa extends JDialog { 
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtNombre;
@@ -916,19 +916,19 @@ public class SolicitudEmpresa extends JDialog {
 							BolsaLaboral.getInstance().ActualizarSolicitud(modi, modificarSoli);
 							JOptionPane.showMessageDialog(null, "La Solicitud se modifico correctamente", "Información",
 									JOptionPane.INFORMATION_MESSAGE, null);
-							if (ListaSolicitudEmpre.cbxfiltro.getSelectedIndex() == 0) {
-								ListaSolicitudEmpre.loadtabla(0);
+							if (ListaSolicitud.cbxfiltro.getSelectedIndex() == 0) {
+								ListaSolicitud.loadtabla(0);
 							}
-							if (ListaSolicitudEmpre.cbxfiltro.getSelectedIndex() == 1) {
-								ListaSolicitudEmpre.loadtabla(1);
+							if (ListaSolicitud.cbxfiltro.getSelectedIndex() == 1) {
+								ListaSolicitud.loadtabla(1);
 
 							}
-							if (ListaSolicitudEmpre.cbxfiltro.getSelectedIndex() == 2) {
-								ListaSolicitudEmpre.loadtabla(2);
+							if (ListaSolicitud.cbxfiltro.getSelectedIndex() == 2) {
+								ListaSolicitud.loadtabla(2);
 
 							}
-							if (ListaSolicitudEmpre.cbxfiltro.getSelectedIndex() == 3) {
-								ListaSolicitudEmpre.loadtabla(3);
+							if (ListaSolicitud.cbxfiltro.getSelectedIndex() == 3) {
+								ListaSolicitud.loadtabla(3);
 
 							}
 

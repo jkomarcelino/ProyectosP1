@@ -61,6 +61,7 @@ public class Matching extends JDialog {
 	private String codigo = "";
 	private ArrayList<Personal> misSolicitantesC = new ArrayList<>();
 	private JFormattedTextField ftxtCodSolicitud;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -243,15 +244,14 @@ public class Matching extends JDialog {
 					panel_2.setBounds(520, 102, 311, 303);
 					panel_1.add(panel_2);
 					{
-						JScrollPane scrollPane = new JScrollPane();
+						 scrollPane = new JScrollPane();	
 						scrollPane.setBounds(10, 23, 293, 263);
 						panel_2.add(scrollPane);
 					}
-				}
-				{
-					list = new JList();
-					list.setBounds(532, 127, 287, 260);
-					panel_1.add(list);
+					{
+						list = new JList();
+						scrollPane.setViewportView(list);
+					}
 				}
 				
 				JLabel lblNewLabel = new JLabel("");
@@ -284,7 +284,7 @@ public class Matching extends JDialog {
 									JOptionPane.INFORMATION_MESSAGE, null);
 							Principal.actualizarChart();
 							Principal.actualizarPastel();
-							Principal.actualizarPastel2();
+							Principal.actualizarPastel2(); 
 							BolsaLaboral.getInstance().removerContratados(misSolicitantesC);
 							clean();
 						} else {

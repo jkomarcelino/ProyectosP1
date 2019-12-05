@@ -60,7 +60,7 @@ import java.awt.SystemColor;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 
-public class RegPersona extends JDialog {
+public class RegPersona extends JDialog { 
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtNombre;

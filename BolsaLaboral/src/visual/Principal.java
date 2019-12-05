@@ -105,7 +105,7 @@ public class Principal extends JFrame implements Runnable{
 	 * Create the frame.
 	 */
 	public Principal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/img/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/img/edificio-de-oficinas.png")));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -151,7 +151,7 @@ public class Principal extends JFrame implements Runnable{
 		
 		
 		
-		JMenu mnMacheo = new JMenu("Ubicaci\u00F3n Laboral");
+		JMenu mnMacheo = new JMenu("Bolsa Laboral");
 		mnMacheo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

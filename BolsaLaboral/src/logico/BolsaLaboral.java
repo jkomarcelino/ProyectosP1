@@ -1271,7 +1271,7 @@ public int cantSolicitanteUniversitario() {//devuelve cantidad de solicitantes u
 		
 		
 	
-	public void writeEmpresaTXT(String rnc) throws IOException {// escribe fichero texto de una empresa
+	/*public void writeEmpresaTXT(String rnc) throws IOException {// escribe fichero texto de una empresa
 		writer_1 = new FileWriter(new File("Archivo.txt"));
 		Empresa soli = RetornaEmpresaSoli(rnc);
 		float cant = 0;
@@ -1296,9 +1296,9 @@ public int cantSolicitanteUniversitario() {//devuelve cantidad de solicitantes u
 		writer_1.write("***********************************************************************************" + "\n");
 		writer_1.close();
 
-	}
+	}*/
 
-	public void writeSolicitanteTXT(String cedula) throws IOException {
+/*	public void writeSolicitanteTXT(String cedula) throws IOException {
 		writer_1 = new FileWriter(new File("Archivo.txt"));
 		Personal soli = BuscarSoliCedula(cedula);
 		writer_1.write("***********************************************************************************" + "\n");
@@ -1313,6 +1313,6 @@ public int cantSolicitanteUniversitario() {//devuelve cantidad de solicitantes u
 		writer_1.write("***********************************************************************************" + "\n");
 		writer_1.close();
 
-	}
+	}*/
 
 }
