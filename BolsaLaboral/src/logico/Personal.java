@@ -28,7 +28,7 @@ public abstract class Personal implements Serializable {
 	protected int annosExperiencia;
 	protected ArrayList<String> idiomas;
 	protected boolean contratado;
-	protected int edad;
+	protected long edad;
 	protected boolean mudarse;
 	protected String ciudad;
 	protected String sector;
@@ -39,7 +39,7 @@ public abstract class Personal implements Serializable {
 
 	
 
-	public Personal( String cedula, String nombres, String apellidos,int edad, String telefono, String nacionalidad, String sexo, String estadoCivil, String direccion,
+	public Personal( String cedula, String nombres, String apellidos,long edad, String telefono, String nacionalidad, String sexo, String estadoCivil, String direccion,
 			String provincia, String email, boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia,
 			ArrayList<String> idiomas, boolean contratado, boolean mudarse, String ciudad, String sector,
 			String calle, int numeroCasa, String referencia) {
