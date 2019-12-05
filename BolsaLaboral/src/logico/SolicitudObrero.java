@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class SolicitudObrero extends Solicitud implements Serializable{
+public class SolicitudObrero extends Solicitud {
 	
 	/**
 	 * 
