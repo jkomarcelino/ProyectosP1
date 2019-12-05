@@ -765,16 +765,24 @@ public class BolsaLaboral implements Serializable {
 
 	
 	public boolean validarGeneral(Personal persona, Solicitud solicitud) {//VALIDA AL PERSONAL GENERAL
+		int porciento=0;
 		boolean valido = false;
 		if (persona.contratado == false) {
+			porciento++;
 			if (persona.isVehiculoPropio() == solicitud.isVehiculoPropio()) {
+				porciento++;
 				if (persona.isMudarse() == solicitud.isMudarse()) {
+					porciento++;
 					if (persona.getCategoriaLicencia() >= solicitud.getCategoriaLicencia()) {
+						porciento++;
 						if (persona.getAnnosExperiencia() >= solicitud.getAnnosExperiencia()) {
+							porciento++;
 							if ((persona.getEdad() >= solicitud.getEdadMin())
 									&& (persona.getEdad() <= solicitud.getEdadMax())) {
+								porciento++;
 								if (validarIdiomas(persona, solicitud)) {
-									valido = true;
+									porciento++;
+									
 
 								}
 
@@ -786,7 +794,10 @@ public class BolsaLaboral implements Serializable {
 				}
 			}
 		}
-
+ if (porciento>=5) {
+	valido = true;
+}
+ 
 		return valido;
 	}
 
