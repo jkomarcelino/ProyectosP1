@@ -57,16 +57,7 @@ public class ListaPersonal extends JDialog {
 	private JComboBox<String> habilidades;
 	private static JComboBox<String> cbxIdioma;
 
-	/**
-	 * Launch the application.
-	 * 
-	 * public static void main(String[] args) { try { ListarSolicitante dialog =
-	 * new ListarSolicitante();
-	 * dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	 * dialog.setVisible(true); } catch (Exception e) { e.printStackTrace(); } }
-	 * 
-	 * /** Create the dialog.
-	 */
+
 	public ListaPersonal() {
 		getContentPane().setBackground(new Color(248, 248, 255));
 		setBackground(new Color(248, 248, 255));

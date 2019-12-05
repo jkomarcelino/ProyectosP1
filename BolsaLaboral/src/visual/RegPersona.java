@@ -125,16 +125,6 @@ public class RegPersona extends JDialog {
 	private Personal verSoli = null;
 	Calendar cal= Calendar.getInstance();
 
-	/**
-	 * Launch the application.
-	 * 
-	 * public static void main(String[] args) { try { RegPersona dialog
-	 * = new RegPersona();
-	 * dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	 * dialog.setVisible(true); } catch (Exception e) { e.printStackTrace(); } }
-	 * 
-	 * /** Create the dialog.
-	 */
 	public RegPersona(String title, boolean modificar, Personal person, Personal persona) {
 		setBackground(new Color(248, 248, 255));
 		getContentPane().setBackground(new Color(248, 248, 255));
@@ -578,7 +568,7 @@ public class RegPersona extends JDialog {
 				}
 			}
 		});
-		cbxIdiomas.setModel(new DefaultComboBoxModel(new String[] { "< Seleccione >", "Inglés","Español","Creol", "Italiano","Venezolano", "Ruso"  }));
+		cbxIdiomas.setModel(new DefaultComboBoxModel(new String[] { "< Seleccione >", "Inglés","Español","Creol", "Italiano", "Francés","Ruso"  }));
 		cbxIdiomas.setBounds(305, 45, 123, 23);
 		panel_InformacionG.add(cbxIdiomas);
 

@@ -38,7 +38,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 
 public class Contratado extends JDialog {
-
+/* ESTO ERA PARA PRUEBA DE LOS PORCENTAJES VISUALIZADOS EN LAS GRAFICAS*/ 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
 	private static Object[] fila;

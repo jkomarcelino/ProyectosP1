@@ -37,7 +37,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 
 public class InfoSoli extends JDialog {
-
+/* ESTA SOLO LLEVA LA INFORMACIÓN DE SOLICITUD CUANDO SE SOLICITA DEL LISTADO DE SOLICITUD */
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtRNC;
 	private JTextField txtNombre;

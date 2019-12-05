@@ -63,17 +63,7 @@ public class Matching extends JDialog {
 	private JFormattedTextField ftxtCodSolicitud;
 	private JScrollPane scrollPane;
 
-	/**
-	 * Launch the application.
-	 * 
-	 * public static void main(String[] args) { try { Macheo dialog = new
-	 * Macheo(); dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	 * dialog.setVisible(true); } catch (Exception e) { e.printStackTrace(); } }
-	 * 
-	 * /** Create the dialog.
-	 * 
-	 * @throws ParseException
-	 */
+
 	public Matching() throws ParseException {
 		setResizable(false);
 		setModal(true);

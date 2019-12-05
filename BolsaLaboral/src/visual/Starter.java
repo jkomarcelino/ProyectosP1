@@ -50,7 +50,7 @@ public class Starter extends JFrame {
     int hora, minutos, segundos;
     Calendar calendario;
     Thread h1;
-
+ /// CLASE UTILIZADA CON FINES DE PRUEBAS
 	/**
 	 * Launch the application.
 	 *
