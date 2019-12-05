@@ -184,6 +184,10 @@ public class Principal extends JFrame implements Runnable{
 			}
 		});
 		mnMacheo.add(mntmRealizarMacheo);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Contratados");
+		mntmNewMenuItem.setIcon(new ImageIcon(Principal.class.getResource("/img/modificar.png")));
+		mnMacheo.add(mntmNewMenuItem);
 
 		JSeparator separator = new JSeparator();
 		mnMacheo.add(separator);
