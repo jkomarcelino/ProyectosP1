@@ -310,7 +310,7 @@ public class ListaSolicitud extends JDialog {
 		modeloTabla.setColumnIdentifiers(nombreColumna);
 		modeloTabla.setRowCount(0);
 		fila = new Object[modeloTabla.getColumnCount()];
-		for (Solicitud soli : BolsaLaboral.getInstance().getMisSolicitudes()) {
+		for (Solicitud soli : BolsaLaboral.getInstance().getlistSolicitud()) {
 
 			fila[0] = soli.getCodigo();
 			fila[1] = soli.getEmpresa().getNombre();
@@ -359,7 +359,7 @@ public class ListaSolicitud extends JDialog {
 		modeloTabla.setColumnIdentifiers(nombreColumna);
 		modeloTabla.setRowCount(0);
 		fila = new Object[modeloTabla.getColumnCount()];
-		for (Solicitud soli : BolsaLaboral.getInstance().getMisSolicitudes()) {
+		for (Solicitud soli : BolsaLaboral.getInstance().getlistSolicitud()) {
 			if (soli instanceof SolicitudUniversitario) {
 				String[] idioma = llenado(soli.getIdiomas());
 				cbxIdioma = new JComboBox<String>(idioma);
@@ -417,7 +417,7 @@ public class ListaSolicitud extends JDialog {
 		modeloTabla.setColumnIdentifiers(nombreColumna);
 		modeloTabla.setRowCount(0);
 		fila = new Object[modeloTabla.getColumnCount()];
-		for (Solicitud soli : BolsaLaboral.getInstance().getMisSolicitudes()) {
+		for (Solicitud soli : BolsaLaboral.getInstance().getlistSolicitud()) {
 			if (soli instanceof SolicitudTecnico) {
 				String[] idioma = llenado(soli.getIdiomas());
 				cbxIdioma = new JComboBox<String>(idioma);
@@ -471,7 +471,7 @@ public class ListaSolicitud extends JDialog {
 		modeloTabla.setColumnIdentifiers(nombreColumna);
 		modeloTabla.setRowCount(0);
 		fila = new Object[modeloTabla.getColumnCount()];
-		for (Solicitud soli : BolsaLaboral.getInstance().getMisSolicitudes()) {
+		for (Solicitud soli : BolsaLaboral.getInstance().getlistSolicitud()) {
 			if (soli instanceof SolicitudObrero) {
 				String[] idioma = llenado(soli.getIdiomas());
 				String[] habilidad = llenado(((SolicitudObrero) soli).getHabilidades());

@@ -489,7 +489,7 @@ if(modi){
 
 	public boolean empresaRep(String rnc) {
 		boolean aux = false;
-		for (Empresa empresa : BolsaLaboral.getInstance().getMisEmpresas()) {
+		for (Empresa empresa : BolsaLaboral.getInstance().getlistEmpresa()) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
 				aux = true;
 			}
