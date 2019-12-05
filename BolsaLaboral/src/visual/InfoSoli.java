@@ -69,7 +69,7 @@ public class InfoSoli extends JDialog {
 				cargarDatos();
 			}
 
-			
+			  
 		});
 				
 		setTitle("Solicitud");
