@@ -18,6 +18,8 @@ import java.util.regex.Pattern;
 
 
 
+
+
 public class BolsaLaboral implements  Serializable{
 	/*
 	private ArrayList<Solicitud> listSolicitudes;
@@ -665,6 +667,17 @@ return aspirante;
 			return existe;
 
 		}
+		
+		// funcion eleminnar empresa
+		public void eliminarEmpresa(String cod) {
+			Empresa empresaeliminar = null;
+			for (Empresa empresa : listEmpresa) {
+				if (empresa.getRNC().equalsIgnoreCase(cod)) {
+					empresaeliminar = empresa;
+				}
+			}
+			listEmpresa.remove(empresaeliminar);
+		}
 	
 //**************************************METODOS PERSONAL************************************************************
 	
@@ -844,6 +857,30 @@ return aspirante;
 
 			}
 			return empre;
+
+		}
+		
+		public boolean EliminarSolicitud(String codigo) {
+			boolean eliminar = false;
+			Solicitud SolicitudEliminar = null;
+			for (Solicitud soli : listSolicitud) {
+				if (soli.getCodigo().equalsIgnoreCase(codigo)) {
+					SolicitudEliminar = soli;
+					eliminar = true;
+				}
+
+			}
+			listSolicitud.remove(SolicitudEliminar);
+			return eliminar;
+		}
+		
+		// Actualizar una solicitud cuando se modifica
+		public void ActualizarSolicitud(Solicitud modi, Solicitud modificarSoli) {
+			int index = 0;
+			if (listSolicitud.contains(modi)) {
+				index = listSolicitud.indexOf(modi);
+			}
+			listSolicitud.set(index, modificarSoli);
 
 		}
 
@@ -1221,40 +1258,11 @@ return aspirante;
 
 	// Retorna solicid
 
-	public boolean EliminarSolicitud(String codigo) {
-		boolean eliminar = false;
-		Solicitud SolicitudEliminar = null;
-		for (Solicitud soli : listSolicitud) {
-			if (soli.getCodigo().equalsIgnoreCase(codigo)) {
-				SolicitudEliminar = soli;
-				eliminar = true;
-			}
+	
 
-		}
-		listSolicitud.remove(SolicitudEliminar);
-		return eliminar;
-	}
+	
 
-	// funcion eleminnar empresa
-	public void eliminarEmpresa(String cod) {
-		Empresa empresaeliminar = null;
-		for (Empresa empresa : listEmpresa) {
-			if (empresa.getRNC().equalsIgnoreCase(cod)) {
-				empresaeliminar = empresa;
-			}
-		}
-		listEmpresa.remove(empresaeliminar);
-	}
-
-	// Actualizar una solicitud cuando se modifica
-	public void ActualizarSolicitud(Solicitud modi, Solicitud modificarSoli) {
-		int index = 0;
-		if (listSolicitud.contains(modi)) {
-			index = listSolicitud.indexOf(modi);
-		}
-		listSolicitud.set(index, modificarSoli);
-
-	}
+	
 
 	// Retornar cant. Universitarios desempleado
 	public int desempleadoU() {
@@ -1417,5 +1425,50 @@ return aspirante;
 			}
 		}
 	}
+	
+	public void writeSolicitanteTXT(String cedula) throws IOException {
+		writer_1 = new FileWriter(new File("Archivo.txt"));
+		Personal soli = BuscarSoliCedula(cedula);
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("*                               Bolsa Laboral                                     *" + "\n");
+		writer_1.write("*                                 Empleado                                        *" + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("Nombres:                 " + soli.getNombres() + "\n");
+		writer_1.write("Apellidos:               " + soli.getApellidos() + "\n");
+		writer_1.write("Tipo Solicitante:        " + tipoSolicitante(soli) + "\n");
+		writer_1.write("Estado:                  " + contradato(soli) + "\n");
+		writer_1.write("Cantidad de Solicitudes: " + cantidadSolicitante(soli) + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.close();
+
+	}
+	
+	// escribe fichero texto de una empresa
+		public void writeEmpresaTXT(String rnc) throws IOException {
+			writer_1 = new FileWriter(new File("Archivo.txt"));
+			Empresa soli = RetornaEmpresaSoli(rnc);
+			float cant = 0;
+			float cot = 0;
+			float cantcontratados = 0;
+			writer_1.write("***********************************************************************************" + "\n");
+			writer_1.write("*                               Bolsa Laboral                                     *" + "\n");
+			writer_1.write("*                                   Empresa                                       *" + "\n");
+			writer_1.write("***********************************************************************************" + "\n");
+			writer_1.write("Empresa:                " + soli.getNombre() + "\n");
+			for (Solicitud misoli : listSolicitud) {
+				if (misoli.getEmpresa().getRNC().equalsIgnoreCase(rnc)) {
+					cant = misoli.getCantVacantes();
+					cantcontratados = misoli.getCantReal();
+					cot++;
+				}
+
+			}
+			writer_1.write("Cantidad Vacantes inicial: " + cant + "\n");
+			writer_1.write("Cantidad Vacantes real:    " + cantcontratados + "\n");
+			writer_1.write("Cantidad Solicitudes       " + cot + "\n");
+			writer_1.write("***********************************************************************************" + "\n");
+			writer_1.close();
+
+		}
 	
 }
