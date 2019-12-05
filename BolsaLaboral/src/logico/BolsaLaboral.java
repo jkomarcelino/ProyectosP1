@@ -794,7 +794,7 @@ public class BolsaLaboral implements Serializable {
 				}
 			}
 		}
- if (porciento>=5) {
+ if (porciento>=5) {//si se cumple el 70%
 	valido = true;
 }
  
