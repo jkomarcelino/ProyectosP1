@@ -284,6 +284,7 @@ public class Matching extends JDialog {
 									JOptionPane.INFORMATION_MESSAGE, null);
 							Principal.actualizarChart();
 							Principal.actualizarPastel();
+							Principal.actualizarPastel2();
 							BolsaLaboral.getInstance().removerContratados(misSolicitantesC);
 							clean();
 						} else {

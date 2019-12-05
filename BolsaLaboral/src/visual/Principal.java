@@ -419,7 +419,7 @@ public class Principal extends JFrame implements Runnable{
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_2.setBounds(1191, 66, 77, 24);
+		panel_2.setBounds(1203, 66, 77, 24);
 		panel.add(panel_2);
 		
 		lblHora = new JLabel("HH::MM::RR");
@@ -438,7 +438,7 @@ public class Principal extends JFrame implements Runnable{
 		panelPastel2.removeAll();
 		panelPastel2.revalidate();
 		datasetPastel2 = dataSetPastel2();
-		chartPastel2 = creadorGraficoP2(datasetPastel2, "Trabajadores Contratados por Género");
+		chartPastel2 = creadorGraficoP2(datasetPastel2, "Porcentaje de Contratados por Género");
 		panelPastel2.setLayout(null);
 		ChartPanel chartPanel2 = new ChartPanel(chartPastel2);
 		chartPanel2.setBorder(null);
@@ -454,7 +454,7 @@ public class Principal extends JFrame implements Runnable{
 		panelPastel.removeAll();
 		panelPastel.revalidate();
 		datasetPastel = dataSetPastel();
-		chartPastel = creadorGraficoP(datasetPastel, "Trabajadores Contratados por Tipo");
+		chartPastel = creadorGraficoP(datasetPastel, "Porcentaje de Contratados Por Tipo");
 		panelPastel.setLayout(null);
 		ChartPanel chartPanel = new ChartPanel(chartPastel);
 		chartPanel.setBorder(null);
@@ -470,7 +470,7 @@ public class Principal extends JFrame implements Runnable{
 		panelBarras.removeAll();
 		panelBarras.revalidate();
 		datasetBarra = creadorCategoria();
-		chartBarra = creadorGraficoB(datasetBarra, "Solicitantes Desempleados");
+		chartBarra = creadorGraficoB(datasetBarra, "Solicitantes en Espera por Tipo");
 		panelBarras.setLayout(new BorderLayout(0, 0));
 		ChartPanel chartPanel = new ChartPanel(chartBarra);
 		chartPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));

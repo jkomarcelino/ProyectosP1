@@ -41,7 +41,7 @@ import java.awt.Toolkit;
 import java.awt.GridLayout;
 import javax.swing.border.EtchedBorder;
 
-public class Starter extends JFrame implements Runnable {
+public class Starter extends JFrame {
 	private JPanel panel;
 	private JPanel panelGrafi1;
 	private JPanel panelGrafi2;
@@ -171,8 +171,8 @@ public class Starter extends JFrame implements Runnable {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_6.setLayout(gl_panel_6);
-		h1 = new Thread(this);
-	    h1.start();
+		/*h1 = new Thread(this);
+	    h1.start();*/
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(Color.PINK);
 		menuBar.setBorderPainted(false);
@@ -362,25 +362,12 @@ public class Starter extends JFrame implements Runnable {
     
     
     
-    
-	@Override
-	public void run() {
-		Thread ct = Thread.currentThread();
-        while (ct == h1) {
-            calcula();
-            lblHora.setText(hora + ":" + minutos + ":" + segundos);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-        }
-		
-	}
+   /*
 	
 	public void calcula() {
         Calendar calendario = new GregorianCalendar();
         hora =calendario.get(Calendar.HOUR_OF_DAY);
         minutos = calendario.get(Calendar.MINUTE);
         segundos = calendario.get(Calendar.SECOND);
-    }
+    }*/
 }
