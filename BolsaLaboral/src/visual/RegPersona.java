@@ -1407,7 +1407,7 @@ public class RegPersona extends JDialog {
 				panel_Obreo.setVisible(true);
 				panel_Tecnico.setVisible(false);
 				panel_Universitario.setVisible(false);
-			}
+			} 
 			if (modiS instanceof Universitario) {
 				cbxCarrera.setEnabled(false);
 				cbxCarrera.setSelectedItem(((Universitario) modiS).getCarrera());
