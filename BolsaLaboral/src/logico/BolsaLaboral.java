@@ -512,10 +512,7 @@ public class BolsaLaboral implements Serializable {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarObrero(solicitante, soli)) {
 							candidato.add(solicitante);
-							/*
-							 * soli.getEmpresa().insertContratado(solicitante); Crear una funcion qune
-							 * inserte los contradado y sea llamada desde el boton: Contratar Solicitante
-							 */
+							
 
 						}
 					}
@@ -530,10 +527,7 @@ public class BolsaLaboral implements Serializable {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarTecnico(solicitante, soli)) {
 							candidato.add(solicitante);
-							/*
-							 * soli.getEmpresa().insertContratado(solicitante); Crear una funcion qune
-							 * inserte los contradado y sea llamada desde el boton: Contratar Solicitante
-							 */
+							
 						}
 
 					}
@@ -546,10 +540,7 @@ public class BolsaLaboral implements Serializable {
 					if (validarGeneral(solicitante, soli)) {
 						if (validarUniversitario(solicitante, soli)) {
 							candidato.add(solicitante);
-							/*
-							 * soli.getEmpresa().insertContratado(solicitante); Crear una funcion qune
-							 * inserte los contradado y sea llamada desde el boton: Contratar Solicitante
-							 */
+							
 						}
 
 					}
