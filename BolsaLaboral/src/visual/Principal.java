@@ -238,7 +238,7 @@ public class Principal extends JFrame implements Runnable{
 		mntmListarCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
 		mntmListarCandidatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListaSolicitud soli = new ListaSolicitud();
+				ListaPersonal soli = new ListaPersonal();
 				soli.setModal(true);
 				soli.setLocationRelativeTo(null);
 				soli.setVisible(true);
