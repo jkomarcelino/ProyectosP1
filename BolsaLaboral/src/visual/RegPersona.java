@@ -918,7 +918,7 @@ public class RegPersona extends JDialog {
 						String ciudad = txtCiudad.getText();
 						String sector = txtSector.getText();
 						String calle = txtCalle.getText();
-						int edad = Integer.parseInt(fTxtEdad.toString());
+						int edad = Integer.valueOf(fTxtEdad.getText());
 						String direccion = "";
 						int numeroCasa = new Integer((int) spnNumeroCasa.getValue());
 						String referencia = txtReferencia.getText();
