@@ -6,7 +6,7 @@ public class ParaProbar {
 		// TODO Auto-generated method stub
 	/*	
 		
-		BolsaLaboral bolsa=new BolsaLaboral();
+		BolsaLaboral bolsa=new BolsaLaboral(); // probando
 		
 		Empresa emp=new Empresa("sirena", "94885", "correo@", "moca");
 		
