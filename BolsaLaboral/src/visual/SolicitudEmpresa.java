@@ -43,6 +43,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
 
 public class SolicitudEmpresa extends JDialog { 
 
@@ -207,15 +211,14 @@ public class SolicitudEmpresa extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
+			panel.setBackground(SystemColor.inactiveCaption);
 			panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 
 			JPanel panelEmpresa = new JPanel();
 			panelEmpresa.setBackground(new Color(248, 248, 255));
-			panelEmpresa.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Empresa",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelEmpresa.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelEmpresa.setBounds(10, 35, 507, 72);
 			panel.add(panelEmpresa);
 			panelEmpresa.setLayout(null);
@@ -283,8 +286,7 @@ public class SolicitudEmpresa extends JDialog {
 
 			PanelGeneral = new JPanel();
 			PanelGeneral.setBackground(new Color(248, 248, 255));
-			PanelGeneral.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "General",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			PanelGeneral.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			PanelGeneral.setBounds(10, 107, 507, 150);
 			panel.add(PanelGeneral);
 			PanelGeneral.setLayout(null);
@@ -408,8 +410,7 @@ public class SolicitudEmpresa extends JDialog {
 			JPanel panelEdad = new JPanel();
 			panelEdad.setBackground(new Color(248, 248, 255));
 			panelEdad.setLayout(null);
-			panelEdad.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Rango De Edad",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelEdad.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rango Edad", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelEdad.setBounds(10, 260, 245, 59);
 			panel.add(panelEdad);
 
@@ -441,8 +442,7 @@ public class SolicitudEmpresa extends JDialog {
 			JPanel panelIdioma = new JPanel();
 			panelIdioma.setBackground(new Color(248, 248, 255));
 			panelIdioma.setLayout(null);
-			panelIdioma.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Idiomas",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelIdioma.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Idiomas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelIdioma.setBounds(10, 322, 245, 164);
 			panel.add(panelIdioma);
 
@@ -501,8 +501,7 @@ public class SolicitudEmpresa extends JDialog {
 			JPanel PanelVacante = new JPanel();
 			PanelVacante.setBackground(new Color(248, 248, 255));
 			PanelVacante.setLayout(null);
-			PanelVacante.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Tipo Vacante",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			PanelVacante.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nivel de preparaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			PanelVacante.setBounds(255, 260, 265, 59);
 			panel.add(PanelVacante);
 
@@ -557,8 +556,7 @@ public class SolicitudEmpresa extends JDialog {
 			panelUniversitario = new JPanel();
 			panelUniversitario.setBackground(new Color(248, 248, 255));
 			panelUniversitario.setLayout(null);
-			panelUniversitario.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-					"Universitario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelUniversitario.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Universatorio", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelUniversitario.setBounds(255, 322, 265, 164);
 			panel.add(panelUniversitario);
 
@@ -620,8 +618,7 @@ public class SolicitudEmpresa extends JDialog {
 			panelTecnico = new JPanel();
 			panelTecnico.setBackground(new Color(248, 248, 255));
 			panelTecnico.setLayout(null);
-			panelTecnico.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "T\u00E9cnico",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelTecnico.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tecnico", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelTecnico.setBounds(255, 322, 265, 164);
 			panel.add(panelTecnico);
 
@@ -654,8 +651,7 @@ public class SolicitudEmpresa extends JDialog {
 			panelObrero = new JPanel();
 			panelObrero.setBackground(new Color(248, 248, 255));
 			panelObrero.setLayout(null);
-			panelObrero.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Obrero",
-					TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelObrero.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obrero", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelObrero.setBounds(255, 322, 265, 164);
 			panel.add(panelObrero);
 

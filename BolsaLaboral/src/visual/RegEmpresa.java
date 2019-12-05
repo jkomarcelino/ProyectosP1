@@ -87,7 +87,7 @@ public class RegEmpresa extends JDialog {
 		setTitle(title);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(248, 248, 255));
-		panel.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
+		panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 		panel.setBounds(10, 55, 605, 118);
 		contentPanel.add(panel);
 		panel.setLayout(null);
@@ -149,7 +149,7 @@ public class RegEmpresa extends JDialog {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 248, 255));
-		panel_1.setBorder(new CompoundBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), new Color(153, 180, 209), null)), null));
+		panel_1.setBorder(new CompoundBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), new Color(153, 180, 209), null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))), null));
 		panel_1.setBounds(10, 185, 605, 166);
 		contentPanel.add(panel_1);
 		panel_1.setLayout(null);
@@ -279,7 +279,7 @@ public class RegEmpresa extends JDialog {
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBorder(null);
-			buttonPane.setBackground(new Color(248, 248, 255));
+			buttonPane.setBackground(SystemColor.inactiveCaption);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
@@ -456,7 +456,7 @@ public class RegEmpresa extends JDialog {
 				getRootPane().setDefaultButton(btnregistrar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				JButton cancelButton = new JButton("Atr\u00E1s");
 				//cancelButton.setIcon(new ImageIcon(InsertarEmpresa.class.getResource("/img/cancelar.png")));
 				cancelButton.setBackground(UIManager.getColor("Button.darkShadow"));
 				cancelButton.addActionListener(new ActionListener() {

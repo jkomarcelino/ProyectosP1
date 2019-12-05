@@ -289,7 +289,7 @@ public class Matching extends JDialog {
 				getRootPane().setDefaultButton(btnContratar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
+				JButton cancelButton = new JButton("Atr\u00E1s");
 				cancelButton.setIcon(new ImageIcon(Matching.class.getResource("/img/cancelar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {

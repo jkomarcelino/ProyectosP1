@@ -198,7 +198,7 @@ public class ListaPersonal extends JDialog {
 				getRootPane().setDefaultButton(btnModificar);
 			}
 			{
-				cancelButton = new JButton("Cancelar");
+				cancelButton = new JButton("Atr\u00E1s");
 				cancelButton.setIcon(new ImageIcon(ListaPersonal.class.getResource("/img/cancelar.png")));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
