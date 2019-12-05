@@ -68,8 +68,8 @@ public class InfoSoli extends JDialog {
 			public void windowActivated(WindowEvent e) {
 				cargarDatos();
 			}
-
-			  
+ 
+			   
 		});
 				
 		setTitle("Solicitud");
