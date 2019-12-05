@@ -609,7 +609,7 @@ return aspirante;
 	public void insertEmpresa(Empresa empresa) {
 		misEmpresas.add(empresa);
 	}
-
+ 
 	public void modificaEmpresa(Empresa empresa) {
 
 		for (Empresa miempresa : misEmpresas) {
