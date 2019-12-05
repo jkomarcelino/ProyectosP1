@@ -105,7 +105,7 @@ public class Principal extends JFrame implements Runnable{
 	 * Create the frame.
 	 */
 	public Principal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Starter.class.getResource("/img/icon.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/img/icon.png")));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -140,32 +140,35 @@ public class Principal extends JFrame implements Runnable{
 		mnCandidatos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/24.png")));
+				mnCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/employeeNoColor.png")));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitante24.png")));
+				mnCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/employee.png")));
 			}
 		});
+		
+		
+		
 		JMenu mnMacheo = new JMenu("Ubicaci\u00F3n Laboral");
 		mnMacheo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/macheo.png")));
+				mnMacheo.setIcon(new ImageIcon(Principal.class.getResource("/img/handshake noColor.png")));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo24.png")));
+				mnMacheo.setIcon(new ImageIcon(Principal.class.getResource("/img/handshake.png")));
 			}
 		});
-		mnMacheo.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		mnMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo24.png")));
+		mnMacheo.setFont(new Font("Dubai Light", Font.BOLD, 14));
+		mnMacheo.setIcon(new ImageIcon(Principal.class.getResource("/img/handshake.png")));
 		menuBar.add(mnMacheo);
 
-		JMenuItem mntmRealizarMacheo = new JMenuItem("Realizar Pareo");
-		mntmRealizarMacheo.setIcon(new ImageIcon(Starter.class.getResource("/img/pareo.png")));
+		JMenuItem mntmRealizarMacheo = new JMenuItem("Realizar Matching");
+		mntmRealizarMacheo.setIcon(new ImageIcon(Principal.class.getResource("/img/pareo.png")));
 		mntmRealizarMacheo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Matching match;
@@ -182,28 +185,11 @@ public class Principal extends JFrame implements Runnable{
 		});
 		mnMacheo.add(mntmRealizarMacheo);
 
-	
-
-		
-		JMenuItem mntmGuardarTodo = new JMenuItem("Guardar Todo");
-		mntmGuardarTodo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BolsaLaboral.getInstance().writeBolsa();
-				/*ProgressBar progress = new ProgressBar(4);
-				progress.setVisible(true);
-				progress.setLocationRelativeTo(null);*/
-				
-				
-			}
-		});
-		mntmGuardarTodo.setIcon(new ImageIcon(Starter.class.getResource("/img/guardar.png")));
-		mnMacheo.add(mntmGuardarTodo);
-
 		JSeparator separator = new JSeparator();
 		mnMacheo.add(separator);
 
 		JMenuItem mntmCerrar = new JMenuItem("Salir");
-		mntmCerrar.setIcon(new ImageIcon(Starter.class.getResource("/img/cancelar.png")));
+		mntmCerrar.setIcon(new ImageIcon(Principal.class.getResource("/img/cancelar.png")));
 		mntmCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (JOptionPane.showConfirmDialog(null, "�Desea guardar los nuevos cambios en la bolsa laboral?",
@@ -221,12 +207,12 @@ public class Principal extends JFrame implements Runnable{
 			}
 		});
 		mnMacheo.add(mntmCerrar);
-		mnCandidatos.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		mnCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitante24.png")));
+		mnCandidatos.setFont(new Font("Dubai Light", Font.BOLD, 14));
+		mnCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/employee.png")));
 		menuBar.add(mnCandidatos);
 
 		JMenuItem mntmRegistrarCandidato = new JMenuItem("Registrar Persona");
-		mntmRegistrarCandidato.setIcon(new ImageIcon(Starter.class.getResource("/img/agregarSolicitante.png")));
+		mntmRegistrarCandidato.setIcon(new ImageIcon(Principal.class.getResource("/img/agregarSolicitante.png")));
 		mntmRegistrarCandidato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegPersona soli = new RegPersona("Insertar Solicitante", false, null, null);
@@ -239,7 +225,7 @@ public class Principal extends JFrame implements Runnable{
 		mnCandidatos.add(mntmRegistrarCandidato);
 
 		JMenuItem mntmListarCandidatos = new JMenuItem("Listar Persona");
-		mntmListarCandidatos.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarCandidatos.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarCandidatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListaPersonal soli = new ListaPersonal();
@@ -254,20 +240,20 @@ public class Principal extends JFrame implements Runnable{
 		mnEmpresa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/edificio.png")));
+				mnEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/enterpriseNoColor.png")));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/empresa24.png")));
+				mnEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/enterprise.png")));
 			}
 		});
-		mnEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/empresa24.png")));
-		mnEmpresa.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		mnEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/enterprise.png")));
+		mnEmpresa.setFont(new Font("Dubai Light", Font.BOLD, 14));
 		menuBar.add(mnEmpresa);
 
 		JMenuItem mntmRegistrarEmpresa = new JMenuItem("Registrar Empresa");
-		mntmRegistrarEmpresa.setIcon(new ImageIcon(Starter.class.getResource("/img/addEmpresa.png")));
+		mntmRegistrarEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
 		mntmRegistrarEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegEmpresa empre;
@@ -286,7 +272,7 @@ public class Principal extends JFrame implements Runnable{
 		mnEmpresa.add(mntmRegistrarEmpresa);
 
 		JMenuItem mntmListarEmpresas = new JMenuItem("Listar Empresas");
-		mntmListarEmpresas.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarEmpresas.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarEmpresas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ListaEmpresas lista = new ListaEmpresas();
@@ -300,20 +286,20 @@ public class Principal extends JFrame implements Runnable{
 		mnSolicitud.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud.png")));
+				mnSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/archivenoColor.png")));
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud24.png")));
+				mnSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/archive.png")));
 			}
 		});
-		mnSolicitud.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		mnSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Solicitud24.png")));
+		mnSolicitud.setFont(new Font("Dubai Light", Font.BOLD, 14));
+		mnSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/archive.png")));
 		menuBar.add(mnSolicitud);
 
 		JMenuItem mntmRegistrarSolicitud = new JMenuItem("Solicitud Empresarial");
-		mntmRegistrarSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/addSolicitud.png")));
+		mntmRegistrarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
 		mntmRegistrarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SolicitudEmpresa solicitud = new SolicitudEmpresa(null);
@@ -324,7 +310,7 @@ public class Principal extends JFrame implements Runnable{
 		mnSolicitud.add(mntmRegistrarSolicitud);
 
 		JMenuItem mntmListarSolicitud = new JMenuItem("Listar Solicitud");
-		mntmListarSolicitud.setIcon(new ImageIcon(Starter.class.getResource("/img/Listas.png")));
+		mntmListarSolicitud.setIcon(new ImageIcon(Principal.class.getResource("/img/Listas.png")));
 		mntmListarSolicitud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListaSolicitud soli = new ListaSolicitud();
@@ -333,22 +319,6 @@ public class Principal extends JFrame implements Runnable{
 			}
 		});
 		mnSolicitud.add(mntmListarSolicitud);
-
-		JMenu mnReporte = new JMenu("Reportes");
-		mnReporte.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar.png")));
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar24.png")));
-			}
-		});
-		mnReporte.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		mnReporte.setIcon(new ImageIcon(Starter.class.getResource("/img/reportar24.png")));
-		menuBar.add(mnReporte);
 /*
 		JMenuItem mntmReporteDeEmpresa = new JMenuItem("Reporte de Empresa");
 		mntmReporteDeEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));

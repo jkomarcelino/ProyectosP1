@@ -39,6 +39,10 @@ import logico.Solicitud;
 import logico.SolicitudObrero;
 import logico.SolicitudTecnico;
 import logico.SolicitudUniversitario;
+import javax.swing.border.CompoundBorder;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import java.awt.SystemColor;
 
 public class Matching extends JDialog {
 
@@ -79,28 +83,27 @@ public class Matching extends JDialog {
 		setBounds(100, 100, 853, 509);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(248, 248, 255));
+		contentPanel.setBackground(SystemColor.inactiveCaption);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
+			panel.setBackground(SystemColor.inactiveCaption);
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			{
 				JPanel panel_1 = new JPanel();
-				panel_1.setBackground(new Color(248, 248, 255));
+				panel_1.setBackground(SystemColor.inactiveCaption);
 				panel_1.setBorder(null);
-				panel_1.setBounds(3, 3, 846, 430);
+				panel_1.setBounds(3, 3, 834, 430);
 				panel.add(panel_1);
 				panel_1.setLayout(null);
 				{
 					JPanel panel_2 = new JPanel();
-					panel_2.setBackground(new Color(248, 248, 255));
+					panel_2.setBackground(SystemColor.inactiveCaptionBorder);
 					panel_2.setLayout(null);
-					panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Empresa",
-							TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+					panel_2.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
 					panel_2.setBounds(5, 5, 505, 400);
 					panel_1.add(panel_2);
 					{
@@ -123,13 +126,12 @@ public class Matching extends JDialog {
 					}
 					{
 						JLabel label = new JLabel("C\u00F3digo Solicitud:");
-						label.setBounds(238, 35, 102, 14);
+						label.setBounds(280, 35, 100, 14);
 						panel_2.add(label);
 					}
 					{
-						JButton button = new JButton("");
-						button.setIcon(new ImageIcon(Matching.class.getResource("/img/buscar.png")));
-						button.addActionListener(new ActionListener() {
+						JButton btnBuscar = new JButton("Buscar");
+						btnBuscar.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								ftxtCodSolicitud.setValue("");
 
@@ -145,8 +147,8 @@ public class Matching extends JDialog {
 
 							}
 						});
-						button.setBounds(205, 30, 29, 25);
-						panel_2.add(button);
+						btnBuscar.setBounds(205, 30, 65, 25);
+						panel_2.add(btnBuscar);
 					}
 					{
 						JScrollPane scrollPane = new JScrollPane();
@@ -216,7 +218,7 @@ public class Matching extends JDialog {
 						ftxtCodSolicitud = new JFormattedTextField();
 						ftxtCodSolicitud.setBackground(new Color(255, 255, 255));
 						ftxtCodSolicitud.setEnabled(false);
-						ftxtCodSolicitud.setBounds(335, 31, 134, 23);
+						ftxtCodSolicitud.setBounds(369, 31, 100, 23);
 						panel_2.add(ftxtCodSolicitud);
 					}
 
@@ -237,25 +239,36 @@ public class Matching extends JDialog {
 					JPanel panel_2 = new JPanel();
 					panel_2.setBackground(new Color(248, 248, 255));
 					panel_2.setLayout(null);
-					panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-							"Solicitantes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-					panel_2.setBounds(520, 5, 311, 400);
+					panel_2.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Solicitantes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
+					panel_2.setBounds(520, 102, 311, 303);
 					panel_1.add(panel_2);
 					{
 						JScrollPane scrollPane = new JScrollPane();
-						scrollPane.setBounds(10, 32, 291, 357);
+						scrollPane.setBounds(10, 23, 293, 263);
 						panel_2.add(scrollPane);
-						{
-							list = new JList();
-							scrollPane.setViewportView(list);
-						}
 					}
+				}
+				{
+					list = new JList();
+					list.setBounds(532, 127, 287, 260);
+					panel_1.add(list);
+				}
+				
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(Matching.class.getResource("/img/JOBIFYpeque.png")));
+				lblNewLabel.setBounds(523, 11, 138, 39);
+				panel_1.add(lblNewLabel);
+				{
+					JLabel lblNewLabel_1 = new JLabel("New label");
+					lblNewLabel_1.setIcon(new ImageIcon(Matching.class.getResource("/img/encon.png")));
+					lblNewLabel_1.setBounds(533, 40, 273, 30);
+					panel_1.add(lblNewLabel_1);
 				}
 			}
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(new Color(248, 248, 255));
+			buttonPane.setBackground(SystemColor.activeCaption);
 			buttonPane.setBorder(null);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
@@ -394,5 +407,4 @@ public class Matching extends JDialog {
 		misSolicitantesC = new ArrayList<>();
 		loadTable(null);
 	}
-
 }
