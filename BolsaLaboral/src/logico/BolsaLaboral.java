@@ -570,57 +570,49 @@ return aspirante;
 	*/
 	
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Empresa> listEmpresa;
-	private ArrayList<Personal> listPersonal;
-	private ArrayList<Solicitud> listSolicitud;
+	private ArrayList<Empresa> misEmpresas;
+	private ArrayList<Personal> misSolicitantes;
+	private ArrayList<Solicitud> misSolicitudes;
 	private static BolsaLaboral bolsa;
 	private FileWriter writer_1;
 	private String archivo = "BolsaLaboral.dat";
 
-	
-	public BolsaLaboral() {//PARA ASEGURAR UNA SOLO INSTANCIA DE LA CLASE CONTROLADORA
+	public BolsaLaboral() {
 		super();
 		this.bolsa = null;
-		this.listEmpresa = new ArrayList<>();
-		this.listPersonal = new ArrayList<>();
-		this.listSolicitud = new ArrayList<>();
+		this.misEmpresas = new ArrayList<>();
+		this.misSolicitantes = new ArrayList<>();
+		this.misSolicitudes = new ArrayList<>();
 
 	}
-///***************************SETTERS Y GETTERS**********************************************************************
-	
-	public ArrayList<Empresa> getlistEmpresa() {
-		return listEmpresa;
+
+	public ArrayList<Empresa> getMisEmpresas() {
+		return misEmpresas;
 	}
 
 	public ArrayList<Personal> getMisPersonas() {
-		return listPersonal;
+		return misSolicitantes;
 	}
 
-	public ArrayList<Solicitud> getlistSolicitud() {
-		return listSolicitud;
+	public ArrayList<Solicitud> getMisSolicitudes() {
+		return misSolicitudes;
 	}
-	
-///******************************************************************************************************************
-	
-	public static BolsaLaboral getInstance() {//PARA ASEGURAR UNA SOLO INSTANCIA DE LA CLASE CONTROLADORA
+
+	public static BolsaLaboral getInstance() {
 		if (bolsa == null) {
 			bolsa = new BolsaLaboral();
 		}
 		return bolsa;
 
 	}
-	
-	
-///***********************************METODOS EMPRESA***************************************************************
-	
-	
+
 	public void insertEmpresa(Empresa empresa) {
-		listEmpresa.add(empresa);
+		misEmpresas.add(empresa);
 	}
 
 	public void modificaEmpresa(Empresa empresa) {
 
-		for (Empresa miempresa : listEmpresa) {
+		for (Empresa miempresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(miempresa.getRNC())) {
 				miempresa.setArea(empresa.getArea());
 				miempresa.setNombre(empresa.getNombre());
@@ -631,55 +623,77 @@ return aspirante;
 		}
 	}
 
-	
+	public void insertSolicitante(Personal pSolicitante) {
+		String code = getCodeSolicitante();
+		pSolicitante.setCodigo(code);
+		pSolicitante.setContratado(false);
+		misSolicitantes.add(pSolicitante);
+	}
+
+	public void insertSolicitud(Solicitud pSolicitud) {
+		String code = getCodeSolicitud();
+		pSolicitud.setCodigo(code);
+		misSolicitudes.add(pSolicitud);
+	}
+
+	// Generacion de Codigos....
+	public String getCodeSolicitante() {
+		String code = "";
+		String codigo = "";
+		long milis = new java.util.GregorianCalendar().getTimeInMillis();
+		Random r = new Random(milis);
+		for (int i = 0; i < 3;) {
+			char c = (char) r.nextInt(225);
+			if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
+				code += c;
+				i++;
+			}
+
+		}
+		codigo = "S" + code;
+		return codigo;
+	}
+
+	public String getCodeSolicitud() {
+		String code = "";
+		String codigo = "";
+		long milis = new java.util.GregorianCalendar().getTimeInMillis();
+		Random r = new Random(milis);
+		for (int i = 0; i < 3;) {
+			char c = (char) r.nextInt(225);
+			if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
+				code += c;
+				i++;
+			}
+
+		}
+		codigo = "SO" + code;
+		return codigo;
+	}
+
+	// Funciones de Empresa
 	public int cantSolicitudes(String RNC) {
 		int cant = 0;
-		for (Empresa empresa : listEmpresa) {
+		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(RNC)) {
 				cant++;
 			}
 		}
 		return cant;
 	}
-	
-	
-	// Retornar una empresa dado un RNC
-		public Empresa RetornarEmpresa(String RNC) {
-			Empresa miEmpresa = null;
-			for (Empresa empresa : listEmpresa) {
-				if (empresa.getRNC().equalsIgnoreCase(RNC)) {
-					miEmpresa = empresa;
-				}
 
-			}
-			return miEmpresa;
+	// Funciones de Solicitantes
+	public boolean buscarSolicitud(Solicitud pSolicitud) {
+		boolean find = false;
+		if (misSolicitudes.contains(pSolicitud)) {
+			find = true;
 		}
-		
-		public boolean EmpresaExiste(String rnc) {
-			boolean existe = false;
-			for (Empresa empresa : listEmpresa) {
-				if (empresa.getRNC().equalsIgnoreCase(rnc)) {
-					existe = true;
-				}
-			}
-			return existe;
-
-		}
-	
-//**************************************METODOS PERSONAL************************************************************
-	
-	public void insertSolicitante(Personal pSolicitante) {
-		String code = getCodeSolicitante();
-		pSolicitante.setCodigo(code);
-		pSolicitante.setContratado(false);
-		listPersonal.add(pSolicitante);
-		
+		return find;
 	}
-	
-	
+
 	public boolean buscarSolicitante(Personal pSolicitante) {
 		boolean find = false;
-		if (listPersonal.contains(pSolicitante)) {
+		if (misSolicitantes.contains(pSolicitante)) {
 			find = true;
 		}
 		return find;
@@ -687,7 +701,7 @@ return aspirante;
 
 	public int cantSolicitanteUniversitario() {
 		int cant = 0;
-		for (Personal solicitante : listPersonal) {
+		for (Personal solicitante : misSolicitantes) {
 			if (solicitante instanceof Universitario) {
 				cant++;
 			}
@@ -698,7 +712,7 @@ return aspirante;
 
 	public int cantSolicitanteTecnico() {
 		int cant = 0;
-		for (Personal solicitante : listPersonal) {
+		for (Personal solicitante : misSolicitantes) {
 			if (solicitante instanceof Tecnico) {
 				cant++;
 			}
@@ -709,7 +723,7 @@ return aspirante;
 
 	public int cantSolicitanteObrero() {
 		int cant = 0;
-		for (Personal solicitante : listPersonal) {
+		for (Personal solicitante : misSolicitantes) {
 			if (solicitante instanceof Obrero) {
 				cant++;
 			}
@@ -718,137 +732,7 @@ return aspirante;
 		return cant;
 	}
 
-	// retorna cantidad de solicitudes del solicitane
-		public int cantidadSolicitante(Personal soli) {
-			int cant = 0;
-			for (Personal misoli : listPersonal) {
-				if (soli.getCedula().equalsIgnoreCase(misoli.getCedula())) {
-					cant++;
-				}
-
-			}
-			return cant;
-
-		}
-	
-		// buscar solicitante por cedula
-
-		public Personal BuscarSoliCedula(String Cedula) {
-			Personal solicitante = null;
-			for (Personal soli : listPersonal) {
-				if (soli.getCedula().equalsIgnoreCase(Cedula)) {
-					solicitante = soli;
-				}
-
-			}
-			return solicitante;
-		}
-
-		// retorna si existe un solicitante
-		public boolean SolicitanteExiste(String cedula) {
-			boolean existe = false;
-			for (Personal solicitante : listPersonal) {
-
-				if (solicitante.getCedula().equalsIgnoreCase(cedula)) {
-					existe = true;
-				}
-			}
-			return existe;
-		}
-
-		// retorna el tipo de solicitante
-		public String tipoSolicitante(Personal soli) {
-			String solici = null;
-
-			if (soli instanceof Obrero) {
-				solici = "Obrero";
-
-			}
-			if (soli instanceof Universitario) {
-				solici = "Universitario";
-
-			}
-			if (soli instanceof Tecnico) {
-				solici = "Tecnico";
-
-			}
-
-			return solici;
-
-		}
-		
-		// Modificar solicitante
-		public void updateSolicitante(Personal soli) {
-			for (Personal solis : listPersonal) {
-				if (solis.getCedula().equalsIgnoreCase(soli.getCedula())) {
-					solis.setEstadoCivil(soli.getEstadoCivil());
-					solis.setCategoriaLicencia(soli.getCategoriaLicencia());
-					solis.setProvincia(soli.getProvincia());
-					solis.setTelefono(soli.getTelefono());
-					solis.setEmail(soli.getEmail());
-					solis.setIdiomas(soli.getIdiomas());
-					solis.setVehiculoPropio(soli.isVehiculoPropio());
-					solis.setCalle(soli.getCalle());
-					solis.setCiudad(soli.getCiudad());
-					solis.setSector(soli.getSector());
-					solis.setReferencia(soli.getReferencia());
-					solis.setNumeroCasa(soli.getNumeroCasa());
-				}
-			}
-		}
-
-		// Retornar indice de Solicitate
-		public int indexSolicitante(String code) {
-			int index = 0;
-			for (int i = 0; i < listPersonal.size(); i++) {
-				if (listPersonal.get(i).getCodigo().equalsIgnoreCase(code)) {
-					index = i;
-				}
-			}
-			return index;
-		}
-
-		// Elimianr solicitante por codigo
-		public void eliminarSolicitante(Personal persona) {
-			int index = indexSolicitante(persona.getCodigo());
-			listPersonal.remove(index);
-		}
-
-
-//**************************************METODOS SOLICITUDES*********************************************************
-	public boolean buscarSolicitud(Solicitud pSolicitud) {
-		boolean find = false;
-		if (listSolicitud.contains(pSolicitud)) {
-			find = true;
-		}
-		return find;
-	}
-	
-	
-	
-	
-
-	public void insertSolicitud(Solicitud pSolicitud) {
-		String code = getCodeSolicitud();
-		pSolicitud.setCodigo(code);
-		listSolicitud.add(pSolicitud);
-	}
-	
-	// retorna una solicitud dado el rnc de una empresa
-		public Empresa RetornaEmpresaSoli(String rnc) {
-			Empresa empre = null;
-			for (Empresa empresa : listEmpresa) {
-				if (empresa.getRNC().equalsIgnoreCase(rnc)) {
-					empre = empresa;
-				}
-
-			}
-			return empre;
-
-		}
-
-///***************************************VALIDACIONES Y MATCHINNG**********************************************************************
-	
+	// Funciones de Matching
 	public boolean validarGeneral(Personal persona, Solicitud solicitud) {
 		boolean valido = false;
 		if (persona.contratado == false) {
@@ -930,17 +814,16 @@ return aspirante;
 
 		return aux;
 	}
-	
-	
+
 	public ArrayList<Personal> matcheo(Solicitud soli) {
 
-		ArrayList<Personal> candidato = new ArrayList<>();
+		ArrayList<Personal> candito = new ArrayList<>();
 		if (soli instanceof SolicitudObrero) {
-			for (Personal solicitante : listPersonal) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Obrero) {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarObrero(solicitante, soli)) {
-							candidato.add(solicitante);
+							candito.add(solicitante);
 							/*
 							 * soli.getEmpresa().insertContratado(solicitante);
 							 * Crear una funcion qune inserte los contradado y
@@ -955,11 +838,11 @@ return aspirante;
 		}
 
 		if (soli instanceof SolicitudTecnico) {
-			for (Personal solicitante : listPersonal) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Tecnico) {
 					if (validarGeneral(solicitante, soli)) {
 						if (ValidarTecnico(solicitante, soli)) {
-							candidato.add(solicitante);
+							candito.add(solicitante);
 							/*
 							 * soli.getEmpresa().insertContratado(solicitante);
 							 * Crear una funcion qune inserte los contradado y
@@ -972,11 +855,11 @@ return aspirante;
 			}
 		}
 		if (soli instanceof SolicitudUniversitario) {
-			for (Personal solicitante : listPersonal) {
+			for (Personal solicitante : misSolicitantes) {
 				if (solicitante instanceof Universitario) {
 					if (validarGeneral(solicitante, soli)) {
 						if (validarUniversitario(solicitante, soli)) {
-							candidato.add(solicitante);
+							candito.add(solicitante);
 							/*
 							 * soli.getEmpresa().insertContratado(solicitante);
 							 * Crear una funcion qune inserte los contradado y
@@ -989,22 +872,9 @@ return aspirante;
 			}
 		}
 
-		return candidato;
+		return candito;
 	}
-	
-	
-	public boolean validarEmail(String email) {
-		Pattern patt = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-		Matcher match = patt.matcher(email);
-		if (!match.find()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-///*********************************************************************************************************************	
-//***************************************************FICHEROS************************************************************
-	
+
 	public void writeBolsa() {
 		FileOutputStream bolsaFile = null;
 		ObjectOutputStream bolsaOut = null;
@@ -1050,54 +920,35 @@ return aspirante;
 			e.printStackTrace();
 		}
 	}
-	
-	// Generacion de Codigos....
-	public String getCodeSolicitante() {
-		String code = "";
-		String codigo = "";
-		long milis = new java.util.GregorianCalendar().getTimeInMillis();
-		Random r = new Random(milis);
-		for (int i = 0; i < 3;) {
-			char c = (char) r.nextInt(225);
-			if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
-				code += c;
-				i++;
+
+	// validacion de Email
+	public boolean validarEmail(String email) {
+		Pattern patt = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		Matcher match = patt.matcher(email);
+		if (!match.find()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// Retornar una empresa dado un RNC
+	public Empresa RetornarEmpresa(String RNC) {
+		Empresa miEmpresa = null;
+		for (Empresa empresa : misEmpresas) {
+			if (empresa.getRNC().equalsIgnoreCase(RNC)) {
+				miEmpresa = empresa;
 			}
 
 		}
-		codigo = "S" + code;
-		return codigo;
+		return miEmpresa;
 	}
-
-	public String getCodeSolicitud() {
-		String code = "";
-		String codigo = "";
-		long milis = new java.util.GregorianCalendar().getTimeInMillis();
-		Random r = new Random(milis);
-		for (int i = 0; i < 3;) {
-			char c = (char) r.nextInt(225);
-			if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
-				code += c;
-				i++;
-			}
-
-		}
-		codigo = "SO" + code;
-		return codigo;
-	}
-
-	
-	
-
-	
-
-	
 
 	// Retorna cantidad de solicitudes de obreros hecha por una empresa
 	public int cantSoliO(String rnc) {
 		int cantO = 0;
 		Empresa miEm = RetornarEmpresa(rnc);
-		for (Solicitud soli : listSolicitud) {
+		for (Solicitud soli : misSolicitudes) {
 			if (soli.getEmpresa().getRNC().equalsIgnoreCase(rnc)) {
 
 				if (soli instanceof SolicitudObrero) {
@@ -1111,7 +962,7 @@ return aspirante;
 	// Retorna cantidad de solicitudes de Universitarios hecha por una empresa
 	public int cantSoliU(String rnc) {
 		int cantU = 0;
-		for (Solicitud soli : listSolicitud) {
+		for (Solicitud soli : misSolicitudes) {
 			if (soli.getEmpresa().getRNC().equalsIgnoreCase(rnc)) {
 
 				if (soli instanceof SolicitudUniversitario) {
@@ -1126,7 +977,7 @@ return aspirante;
 	public int cantSoliT(String rnc) {
 		int cantT = 0;
 
-		for (Solicitud soli : listSolicitud) {
+		for (Solicitud soli : misSolicitudes) {
 			if (soli.getEmpresa().getRNC().equalsIgnoreCase(rnc)) {
 
 				if (soli instanceof SolicitudTecnico) {
@@ -1140,7 +991,7 @@ return aspirante;
 	// retorna la cantidad de Obreros que contrato una empresa determinada
 	public int CantOCon(String rnc) {
 		int CantconO = 0;
-		for (Empresa empresa : listEmpresa) {
+		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
 				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Obrero) {
@@ -1156,7 +1007,7 @@ return aspirante;
 	// determinada
 	public int CantUCon(String rnc) {
 		int CantconU = 0;
-		for (Empresa empresa : listEmpresa) {
+		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
 				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Universitario) {
@@ -1171,7 +1022,7 @@ return aspirante;
 	// retorna la cantidad de Tecnicos que contrato una empresa determinada
 	public int CantTCon(String rnc) {
 		int CantconT = 0;
-		for (Empresa empresa : listEmpresa) {
+		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
 				for (Personal soli : empresa.getMisContratados()) {
 					if (soli instanceof Tecnico) {
@@ -1186,7 +1037,7 @@ return aspirante;
 	// Retornar Solicotud dado su codigo
 	public Solicitud RetornarSolocitudCod(String codigo) {
 		Solicitud miSolicitud = null;
-		for (Solicitud solicitud : listSolicitud) {
+		for (Solicitud solicitud : misSolicitudes) {
 			if (solicitud.getCodigo().equalsIgnoreCase(codigo)) {
 				miSolicitud = solicitud;
 			}
@@ -1198,7 +1049,7 @@ return aspirante;
 	// Retornar Solicitante dando una cedula
 	public Personal retornarSolicitante(String cedula) {
 		Personal solicitante = null;
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (soli.getCedula().equalsIgnoreCase(cedula))
 				solicitante = soli;
 		}
@@ -1210,7 +1061,7 @@ return aspirante;
 
 	public ArrayList<Solicitud> RetornaSolicitudEmp(Empresa emp) {
 		ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
-		for (Solicitud solicitud : listSolicitud) {
+		for (Solicitud solicitud : misSolicitudes) {
 			if (solicitud.getEmpresa().getRNC().equalsIgnoreCase(emp.getRNC())) {
 				solicitudes.add(solicitud);
 			}
@@ -1224,42 +1075,42 @@ return aspirante;
 	public boolean EliminarSolicitud(String codigo) {
 		boolean eliminar = false;
 		Solicitud SolicitudEliminar = null;
-		for (Solicitud soli : listSolicitud) {
+		for (Solicitud soli : misSolicitudes) {
 			if (soli.getCodigo().equalsIgnoreCase(codigo)) {
 				SolicitudEliminar = soli;
 				eliminar = true;
 			}
 
 		}
-		listSolicitud.remove(SolicitudEliminar);
+		misSolicitudes.remove(SolicitudEliminar);
 		return eliminar;
 	}
 
 	// funcion eleminnar empresa
 	public void eliminarEmpresa(String cod) {
 		Empresa empresaeliminar = null;
-		for (Empresa empresa : listEmpresa) {
+		for (Empresa empresa : misEmpresas) {
 			if (empresa.getRNC().equalsIgnoreCase(cod)) {
 				empresaeliminar = empresa;
 			}
 		}
-		listEmpresa.remove(empresaeliminar);
+		misEmpresas.remove(empresaeliminar);
 	}
 
 	// Actualizar una solicitud cuando se modifica
 	public void ActualizarSolicitud(Solicitud modi, Solicitud modificarSoli) {
 		int index = 0;
-		if (listSolicitud.contains(modi)) {
-			index = listSolicitud.indexOf(modi);
+		if (misSolicitudes.contains(modi)) {
+			index = misSolicitudes.indexOf(modi);
 		}
-		listSolicitud.set(index, modificarSoli);
+		misSolicitudes.set(index, modificarSoli);
 
 	}
 
 	// Retornar cant. Universitarios desempleado
 	public int desempleadoU() {
 		int cant = 0;
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Universitario) {
 					cant++;
@@ -1272,7 +1123,7 @@ return aspirante;
 	// Retornar cant. Tecnicos desempleado
 	public int desempleadoT() {
 		int cant = 0;
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Tecnico) {
 					cant++;
@@ -1285,7 +1136,7 @@ return aspirante;
 	// Retornar cant. Obreros desempleado
 	public int desempleadoO() {
 		int cant = 0;
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (!soli.isContratado()) {
 				if (soli instanceof Obrero) {
 					cant++;
@@ -1300,7 +1151,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Obrero) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1318,7 +1169,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Universitario) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1336,7 +1187,7 @@ return aspirante;
 		float cant = 0;
 		float porciento = 0;
 		float total = totalContratado();
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (soli instanceof Tecnico) {
 				if (soli.isContratado()) {
 					cant++;
@@ -1352,7 +1203,7 @@ return aspirante;
 	// Retorna total de contratados
 	public int totalContratado() {
 		int cant = 0;
-		for (Personal soli : listPersonal) {
+		for (Personal soli : misSolicitantes) {
 			if (soli.isContratado()) {
 				cant++;
 			}
@@ -1360,7 +1211,43 @@ return aspirante;
 		return cant;
 	}
 
-	
+	// Modificar solicitante
+	public void updateSolicitante(Personal soli) {
+		for (Personal solis : misSolicitantes) {
+			if (solis.getCedula().equalsIgnoreCase(soli.getCedula())) {
+				solis.setEstadoCivil(soli.getEstadoCivil());
+				solis.setCategoriaLicencia(soli.getCategoriaLicencia());
+				solis.setProvincia(soli.getProvincia());
+				solis.setTelefono(soli.getTelefono());
+				solis.setEmail(soli.getEmail());
+				solis.setIdiomas(soli.getIdiomas());
+				solis.setVehiculoPropio(soli.isVehiculoPropio());
+				solis.setCalle(soli.getCalle());
+				solis.setCiudad(soli.getCiudad());
+				solis.setSector(soli.getSector());
+				solis.setReferencia(soli.getReferencia());
+				solis.setNumeroCasa(soli.getNumeroCasa());
+			}
+		}
+	}
+
+	// Retornar indice de Solicitate
+	public int indexSolicitante(String code) {
+		int index = 0;
+		for (int i = 0; i < misSolicitantes.size(); i++) {
+			if (misSolicitantes.get(i).getCodigo().equalsIgnoreCase(code)) {
+				index = i;
+			}
+		}
+		return index;
+	}
+
+	// Elimianr solicitante por codigo
+	public void eliminarSolicitante(Personal persona) {
+		int index = indexSolicitante(persona.getCodigo());
+		misSolicitantes.remove(index);
+	}
+
 	// Contratar Candidatos
 	public void contratarCandidatos(Solicitud solicitud, ArrayList<Personal> empleados) {
 		Empresa empresa = solicitud.getEmpresa();
@@ -1383,11 +1270,103 @@ return aspirante;
 		return por;
 	}
 
-	
+	// retorna una solicitud dado el rnc de una empresa
+	public Empresa RetornaEmpresaSoli(String rnc) {
+		Empresa empre = null;
+		for (Empresa empresa : misEmpresas) {
+			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
+				empre = empresa;
+			}
 
-	
+		}
+		return empre;
 
-	
+	}
+
+	public boolean EmpresaExiste(String rnc) {
+		boolean existe = false;
+		for (Empresa empresa : misEmpresas) {
+			if (empresa.getRNC().equalsIgnoreCase(rnc)) {
+				existe = true;
+			}
+		}
+		return existe;
+
+	}
+
+	// escribe fichero texto de una empresa
+	public void writeEmpresaTXT(String rnc) throws IOException {
+		writer_1 = new FileWriter(new File("Archivo.txt"));
+		Empresa soli = RetornaEmpresaSoli(rnc);
+		float cant = 0;
+		float cot = 0;
+		float cantcontratados = 0;
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("*                               Bolsa Laboral                                     *" + "\n");
+		writer_1.write("*                                   Empresa                                       *" + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("Empresa:                " + soli.getNombre() + "\n");
+		for (Solicitud misoli : misSolicitudes) {
+			if (misoli.getEmpresa().getRNC().equalsIgnoreCase(rnc)) {
+				cant = misoli.getCantVacantes();
+				cantcontratados = misoli.getCantReal();
+				cot++;
+			}
+
+		}
+		writer_1.write("Cantidad Vacantes inicial: " + cant + "\n");
+		writer_1.write("Cantidad Vacantes real:    " + cantcontratados + "\n");
+		writer_1.write("Cantidad Solicitudes       " + cot + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.close();
+
+	}
+	// buscar solicitante por cedula
+
+	public Personal BuscarSoliCedula(String Cedula) {
+		Personal solicitante = null;
+		for (Personal soli : misSolicitantes) {
+			if (soli.getCedula().equalsIgnoreCase(Cedula)) {
+				solicitante = soli;
+			}
+
+		}
+		return solicitante;
+	}
+
+	// retorna si existe un solicitante
+	public boolean SolicitanteExiste(String cedula) {
+		boolean existe = false;
+		for (Personal solicitante : misSolicitantes) {
+
+			if (solicitante.getCedula().equalsIgnoreCase(cedula)) {
+				existe = true;
+			}
+		}
+		return existe;
+	}
+
+	// retorna el tipo de solicitante
+	public String tipoSolicitante(Personal soli) {
+		String solici = null;
+
+		if (soli instanceof Obrero) {
+			solici = "Obrero";
+
+		}
+		if (soli instanceof Universitario) {
+			solici = "Universitario";
+
+		}
+		if (soli instanceof Tecnico) {
+			solici = "Tecnico";
+
+		}
+
+		return solici;
+
+	}
+
 	// retorna si esta contratado o no
 
 	public String contradato(Personal soli) {
@@ -1401,17 +1380,43 @@ return aspirante;
 		return estado;
 	}
 
-	
+	// retorna cantidad de solicitudes del solicitane
+	public int cantidadSolicitante(Personal soli) {
+		int cant = 0;
+		for (Personal misoli : misSolicitantes) {
+			if (soli.getCedula().equalsIgnoreCase(misoli.getCedula())) {
+				cant++;
+			}
 
-	
+		}
+		return cant;
+
+	}
+
+	public void writeSolicitanteTXT(String cedula) throws IOException {
+		writer_1 = new FileWriter(new File("Archivo.txt"));
+		Personal soli = BuscarSoliCedula(cedula);
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("*                               Bolsa Laboral                                     *" + "\n");
+		writer_1.write("*                                 Empleado                                        *" + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.write("Nombres:                 " + soli.getNombres() + "\n");
+		writer_1.write("Apellidos:               " + soli.getApellidos() + "\n");
+		writer_1.write("Tipo Solicitante:        " + tipoSolicitante(soli) + "\n");
+		writer_1.write("Estado:                  " + contradato(soli) + "\n");
+		writer_1.write("Cantidad de Solicitudes: " + cantidadSolicitante(soli) + "\n");
+		writer_1.write("***********************************************************************************" + "\n");
+		writer_1.close();
+
+	}
 	//Remover solicitudes de contratados
 	public void removerContratados(ArrayList<Personal>misContratados){
 		
 		for (Personal contratado : misContratados) {
-			for (Personal solicitante : listPersonal) {
+			for (Personal solicitante : misSolicitantes) {
 				if(solicitante.isContratado()==false){
 					if(contratado.getCedula().equalsIgnoreCase(solicitante.getCedula())){
-						listPersonal.remove(solicitante);
+						misSolicitantes.remove(solicitante);
 					}
 				}
 			}
