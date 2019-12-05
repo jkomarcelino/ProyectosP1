@@ -7,7 +7,6 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
@@ -57,6 +56,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.border.EtchedBorder;
 import javax.swing.ImageIcon;
 import javax.swing.SpinnerNumberModel;
+import java.awt.SystemColor;
 
 public class RegPersona extends JDialog {
 
@@ -101,6 +101,7 @@ public class RegPersona extends JDialog {
 	private JComboBox cbxHabilidades;
 	private JComboBox cbxAreaTecnico;
 	private JComboBox cbxCarrera;
+	private JSpinner spnEdad;
 	private JSpinner spnAnosExpUniversitario;
 	private JSpinner spnNumeroCasa;
 	private JSpinner spnAnnosExpObrero;
@@ -119,7 +120,6 @@ public class RegPersona extends JDialog {
 	private Personal modiS = null;
 	private Personal verSoli = null;
 	Calendar cal= Calendar.getInstance();
-	private JTextField txtEdad;
 
 	/**
 	 * Launch the application.
@@ -167,7 +167,7 @@ public class RegPersona extends JDialog {
 		contentPanel.setLayout(new CardLayout(0, 0));
 		{
 			panel1 = new JPanel();
-			panel1.setBackground(new Color(248, 248, 255));
+			panel1.setBackground(SystemColor.inactiveCaption);
 			contentPanel.add(panel1, "name_42514397155285");
 			panel1.setLayout(null);
 
@@ -235,9 +235,9 @@ public class RegPersona extends JDialog {
 			panel_infoPersonal.add(txtApellidos);
 			txtApellidos.setColumns(10);
 
-			JLabel lblNatalicio = new JLabel("Natalicio:");
-			lblNatalicio.setBounds(19, 134, 57, 14);
-			panel_infoPersonal.add(lblNatalicio);
+			JLabel lblEdad = new JLabel("Edad:");
+			lblEdad.setBounds(19, 134, 57, 14);
+			panel_infoPersonal.add(lblEdad);
 
 		/*	FechaNacimiento = new JDateChooser();
 			FechaNacimiento.setBackground(new Color(255, 255, 255));
@@ -330,11 +330,9 @@ public class RegPersona extends JDialog {
 			label_5.setBounds(365, 134, 38, 14);
 			panel_infoPersonal.add(label_5);
 			
-			txtEdad = new JTextField();
-			txtEdad.setColumns(10);
-			txtEdad.setBackground(Color.WHITE);
-			txtEdad.setBounds(100, 131, 134, 23);
-			panel_infoPersonal.add(txtEdad);
+			JSpinner spnEdad = new JSpinner();
+			spnEdad.setBounds(100, 131, 57, 20);
+			panel_infoPersonal.add(spnEdad);
 
 			JLabel lblpriority = new JLabel("Campos con * son obligatorios.");
 			lblpriority.setForeground(Color.RED);
@@ -916,6 +914,7 @@ public class RegPersona extends JDialog {
 						String ciudad = txtCiudad.getText();
 						String sector = txtSector.getText();
 						String calle = txtCalle.getText();
+						int edad = Integer.parseInt(spnEdad.toString());
 						String direccion = "";
 						int numeroCasa = new Integer((int) spnNumeroCasa.getValue());
 						String referencia = txtReferencia.getText();
@@ -1009,7 +1008,7 @@ public class RegPersona extends JDialog {
 									
 							
 									
-									Personal solicitante = new Obrero(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Obrero(cedula, nombre, apellido, edad, telefono,
 											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, misHabilidades);
@@ -1029,7 +1028,7 @@ public class RegPersona extends JDialog {
 								}
 								if (modificar) {
 									int annos = new Integer((int) spnAnnosExpObrero.getValue());
-									Personal solicitante = new Obrero(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Obrero(cedula, nombre, apellido,edad, telefono,
 											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, misHabilidades);
@@ -1049,7 +1048,7 @@ public class RegPersona extends JDialog {
 								if (!modificar) {
 									int annos = new Integer((int) spnAnosExpUniversitario.getValue());								
 									
-									Personal solicitante = new Universitario(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Universitario(cedula, nombre, apellido,edad, telefono,
 											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, false,
@@ -1066,7 +1065,7 @@ public class RegPersona extends JDialog {
 								}
 								if (modificar) {
 									int annos = new Integer((int) spnAnosExpUniversitario.getValue());
-									Personal solicitante = new Universitario(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Universitario(cedula, nombre, apellido,edad, telefono,
 											 nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia, false,
@@ -1087,7 +1086,7 @@ public class RegPersona extends JDialog {
 							if (!error) {
 								if (!modificar) {
 									int annos = new Integer((int) spnAnosExpTecnico.getValue());
-									Personal solicitante = new Tecnico(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Tecnico(cedula, nombre, apellido,edad,telefono,
 											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia,
@@ -1103,7 +1102,7 @@ public class RegPersona extends JDialog {
 								}
 								if (modificar) {
 									int annos = new Integer((int) spnAnosExpTecnico.getValue());
-									Personal solicitante = new Tecnico(cedula, nombre, apellido, telefono,
+									Personal solicitante = new Tecnico(cedula, nombre, apellido,edad, telefono,
 											nacionalidad, sexo, estadoCivil, direccion, provincia,
 											email, vehiculoP, licencia, annos, misIdiomas, postGrado, mudarse, ciudad,
 											sector, calle, numeroCasa, referencia,
@@ -1262,6 +1261,7 @@ public class RegPersona extends JDialog {
 		txtSector.setText("");
 		txtTelefono.setText("");
 		textCedula.setText("");
+		//spnEdad.setText("");
 		cbxAreaTecnico.setSelectedIndex(0);
 		cbxCarrera.setSelectedIndex(0);
 		cbxEstadoCilvil.setSelectedIndex(0);
@@ -1285,9 +1285,6 @@ public class RegPersona extends JDialog {
 		spnNumeroCasa.setValue(0);
 		btnMover.setText("Continuar ");
 		btnRegistrar.setEnabled(false);
-	/*	LocalDate fecha = LocalDate.now();
-		Date date = java.sql.Date.valueOf(fecha);
-		FechaNacimiento.setDate(date);*/
 		misHabilidades = new ArrayList<>();
 		misIdiomas = new ArrayList<>();
 		modeloHabilidad.clear();
@@ -1329,14 +1326,11 @@ public class RegPersona extends JDialog {
 	public void loadPersonalModi() {
 		if (modiS != null) {
 			btnRegistrar.setText("Modificar");
-		/*	LocalDate fecha = modiS.getFechaNacimiento();
-			Date date = java.sql.Date.valueOf(fecha);*/
 			txtApellidos.setEnabled(false);
 			txtNombre.setEnabled(false);
 			rdbFemenino.setEnabled(false);
 			rdbMasculino.setEnabled(false);
 			textCedula.setEnabled(false);
-			//FechaNacimiento.setEnabled(false);
 			cbxNacionalidad.setEnabled(false);
 			rdbSiReelocalizacion.setEnabled(false);
 			rdbNoReelocalizacion.setEnabled(false);
@@ -1354,7 +1348,7 @@ public class RegPersona extends JDialog {
 			txtNombre.setText(modiS.getNombres());
 			txtApellidos.setText(modiS.getApellidos());
 			textCedula.setText(modiS.getCedula());
-			//FechaNacimiento.setDate(date);
+			spnEdad.setToolTipText(String.valueOf(modiS.getEdad()));
 			cbxNacionalidad.setSelectedItem(modiS.getNacionalidad());
 			cbxEstadoCilvil.setSelectedItem(modiS.getEstadoCivil());
 			cbxProvincia.setSelectedItem(modiS.getProvincia());
