@@ -8,15 +8,13 @@ import java.util.ArrayList;
 public abstract class Personal implements Serializable {
 	
 
-	///******************************SETTERS Y GETTERS*******************************************************
-
 	private static final long serialVersionUID = 1L;
+	
 	protected String codigo;
 	protected String cedula;
 	protected String nombres;
 	protected String apellidos;
 	protected String telefono;
-	//protected LocalDate fechaNacimiento;
 	protected String nacionalidad;
 	protected String sexo;
 	protected String estadoCivil;
@@ -37,7 +35,7 @@ public abstract class Personal implements Serializable {
 	protected String referencia;
 	protected LocalDate FechaContratado;
 
-	
+//********************CONSTRUCTOR********************************************************************
 
 	public Personal( String cedula, String nombres, String apellidos,long edad, String telefono, String nacionalidad, String sexo, String estadoCivil, String direccion,
 			String provincia, String email, boolean vehiculoPropio, int categoriaLicencia, int annosExperiencia,
@@ -49,7 +47,6 @@ public abstract class Personal implements Serializable {
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
-		//this.fechaNacimiento = fechaNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.sexo = sexo;
 		this.estadoCivil = estadoCivil;
@@ -69,7 +66,7 @@ public abstract class Personal implements Serializable {
 		this.referencia = referencia;
 	}
 	
-
+///******************************SETTERS Y GETTERS*******************************************************
 	public LocalDate getFechaContratado() {
 		return FechaContratado;
 	}
@@ -272,11 +269,11 @@ public abstract class Personal implements Serializable {
 
 
 
-//*********************Rellenar atributos************************
 
 
 
-	//************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
+
+//************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
 
 
 

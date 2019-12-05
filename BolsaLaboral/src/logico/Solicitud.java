@@ -22,6 +22,8 @@ public abstract class Solicitud implements Serializable{
 	protected boolean mudarse;
 	protected ArrayList<String> idiomas = new ArrayList<>();
 
+//**************************CONTRUCTOR*******************************************************8
+	
 	public Solicitud(float cantVacantes, int annosExperiencia, int edadMax, int edadMin, String tipoContrato,
 			boolean vehiculoPropio, String localidad, Empresa empresa, boolean mudarse, ArrayList<String> idiomas,int categoriaLicencia) {
 		super();
@@ -42,6 +44,10 @@ public abstract class Solicitud implements Serializable{
 		
 
 	}
+	
+//****************************SETTERS Y GETTERS**************************************************************
+	
+	
 
 	public int getCategoriaLicencia() {
 		return categoriaLicencia;

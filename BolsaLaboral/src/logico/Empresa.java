@@ -4,25 +4,24 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+public class Empresa implements Serializable {
 
-
-public class Empresa implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
+
 	private String RNC;
 	private String nombre;
 	private String telefono;
 	private String email;
+	private String ciudad;
+	private String calle;
 	private String area;
 	private String direccion;
 	private String sector;
-	private String ciudad;
-	private String calle; 
 	private int numeroLocal;
 	private String referencia;
-	private ArrayList<Personal>misContratados;
+	private ArrayList<Personal> misContratados;
 
-
+//********************************CONSTRUCTOR****************************************************************
 
 	public Empresa(String rNC, String nombre, String telefono, String email, String area, String direccion,
 			String sector, String ciudad, String calle, int numeroLocal, String referencia) {
@@ -40,47 +39,53 @@ public class Empresa implements Serializable{
 		this.referencia = referencia;
 		this.misContratados = new ArrayList<>();
 	}
+
+//**********************SETTERS Y GETTERS***********************************************************************
+
 	public ArrayList<Personal> getMisContratados() {
 		return misContratados;
 	}
-public void insertContratado(Personal trabajador){
-	LocalDate date = LocalDate.now();
-	trabajador.setFechaContratado(date);
-	trabajador.setContratado(true);
-	misContratados.add(trabajador);
-}
-
 
 	public String getSector() {
-	return sector;
-}
-public void setSector(String sector) {
-	this.sector = sector;
-}
-public String getCiudad() {
-	return ciudad;
-}
-public void setCiudad(String ciudad) {
-	this.ciudad = ciudad;
-}
-public String getCalle() {
-	return calle;
-}
-public void setCalle(String calle) {
-	this.calle = calle;
-}
-public int getNumeroLocal() {
-	return numeroLocal;
-}
-public void setNumeroLocal(int numeroLocal) {
-	this.numeroLocal = numeroLocal;
-}
-public String getReferencia() {
-	return referencia;
-}
-public void setReferencia(String referencia) {
-	this.referencia = referencia;
-}
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public int getNumeroLocal() {
+		return numeroLocal;
+	}
+
+	public void setNumeroLocal(int numeroLocal) {
+		this.numeroLocal = numeroLocal;
+	}
+
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+
 	public String getRNC() {
 		return RNC;
 	}
@@ -129,27 +134,33 @@ public void setReferencia(String referencia) {
 		this.direccion = direccion;
 	}
 
+//AGREGAR UN CONTRATADO
+	public void insertContratado(Personal trabajador) {
+		LocalDate date = LocalDate.now();
+		trabajador.setFechaContratado(date);
+		trabajador.setContratado(true);
+		misContratados.add(trabajador);
+	}
 
-	
 //************************METODOS PARA COMPROBAR ATRIBUTOS**************************************************
-	private void comprobarCorreo(String correo) {//comprobar que sea un correo valido
-		boolean arroba=false;
+	private void comprobarCorreo(String correo) {// comprobar que sea un correo valido
+		boolean arroba = false;
 		for (int i = 0; i < correo.length(); i++) {
-			
-			if (correo.charAt(i)=='@') {
-				arroba=true;
-				
+
+			if (correo.charAt(i) == '@') {
+				arroba = true;
+
 			}
-			
+
 		}
-		
+
 		if (arroba) {
-			this.email=correo;
-			
+			this.email = correo;
+
 		}
-		
+
 		else {
-			this.email="No valido";
+			this.email = "No valido";
 		}
 	}
 }

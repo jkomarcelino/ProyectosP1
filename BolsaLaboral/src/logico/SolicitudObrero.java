@@ -1,17 +1,18 @@
 package logico;
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 
 
 public class SolicitudObrero extends Solicitud {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private ArrayList<String> habilidades = new ArrayList<>();
+	
 
+//*****************************CONSTRUCTOR***********************************************************
+	
 	public SolicitudObrero(float cantVacantes, int annosExperiencia, int edadMax, int edadMin, String tipoContrato,
 			boolean vehiculoPropio, String localidad, Empresa empresa, boolean mudarse, ArrayList<String> idiomas,
 			int categoriaLicencia, ArrayList<String> habilidades) {
@@ -23,6 +24,9 @@ public class SolicitudObrero extends Solicitud {
 		}
 	}
 
+	
+//*************************SETTER Y GETTER**********************************************
+	
 	public ArrayList<String> getHabilidades() {
 		return habilidades;
 	}
