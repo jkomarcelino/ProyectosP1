@@ -258,7 +258,7 @@ public abstract class Personal implements Serializable {
 		this.contratado = contratado;
 	}
 
-	public int getEdad() {
+	public long getEdad() {
 		
 		return edad;
 	}
