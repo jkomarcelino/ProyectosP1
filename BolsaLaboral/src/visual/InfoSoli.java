@@ -31,6 +31,10 @@ import javax.swing.JList;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
 
 public class InfoSoli extends JDialog {
 
@@ -81,14 +85,14 @@ public class InfoSoli extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
+			panel.setBackground(SystemColor.inactiveCaption);
 			panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Detalles Solicitud", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBackground(new Color(248, 248, 255));
-			panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_1.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panel_1.setBounds(10, 37, 463, 64);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
@@ -118,7 +122,7 @@ public class InfoSoli extends JDialog {
 			JPanel panel_2 = new JPanel();
 			panel_2.setBackground(new Color(248, 248, 255));
 			panel_2.setLayout(null);
-			panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel_2.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panel_2.setBounds(10, 106, 463, 185);
 			panel.add(panel_2);
 			
@@ -225,9 +229,7 @@ public class InfoSoli extends JDialog {
 			panelUniversitario = new JPanel();
 			panelUniversitario.setBackground(new Color(248, 248, 255));
 			panelUniversitario.setLayout(null);
-			panelUniversitario.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-
-								"Universitario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelUniversitario.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Universitario", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelUniversitario.setBounds(10, 289, 241, 132);
 			panel.add(panelUniversitario);
 			
@@ -264,7 +266,7 @@ public class InfoSoli extends JDialog {
 			panelTecnico = new JPanel();
 			panelTecnico.setBackground(new Color(248, 248, 255));
 			panelTecnico.setLayout(null);
-			panelTecnico.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "T\u00E9cnico", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelTecnico.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tecnico", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelTecnico.setBounds(10, 289, 241, 132);
 			panel.add(panelTecnico);
 			
@@ -293,7 +295,7 @@ public class InfoSoli extends JDialog {
 			panelObrero = new JPanel();
 			panelObrero.setBackground(new Color(248, 248, 255));
 			panelObrero.setLayout(null);
-			panelObrero.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Obrero", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panelObrero.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Obrero", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			panelObrero.setBounds(10, 289, 241, 132);
 			panel.add(panelObrero);
 			

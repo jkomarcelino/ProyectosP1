@@ -33,6 +33,9 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import java.text.ParseException;
 import javax.swing.ImageIcon;
+import java.awt.SystemColor;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
 
 public class Contratado extends JDialog {
 
@@ -47,18 +50,17 @@ public class Contratado extends JDialog {
 		setModal(true);
 		getContentPane().setBackground(new Color(248, 248, 255));
 		setBackground(new Color(248, 248, 255));
-		setTitle("Reporte De Solicitudes");
+		setTitle("Porcentajes de contratación");
 		setBounds(100, 100, 719, 472);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(248, 248, 255));
+		contentPanel.setBackground(SystemColor.inactiveCaption);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(new Color(248, 248, 255));
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Reporte Solicitudes",
-					TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(SystemColor.inactiveCaption);
+			panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Porcentajes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 
@@ -86,7 +88,7 @@ public class Contratado extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(new Color(248, 248, 255));
+			buttonPane.setBackground(SystemColor.inactiveCaption);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
