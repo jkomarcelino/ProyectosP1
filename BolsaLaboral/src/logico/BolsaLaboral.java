@@ -30,27 +30,21 @@ public class BolsaLaboral implements  Serializable{
 	public ArrayList<Solicitud> getListSolicitudes() {
 		return listSolicitudes;
 	}
-
 	public void setListSolicitudes(ArrayList<Solicitud> listSolicitudes) {
 		this.listSolicitudes = listSolicitudes;
 	}
-
 	public ArrayList<Personal> getListPersonal() {
 		return listPersonal;
 	}
-
 	public void setListPersonal(ArrayList<Personal> listPersonal) {
 		this.listPersonal = listPersonal;
 	}
-
 	public ArrayList<Empresa> getListEmpresa() {
 		return listEmpresa;
 	}
-
 	public void setListEmpresa(ArrayList<Empresa> listEmpresa) {
 		this.listEmpresa = listEmpresa;
 	}
-
 	public void agregarEmpresa(Empresa empresa) {
 		listEmpresa.add(empresa);
 		
@@ -63,7 +57,6 @@ public class BolsaLaboral implements  Serializable{
 		this.listPersonal = new ArrayList<Personal>();
 		this.listEmpresa = new ArrayList<Empresa>();
 	}
-
 	public static BolsaLaboral getInstance(){//asegurar una instancia de la clase controladora
 		if (bolsa==null) {
 			bolsa=new BolsaLaboral();
@@ -193,7 +186,6 @@ public class BolsaLaboral implements  Serializable{
 		listPersonal.remove(persona_borrar);
 		
 	}
-
 	
 	
 //AGREGAR CONTEO DE PERSONAL POR TIPO
@@ -222,7 +214,6 @@ public int cant_personal_obrero() {
 		return contador;
 		
 	}
-
 public int cant_personal_tecnico() {
 	
 	int contador=0;
@@ -250,18 +241,14 @@ public int cant_contratados() {
 	}
 	return contador;
 }
-
 //Para contratar
-
 public void contratarPersonal(Solicitud sol, ArrayList<Personal> personal) {
 	Empresa empresa = sol.getEmpresa();
 	for (Personal per : personal) {
 		
 		empresa.agregarContratado(per);
 	}
-
 }
-
 ///*********************METODOS PARA SOLICITUD**********************************
 	
 	
@@ -347,7 +334,6 @@ return aspirante;
 			return false;
 		}
 	}
-
 	
 	///validacion
 	
@@ -364,14 +350,11 @@ return aspirante;
 								//agregar idiomas
 									validado=true;
 							}
-
 						}
-
 					
 				}
 			}
 		}
-
 		return validado;
 	}
 	
@@ -416,7 +399,6 @@ return aspirante;
 	public void writeBolsa() {
 		FileOutputStream bolsaFile = null;
 		ObjectOutputStream bolsaOut = null;
-
 		try {
 			bolsaFile = new FileOutputStream(archivo);
 		} catch (FileNotFoundException e) {
@@ -429,7 +411,6 @@ return aspirante;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		try {
 			bolsaOut.writeObject(bolsa);
 		} catch (IOException e) {
@@ -437,7 +418,6 @@ return aspirante;
 			e.printStackTrace();
 		}
 	}
-
 	public void readBolsa() {
 		FileInputStream bolsaFile = null;
 		ObjectInputStream bolsaIn = null;
@@ -474,7 +454,6 @@ return aspirante;
 	      }
 	      return cant;
 	    }
-
 	    // Retornar cant. Tecnicos desempleado
 	    public int desempleadoT() {
 	      int cant = 0;
@@ -487,7 +466,6 @@ return aspirante;
 	      }
 	      return cant;
 	    }
-
 	    // Retornar cant. Obreros desempleado
 	    public int desempleadoO() {
 	      int cant = 0;
@@ -518,7 +496,6 @@ return aspirante;
 	      }
 	      return porciento;
 	    }
-
 	    // Retorna % de Universitarios Contratados
 	    public float porcientoU() {
 	      float cant = 0;
@@ -536,7 +513,6 @@ return aspirante;
 	      }
 	      return porciento;
 	    }
-
 	    // Retorna % de Tecnicos Contratados
 	    public float porcientoT() {
 	      float cant = 0;
@@ -555,7 +531,6 @@ return aspirante;
 	      return porciento;
 	    }
 	  
-
 	    // Retorna total de contratados
 	    public int totalContratado() {
 	      int cant = 0;
