@@ -381,6 +381,12 @@ public class Principal extends JFrame implements Runnable{
 		panel_1.setBackground(SystemColor.inactiveCaptionBorder);
 		panel_1.setBounds(10, 104, 1270, 538);
 		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/img/team.png")));
+		lblNewLabel.setBounds(188, 11, 263, 256);
+		panel_1.add(lblNewLabel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(SystemColor.inactiveCaptionBorder);
