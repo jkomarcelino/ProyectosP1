@@ -21,10 +21,13 @@ public class BolsaLaboral implements Serializable {
 	private ArrayList<Personal> misSolicitantes;
 	private ArrayList<Empresa> misEmpresas;
 	private ArrayList<Solicitud> misSolicitudes;
-
+	private static BolsaLaboral laBolsa;
 	private FileWriter writer_1;
 	private String archivo = "BolsaLaboral.dat";
 	private static BolsaLaboral bolsa;
+	private static User loginUser;
+	private static boolean firstTime;
+	private ArrayList<User> misUsers;
 
 //*************************CONSTRUCTOR******************************************************
 	public BolsaLaboral() {
@@ -33,6 +36,7 @@ public class BolsaLaboral implements Serializable {
 		this.misEmpresas = new ArrayList<>();
 		this.misSolicitantes = new ArrayList<>();
 		this.misSolicitudes = new ArrayList<>();
+		misUsers = new ArrayList<>(); 
 
 	}
 
@@ -58,8 +62,21 @@ public class BolsaLaboral implements Serializable {
 
 	}
 
+	
+	
 //########################**************EMPRESA***************########################################################
 
+	public boolean confirmLogin(String usuario, String contraseña) {
+		boolean login = false;
+		for (User user : misUsers) {
+			if(user.getUserName().equals(usuario) && user.getPass().equals(contraseña) ){
+				loginUser = user;
+				login = true;
+			}
+		}
+		return login;
+	}
+	
 	public int CantTCon(String rnc) {// Devuelve la cantidad de Tecnicos que contrato una empresa
 		int CantconT = 0;
 		for (Empresa empresa : misEmpresas) {
