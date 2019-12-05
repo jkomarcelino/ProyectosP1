@@ -186,6 +186,14 @@ public class Principal extends JFrame implements Runnable{
 		mnMacheo.add(mntmRealizarMacheo);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Contratados");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Contratado contrat = new Contratado();
+				contrat.setModal(true);
+				contrat.setLocationRelativeTo(null);
+				contrat.setVisible(true);
+			}
+		});
 		mntmNewMenuItem.setIcon(new ImageIcon(Principal.class.getResource("/img/modificar.png")));
 		mnMacheo.add(mntmNewMenuItem);
 
