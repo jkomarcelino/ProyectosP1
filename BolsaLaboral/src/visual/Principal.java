@@ -112,9 +112,7 @@ public class Principal extends JFrame implements Runnable{
 				if (JOptionPane.showConfirmDialog(null, "¿Desea guardar los nuevos cambios en la bolsa laboral?",
 						"Atención Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-				/*	ProgressBar progress = new ProgressBar(1);
-					progress.setVisible(true);
-					progress.setLocationRelativeTo(null);*/
+				
 					BolsaLaboral.getInstance().writeBolsa();
 					dispose();
 				} else {
@@ -207,9 +205,7 @@ public class Principal extends JFrame implements Runnable{
 				if (JOptionPane.showConfirmDialog(null, "ï¿½Desea guardar los nuevos cambios en la bolsa laboral?",
 						"Atenciï¿½n Requerida", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-					/*ProgressBar progress = new ProgressBar(1);
-					progress.setVisible(true);
-					progress.setLocationRelativeTo(null);*/
+					
 					BolsaLaboral.getInstance().writeBolsa();
 					dispose();
 				} else {
@@ -331,31 +327,7 @@ public class Principal extends JFrame implements Runnable{
 			}
 		});
 		mnSolicitud.add(mntmListarSolicitud);
-/*
-		JMenuItem mntmReporteDeEmpresa = new JMenuItem("Reporte de Empresa");
-		mntmReporteDeEmpresa.setIcon(new ImageIcon(Principal.class.getResource("/img/addEmpresa.png")));
-		mntmReporteDeEmpresa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ListarEmpleados emple = new ListarEmpleados();
-				emple.setModal(true);
-				emple.setLocationRelativeTo(null);
-				emple.setVisible(true);
 
-			}
-		});
-		mnReporte.add(mntmReporteDeEmpresa);*/
-
-	/*	JMenuItem mntmReporteDeSolicitudes = new JMenuItem("Reporte de Solicitudes");
-		mntmReporteDeSolicitudes.setIcon(new ImageIcon(Principal.class.getResource("/img/addSolicitud.png")));
-		mntmReporteDeSolicitudes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ReporteSolicitud soli = new ReporteSolicitud();
-				soli.setModal(true);
-				soli.setLocationRelativeTo(null);
-				soli.setVisible(true);
-			}
-		});
-		mnReporte.add(mntmReporteDeSolicitudes);*/
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.inactiveCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -387,12 +359,6 @@ public class Principal extends JFrame implements Runnable{
 		panel.add(panelPastel2);
 		panelPastel2.setLayout(null);
 		
-		/*ChartPanel chartPanel2 = new ChartPanel((JFreeChart) null);
-		chartPanel2.setLayout(null);
-		chartPanel2.setPreferredSize(new Dimension(800, 500));
-		chartPanel2.setBorder(null);
-		chartPanel2.setBounds(10, 11, 590, 240);
-		panelPastel2.add(chartPanel2);*/
 
 		
 		JLabel lblLogo = new JLabel("");
@@ -431,8 +397,7 @@ public class Principal extends JFrame implements Runnable{
 		h1 = new Thread(this);
 	    h1.start();
 	
-		// hiloBarras();
-
+		
 	}
 	public static void actualizarPastel2() {
 		panelPastel2.removeAll();

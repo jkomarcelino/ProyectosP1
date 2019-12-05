@@ -234,10 +234,6 @@ public class RegPersona extends JDialog {
 			lblEdad.setBounds(19, 134, 57, 14);
 			panel_infoPersonal.add(lblEdad);
 
-		/*	FechaNacimiento = new JDateChooser();
-			FechaNacimiento.setBackground(new Color(255, 255, 255));
-			FechaNacimiento.setBounds(100, 130, 134, 23);
-			panel_infoPersonal.add(FechaNacimiento);*/
 
 			JLabel label_2 = new JLabel("*");
 			label_2.setHorizontalAlignment(SwingConstants.LEFT);
@@ -901,8 +897,7 @@ public class RegPersona extends JDialog {
 						int numeroCasa = new Integer((int) spnNumeroCasa.getValue());
 						String referencia = txtReferencia.getText();
 						String email = txtEmail.getText();
-					//	Date fechaN = FechaNacimiento.getDate();
-					//	LocalDate fechaNacimiento = fechaN.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					
 						boolean vehiculoP = false;
 						boolean postGrado = false;
 						boolean mudarse = false;
@@ -1430,14 +1425,13 @@ public class RegPersona extends JDialog {
 	public void laodVer() {
 		panel1.setEnabled(false);
 		panel2.setEnabled(false);
-		/*LocalDate fecha = verSoli.getFechaNacimiento();
-		Date date = java.sql.Date.valueOf(fecha);*/
+		
 		txtApellidos.setEnabled(false);
 		txtNombre.setEnabled(false);
 		rdbFemenino.setEnabled(false);
 		rdbMasculino.setEnabled(false);
 		textCedula.setEnabled(false);
-		//FechaNacimiento.setEnabled(false);
+		
 		cbxNacionalidad.setEnabled(false);
 		rdbSiReelocalizacion.setEnabled(false);
 		rdbNoReelocalizacion.setEnabled(false);
@@ -1455,7 +1449,7 @@ public class RegPersona extends JDialog {
 		txtNombre.setText(verSoli.getNombres());
 		txtApellidos.setText(verSoli.getApellidos());
 		textCedula.setText(verSoli.getCedula());
-	//	FechaNacimiento.setDate(date);
+	
 		cbxNacionalidad.setSelectedItem(verSoli.getNacionalidad());
 		cbxEstadoCilvil.setSelectedItem(verSoli.getEstadoCivil());
 		cbxProvincia.setSelectedItem(verSoli.getProvincia());
