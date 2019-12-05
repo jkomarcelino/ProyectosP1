@@ -35,6 +35,7 @@ import logico.BolsaLaboral;
 import logico.Empresa;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.JSeparator;
 
 
 public class RegEmpresa extends JDialog {
@@ -77,7 +78,7 @@ public class RegEmpresa extends JDialog {
 		modificarEmpre = empresa;
 		setResizable(false);
 		setModal(true);
-		setBounds(100, 100, 614, 413);
+		setBounds(100, 100, 630, 423);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(SystemColor.inactiveCaption);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -87,7 +88,7 @@ public class RegEmpresa extends JDialog {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(248, 248, 255));
 		panel.setBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), null, null)));
-		panel.setBounds(5, 26, 605, 118);
+		panel.setBounds(10, 55, 605, 118);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
@@ -149,7 +150,7 @@ public class RegEmpresa extends JDialog {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 248, 255));
 		panel_1.setBorder(new CompoundBorder(new CompoundBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, new Color(153, 180, 209), new Color(153, 180, 209), null)), null));
-		panel_1.setBounds(5, 155, 605, 166);
+		panel_1.setBounds(10, 185, 605, 166);
 		contentPanel.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -265,13 +266,15 @@ public class RegEmpresa extends JDialog {
 		spnlocalidad.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spnlocalidad.setBounds(93, 131, 174, 21);
 		panel_1.add(spnlocalidad);
-
-		JLabel lblTodosLosCampos = new JLabel(
-				"Todos los campos son obligatorios");
-		lblTodosLosCampos.setForeground(Color.RED);
-		lblTodosLosCampos.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblTodosLosCampos.setBounds(454, 11, 220, 13);
-		contentPanel.add(lblTodosLosCampos);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(RegEmpresa.class.getResource("/img/JOBIFYpeque.png")));
+		lblNewLabel_2.setBounds(232, 0, 169, 44);
+		contentPanel.add(lblNewLabel_2);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 44, 605, 2);
+		contentPanel.add(separator);
 
 		{
 			JPanel buttonPane = new JPanel();
