@@ -631,7 +631,7 @@ return aspirante;
 		codigo = "S" + code;
 		return codigo;
 	}
-
+//***********************Empresa*********************************
 	public String getCodeSolicitud() {
 		String code = "";
 		String codigo = "";
