@@ -2,9 +2,9 @@ package logico;
 
 public class ParaProbar {
 
-	/*public static void main(String[] args) {
+	/public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+	/*	
 		
 		BolsaLaboral bolsa=new BolsaLaboral();
 		
@@ -30,7 +30,12 @@ public class ParaProbar {
 		System.out.println(bolsa.cant_personal_universitario());
 		
 		System.out.println(bolsa.cant_personal_obrero());
-
-	}*/
+*/
+		String fTxtEdad="5";
+		
+		int edad = Integer.valueOf(fTxtEdad);
+		
+		System.out.println(edad);
+	}
 
 }
